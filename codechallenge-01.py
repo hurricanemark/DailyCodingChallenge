@@ -50,7 +50,7 @@ def test_code():
 	assert isSumOfK(nums,k) == False
 
 	nums = random.sample(range(1,1000),50)
-	k=nums[1]+nums[-1]
+	k=nums[0]+nums[-1] #this ensure the test returns True
 	assert isSumOfK(nums,k) == True
 
 	nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
