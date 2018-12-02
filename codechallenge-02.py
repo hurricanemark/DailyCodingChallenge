@@ -17,7 +17,8 @@ def doit(a):
 	p=[]
 	for i in range(len(a)):
 		prod=1
-		for x, n in enumerate(range(0, len(a))):
+		#for x, n in enumerate(range(0, len(a))):
+		for x in range(0, len(a)):
 			if x != i:
 				prod=prod*a[x]
 			#print("i={} x={} n={} prod={}".format(i,x,a[x], prod))
