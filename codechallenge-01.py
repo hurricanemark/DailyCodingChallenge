@@ -1,6 +1,9 @@
 '''
+Date: 11/30/2018
 This problem was asked by Google.
 
+Problem description:
+-------------------
 Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
 For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
 Bonus: Can you do this in one pass?
@@ -76,4 +79,4 @@ if __name__ == "__main__":
 	k=nums[1]+nums[-1]
 	print(isSumOfK(nums,k))
 
-	test_bettercode()
+	test_code()
