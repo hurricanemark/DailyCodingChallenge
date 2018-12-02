@@ -12,7 +12,7 @@ Bonus: Can you do this in one pass?
 import random
 
 '''
-Bruce force using nested loop
+Brute force using nested loop
 '''
 def isSumOfK(nums, k):
 	# keep elements in nums that are less than k
