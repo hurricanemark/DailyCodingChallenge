@@ -10,7 +10,9 @@ For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120
 Follow-up: what if you can't use division?
 '''
 
-
+# This implementation uses nested loop and the manipulation of slicing index 
+# Not a good performance code because the entire range gets traversed.
+# Note that I don't use division.
 def doit(a):
 	p=[]
 	for i in range(len(a)):
