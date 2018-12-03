@@ -1,6 +1,6 @@
 '''
 Date: 12/03/2018
-Prolem description:
+Problem description:
 ==================
 This problem was asked by Stripe.
 Given an array of integers, find the first missing positive integer in linear time and constant space. 
@@ -23,6 +23,7 @@ Performance wise, there is no appreciative difference between the three function
 
 Ways to shave on performance:
 - split the array and search first half, then second half
+- hashmap?
 '''
 
 
