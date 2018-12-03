@@ -1,9 +1,9 @@
-## Daily Coding Challenge
+## Solutions for Daily Coding Challenge
 
 Sign up for an account at <a href>"https://dailycodingproblem.com"</a> to automatically receive  a daily coding problem in your mail box.
 
 
-This post contains continous update of my solutions.  I try to keep a consistent activity.  
+This post contains continuous update of my solutions (code snippets).  I try to keep a consistent activity.  
 
 
 ## How to Run
