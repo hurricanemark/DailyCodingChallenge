@@ -12,8 +12,8 @@ You can modify the input array in-place.
 '''
 Pseudo code:
 1.  Sort the array and remove duplicates
-2.  shorten the array by eliminate elements with negative value.
-3.  Traverse the array comparing index to its value.  Return the first mismatch.
+2.  Shorten the array by eliminate elements having negative value.
+3.  Traverse the array comparing index to its value.  The missing number should be last value+1.  Return the first missing number.
     Note, zero is neither negative or positive, so in step two, eliminate element with value zero as well.
     
     Altenatively, the array can be converted into a dictionary, then determine the firt pair that key != value.
@@ -33,6 +33,7 @@ def findFirstMissing(arr):
 		arr = [n for n in arr if n > 0] 
 
 		# use list comprehesion to get the first missing number
+		# this yields a list instead of sing number. Hmmm...
 		missing = [arr[i-1]+1 for i, val in enumerate(arr) if val > arr[i-1]+1]
 		print(missing[0])
 		return missing[0]
