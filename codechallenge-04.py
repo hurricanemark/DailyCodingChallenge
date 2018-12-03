@@ -76,7 +76,9 @@ def firstMissingValB(arr):
 				print("k:{} v:{}  missing:{}".format(k, v, missing))
 				break
 	return missing
-
+'''
+if run using pytest.  i.e. pytest codechalleng-04.py
+'''
 def test_missingvalue():
 	missing = 13
 	A = list(range(-20, missing))
@@ -86,6 +88,10 @@ def test_missingvalue():
 	assert firstMissingValA(A) == missing 
 	assert firstMissingValB(A) == missing 
 
+
+'''
+main driver, run using python
+'''
 if __name__ == "__main__":
 	A = list(range(-5,5))
 	A.append(10)
