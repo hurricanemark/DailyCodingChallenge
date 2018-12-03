@@ -19,7 +19,10 @@ Pseudo code:
     Altenatively, the array can be converted into a dictionary, then determine the firt pair that key != value.
 
 
-Performancewise, there is no appreciative difference between the three function since it is in the order O(n)
+Performance wise, there is no appreciative difference between the three functions since it is in the order O(n)
+
+Ways to shave on performance:
+- split the array and search first half, then second half
 '''
 
 
