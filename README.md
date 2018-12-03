@@ -3,7 +3,7 @@
 Sign up for an account at <a href>"https://dailycodingproblem.com"</a> to automatically receive  a daily coding problem in your mail box.
 
 
-This post contains continuous update of my solutions (code snippets).  I try to keep a consistent activity.  
+This post contains continuous update of my solutions (code snippets).  I try to keep it a consistent activity as a way to keep my mind entertained.  
 
 
 ## How to Run
