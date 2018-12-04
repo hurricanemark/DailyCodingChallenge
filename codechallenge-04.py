@@ -104,7 +104,3 @@ main driver, run using python
 '''
 if __name__ == "__main__":
 	test_code()
-	A = list(range(-5,5))
-	A.append(10)
-	firstMissingValA(A)
-	firstMissingValB(A)
