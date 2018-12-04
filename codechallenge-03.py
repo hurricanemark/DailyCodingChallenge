@@ -24,7 +24,7 @@ Pseudo code:
 1.  Construct the __init__ with self, val, left, right
 2.  implement the Insert function
 3.  implement the serialize(root), where root is the initialized node
-4. implement the deserialize(s) function where s is a string
+4.  implement the deserialize(s) function where s is a string
 
 
 The input for val has the format of 'root, 'root.left.right' or 'left.left.right.left'  
