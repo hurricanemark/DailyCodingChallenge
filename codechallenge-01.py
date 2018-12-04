@@ -9,7 +9,7 @@ For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
 Bonus: Can you do this in one pass?
 '''
 
-import random
+import random, time
 
 '''
 Brute force using nested loop
@@ -27,56 +27,70 @@ def isSumOfK(nums, k):
 
 	return False
 
-
 '''
-Better solution
+Bonus:
+The objective is to do the function in one pass.
 '''
 def isSumEqualK(nums, k):
-    nums.sort()
-    num = [n for n in nums if n < k]
-    for i in range(0, len(nums)):
-	# n + x = k and x = k - n
-        if k - nums[i] in nums:
-            return True
-    return False  
+	nums.sort()
+	num = [n for n in nums if n < k]
+	for i in range(0, len(nums)):
+		# cheating it by iterate over range of nums in this if statement
+		if k - nums[i] in nums: 
+			return True
+	return False
+
+'''
+tests
+'''
+def test_BruteForceCode():
+	try:	
+		start = time.time()
+		nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
+		k = 28
+		assert isSumOfK(nums,k) == True
+		end = time.time()
+		print("Elapsed time: {}".format(end-start))
+
+		nums = random.sample(range(1,1000),50)
+		k=nums[0]+nums[-1] #this ensure the test returns True
+		assert isSumOfK(nums,k) == True
+	except:
+		print("\tLogical condition tests failed on isSumOfK()==True!")
+
+	try:	
+		nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
+		k=1000
+		assert isSumOfK(nums,k) == False
+	except:
+		print("\tLogical condition tests failed on isSumOfK()==False!")
 
 
-def test_code():
-	nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
-	k = 28
-	assert isSumOfK(nums,k) == True
+def test_BonusCode():
+	try:
+		start = time.time()
+		nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
+		k = 28
+		assert isSumEqualK(nums, k) == True
+		end = time.time()
+		print("Elapsed time: {}".format(end-start))
 
-	k=1000
-	assert isSumOfK(nums,k) == False
-
-	nums = random.sample(range(1,1000),50)
-	k=nums[0]+nums[-1] #this ensure the test returns True
-	assert isSumOfK(nums,k) == True
-
-	nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
-	k = 28
-	assert isSumEqualK(nums, k) == True
-
-	nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
-	k = 28
-	assert isSumEqualK(nums, k) == True
-	k=1000
-	assert isSumEqualK(nums, k) == False
+		k=nums[0]+nums[-1] #this ensures the test returns True
+		assert isSumEqualK(nums, k) == True
+	except AssertionError:
+		print("\tLogical condition tests failed on isSumEqualK()==True!")
+		
+	try:
+		k = 1000
+		assert isSumEqualK(nums, k) == False
+	except AssertionError:
+		print("\tLogical condition tests failed on isSumEqualK()==False!")
 
 
 if __name__ == "__main__":
-	nums = [4,20,15,3,72,2,7,90,8,7,9,10,22]
-	k = 28
-	print("Test True case:")
-	print(isSumOfK(nums,k))
+	print("Test function isSumOfK:")
+	test_BruteForceCode()
 
-	print("Test False case:")
-	k=1000
-	print(isSumOfK(nums,k))
 
-	print("Test using random generator case:")
-	nums = random.sample(range(1,1000),50)
-	k=nums[1]+nums[-1]
-	print(isSumOfK(nums,k))
-
-	test_code()
+	print("\nTest function isSumEqualK  --(one pass solution):")
+	test_BonusCode()
