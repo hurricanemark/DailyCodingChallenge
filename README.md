@@ -5,6 +5,12 @@ Sign up for an account at <a href>"https://dailycodingproblem.com"</a> to automa
 
 This post contains continuous update of my solutions (code snippets).  I try to keep it a consistent activity as a way to keep my mind entertained.  
 
+## Coding Practice
+
+The comment section contains date, problem's description followed by my thought on computaion flow and pseudo code.
+The code section usually contain function(s) for addressing the main problem and test_func()
+Seldom, I would recommit update on further thoughts on improved or application of the solution.
+
 
 ## How to Run
 
