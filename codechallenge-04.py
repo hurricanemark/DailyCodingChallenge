@@ -26,7 +26,7 @@ Ways to shave on performance:
 - hashmap?
 '''
 
-
+import time
 def findFirstMissing(arr):
 	if len(arr) == 0:
 		return None
@@ -39,7 +39,6 @@ def findFirstMissing(arr):
 		# use list comprehesion to get the first missing number
 		# this yields a list instead of sing number. Hmmm...
 		missing = [arr[i-1]+1 for i, val in enumerate(arr) if val > arr[i-1]+1]
-		print(missing[0])
 		return missing[0]
 
 def firstMissingValA(arr):
@@ -53,10 +52,8 @@ def firstMissingValA(arr):
 
 		# use iterative loop
 		for i,n in enumerate(arr):
-			print("idx:{} val:{}".format(i,n))
 			if (n > arr[i-1]+1):
 				missing = arr[i-1]+1
-				print(missing)
 				break
 	return missing
 
@@ -74,7 +71,7 @@ def firstMissingValB(arr):
 		for k,v in dArr.items():
 			if k != v:
 				missing = k
-				print("k:{} v:{}  missing:{}".format(k, v, missing))
+				#print("k:{} v:{}  missing:{}".format(k, v, missing))
 				break
 	return missing
 '''
@@ -85,17 +82,29 @@ def test_code():
 	A = list(range(-20, missing))
 	A.append(missing+2)
 	A.append(missing+20)
+
+	starttime = time.time()
 	assert findFirstMissing(A) == missing 
+	endtime = time.time()
+	print("Elasped time running firstFirstMissing() is {}".format(endtime - starttime))
+
+	starttime = time.time()
 	assert firstMissingValA(A) == missing 
+	endtime = time.time()
+	print("Elasped time running firstMissingValA() is {}".format(endtime - starttime))
+
+	starttime = time.time()
 	assert firstMissingValB(A) == missing 
+	endtime = time.time()
+	print("Elasped time running firstMissingValB() is {}".format(endtime - starttime))
 
 
 '''
 main driver, run using python
 '''
 if __name__ == "__main__":
+	test_code()
 	A = list(range(-5,5))
 	A.append(10)
-	test_missingvalue(A)
 	firstMissingValA(A)
 	firstMissingValB(A)
