@@ -80,7 +80,7 @@ def firstMissingValB(arr):
 '''
 if run using pytest.  i.e. pytest codechalleng-04.py
 '''
-def test_missingvalue():
+def test_code():
 	missing = 13
 	A = list(range(-20, missing))
 	A.append(missing+2)
