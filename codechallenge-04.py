@@ -13,8 +13,8 @@ You can modify the input array in-place.
 Pseudo code:
 1.  Sort the array and remove duplicates
 2.  Shorten the array by eliminate elements having negative value.
+    Note, zero is neither negative nor positive, so in step two, eliminate element with value zero as well.
 3.  Traverse the array comparing index to its value.  The missing number should be last value+1.  Return the first missing number.
-    Note, zero is neither negative or positive, so in step two, eliminate element with value zero as well.
     
     Altenatively, the array can be converted into a dictionary, then determine the firt pair that key != value.
 
