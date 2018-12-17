@@ -38,8 +38,8 @@ def maxValInArray(arr, k):
 			x = 0
 			for x in range(x, (k+x)):
 				subarr.append(arr[x])
+			#listofmax.append(sorted(subarr, reverse=True)[:1])
 			listofmax.append(max(subarr))
-			#subarr.clear()
 			subarr = []
 			arr.pop(0)
 
