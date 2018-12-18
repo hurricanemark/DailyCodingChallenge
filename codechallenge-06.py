@@ -49,13 +49,21 @@ def maxValInArray(arr, k):
 
 ''' O(n) time and O(k) space '''
 def maxValsList(arr, k):
-	retarr = list()
-	while len(arr) >= k:
-		#print(max([a[i] for i in range(k)]))
-		retarr.append(max([arr[i] for i in range(k)]))
-		arr.pop(0)
+	''' check edge case '''
+	assert k >= 1
+	assert k <= len(arr)
 
-	return retarr
+	if k == 1:
+		#print( arr )
+		return arr
+	else:
+		retarr = list()
+		while len(arr) >= k:
+			#print(max([a[i] for i in range(k)]))
+			retarr.append(max([arr[i] for i in range(k)]))
+			arr.pop(0)
+
+		return retarr
 
 
 def test_code():
