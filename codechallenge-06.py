@@ -74,6 +74,9 @@ def test_code():
 	A = [10, 5, 2, 7, 8, 7]
 	assert maxValsList(A, K) == [10, 7, 8, 8]
 
+	A = [10, 5, 2, 7, 8, 7]
+	K = 1
+	assert maxValsList(A, K) == [10, 5, 2, 7, 8, 7]
 if __name__ == "__main__":
 	A = [10, 5, 2, 7, 8, 7]
 	K = 3
