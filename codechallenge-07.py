@@ -11,7 +11,7 @@ build the nth house with kth color, find the minimum cost which achieves this go
 ====== This is not my code!!! =======
 THIS CODE BELONGS TO YOUTUBE AUTHOR: 'Happy Chuck Programming' 
 
-Builing a cost tree is a very nice solution.  I keep this code for reference.
+Building a cost tree is a very nice solution.  I keep this code for reference.
 
 '''
 
