@@ -7,7 +7,7 @@ This post contains continuous update of my solutions (code snippets).  I try to 
 
 ## Coding Practice
 
-The comment section contains date, problem's description followed by my thought on computaion flow and pseudo code.
+The comment section contains date, problem's description followed by my thought on computation flow and pseudo code.
 The code section usually contain function(s) for addressing the main problem and test_func()
 Seldom, I would recommit update on further thoughts on improved or application of the solution.
 
