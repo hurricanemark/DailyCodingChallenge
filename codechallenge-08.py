@@ -101,3 +101,17 @@ if __name__ == "__main__":
 	print ("Number of required room(s): {}".format(reserveRooms(schedtime)))
 	end = time.time()
 	print("Elapsed time: {}\n".format(end-begin))
+
+
+
+'''
+run-time ouput:
+===============
+Given a schedule: [(30, 75), (0, 50), (60, 150)]
+Number of required room(s): 2
+Elapsed time: 6.69956207275e-05
+
+Random generated schedule: [(35, 88), (5, 29), (59, 66), (57, 118), (90, 126), (27, 116)]
+Number of required room(s): 4
+Elapsed time: 5.29289245605e-05
+'''
