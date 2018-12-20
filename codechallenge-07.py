@@ -93,6 +93,8 @@ class Node:
 
 n=5 # number of houses
 k=5 # number of colors available
+
+# hash table for color values
 switcher = {
     '0': "BambooGreen",
     '1': "LondonFog",
