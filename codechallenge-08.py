@@ -114,4 +114,14 @@ Elapsed time: 6.69956207275e-05
 Random generated schedule: [(35, 88), (5, 29), (59, 66), (57, 118), (90, 126), (27, 116)]
 Number of required room(s): 4
 Elapsed time: 5.29289245605e-05
+
+
+========================================================================= test session starts ==========================================================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-08.py .                                                                                                                                            [100%]
+
+======================================================================= 1 passed in 0.12 seconds =======================================================================
 '''
