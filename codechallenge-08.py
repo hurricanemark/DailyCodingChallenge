@@ -9,7 +9,6 @@ Given an array of time intervals (start, end) for classroom lectures
 (possibly overlapping), find the minimum number of rooms required.
 
 
-
 For example, given [(30, 75), (0, 50), (60, 150)], you should return 2.
 
 
@@ -51,7 +50,8 @@ def reserveRooms(schedList):
 	stimes = list(dSchedList.keys())
 	etimes = list(dSchedList.values())	
 
-	# loop over the list and apply logic
+	# loop over the list, if subsequent start-time is less than
+	# previous end-time then overlap occurs, get another room.
 	for i in range(len(stimes)-1):
 		if stimes[i+1] > stimes[i]:
 			rooms+=1	
