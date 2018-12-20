@@ -1,4 +1,5 @@
 '''
+Date: 12/19/2018
 Problem description:
 --------------------
 A builder is looking to build a row of N houses with K different colors. 
@@ -8,8 +9,8 @@ houses have the same color.
 Given an NxK matrix where the nth row and kth column represents the cost to 
 build the nth house with kth color, find the minimum cost which achieves this goal
 
-====== This is not my code!!! =======
-THIS CODE BELONGS TO YOUTUBE AUTHOR: 'Happy Chuck Programming' 
+====== !!! This is not my code !!! =======
+90% OF THIS CODE BELONGS TO YOUTUBE AUTHOR: 'Happy Chuck Programming' 
 
 Building a cost tree is a very nice solution.  I keep this code for reference.
 
