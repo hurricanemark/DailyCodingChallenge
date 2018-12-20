@@ -16,7 +16,7 @@ Seldom, I would recommit update on further thoughts on improved or application o
 
 ** 1.  Install pytest (pip install  pytest)
 
-** 2.  git clone this project
+** 2.  git clone https://github.com/hurricanemark/DailyCodingChallenge.git
 
 ** 3.  Run pytest (pytest ./*.py)
 
