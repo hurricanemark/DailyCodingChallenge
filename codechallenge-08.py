@@ -34,7 +34,7 @@ Psuedo code:
 2.  Convert the array of tuples into a hash table (dict).
 3.  Copy the keys into start-time list, values into end-time list
 4.  Loop the length of one list, if subsequent start-time is less than 
-    revious end-time then overlap occurs, get another room.
+    previous end-time then overlap occurs, get another room.
 Note, it is easier to hash the array by converting it into a dictionary.
 Also, no time gap in between back-to-back schedules is considered in this implementation.
 '''
