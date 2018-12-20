@@ -93,7 +93,7 @@ class Node:
 
 
 n=5 # number of houses
-k=5 # number of colors available
+k=3 # number of colors available
 
 # hash table for color values
 switcher = {
@@ -146,3 +146,69 @@ for color in min_cost_colors.split('_'):
     tmpstr = ';'.join(coulor)
     print("\tcolor code: {} color: {}".format(color, coulor))
 
+'''
+Run-time output:
+===============
+
+[1, 7, 8]
+[1, 1, 3]
+[2, 5, 0]
+[2, 1, 4]
+[5, 4, 1]
+('colors: ', [0, 1, 0, 1, 0], 'total cost: ', 10)
+('colors: ', [0, 1, 0, 1, 2], 'total cost: ', 6)
+('colors: ', [0, 1, 0, 2, 0], 'total cost: ', 13)
+('colors: ', [0, 1, 0, 2, 1], 'total cost: ', 12)
+('colors: ', [0, 1, 2, 0, 1], 'total cost: ', 8)
+('colors: ', [0, 1, 2, 0, 2], 'total cost: ', 5)
+('colors: ', [0, 1, 2, 1, 0], 'total cost: ', 8)
+('colors: ', [0, 1, 2, 1, 2], 'total cost: ', 4)
+('colors: ', [0, 2, 0, 1, 0], 'total cost: ', 12)
+('colors: ', [0, 2, 0, 1, 2], 'total cost: ', 8)
+('colors: ', [0, 2, 0, 2, 0], 'total cost: ', 15)
+('colors: ', [0, 2, 0, 2, 1], 'total cost: ', 14)
+('colors: ', [0, 2, 1, 0, 1], 'total cost: ', 15)
+('colors: ', [0, 2, 1, 0, 2], 'total cost: ', 12)
+('colors: ', [0, 2, 1, 2, 0], 'total cost: ', 18)
+('colors: ', [0, 2, 1, 2, 1], 'total cost: ', 17)
+('colors: ', [1, 0, 1, 0, 1], 'total cost: ', 19)
+('colors: ', [1, 0, 1, 0, 2], 'total cost: ', 16)
+('colors: ', [1, 0, 1, 2, 0], 'total cost: ', 22)
+('colors: ', [1, 0, 1, 2, 1], 'total cost: ', 21)
+('colors: ', [1, 0, 2, 0, 1], 'total cost: ', 14)
+('colors: ', [1, 0, 2, 0, 2], 'total cost: ', 11)
+('colors: ', [1, 0, 2, 1, 0], 'total cost: ', 14)
+('colors: ', [1, 0, 2, 1, 2], 'total cost: ', 10)
+('colors: ', [1, 2, 0, 1, 0], 'total cost: ', 18)
+('colors: ', [1, 2, 0, 1, 2], 'total cost: ', 14)
+('colors: ', [1, 2, 0, 2, 0], 'total cost: ', 21)
+('colors: ', [1, 2, 0, 2, 1], 'total cost: ', 20)
+('colors: ', [1, 2, 1, 0, 1], 'total cost: ', 21)
+('colors: ', [1, 2, 1, 0, 2], 'total cost: ', 18)
+('colors: ', [1, 2, 1, 2, 0], 'total cost: ', 24)
+('colors: ', [1, 2, 1, 2, 1], 'total cost: ', 23)
+('colors: ', [2, 0, 1, 0, 1], 'total cost: ', 20)
+('colors: ', [2, 0, 1, 0, 2], 'total cost: ', 17)
+('colors: ', [2, 0, 1, 2, 0], 'total cost: ', 23)
+('colors: ', [2, 0, 1, 2, 1], 'total cost: ', 22)
+('colors: ', [2, 0, 2, 0, 1], 'total cost: ', 15)
+('colors: ', [2, 0, 2, 0, 2], 'total cost: ', 12)
+('colors: ', [2, 0, 2, 1, 0], 'total cost: ', 15)
+('colors: ', [2, 0, 2, 1, 2], 'total cost: ', 11)
+('colors: ', [2, 1, 0, 1, 0], 'total cost: ', 17)
+('colors: ', [2, 1, 0, 1, 2], 'total cost: ', 13)
+('colors: ', [2, 1, 0, 2, 0], 'total cost: ', 20)
+('colors: ', [2, 1, 0, 2, 1], 'total cost: ', 19)
+('colors: ', [2, 1, 2, 0, 1], 'total cost: ', 15)
+('colors: ', [2, 1, 2, 0, 2], 'total cost: ', 12)
+('colors: ', [2, 1, 2, 1, 0], 'total cost: ', 15)
+('colors: ', [2, 1, 2, 1, 2], 'total cost: ', 11)
+('Number of ways of painting n=5 houses', 48)
+Min cost of 4 is achieved by coloring houses this way 0_1_2_1_2
+Where,
+        color code: 0 color: BambooGreen
+        color code: 1 color: LondonFog
+        color code: 2 color: ArizonaBrown
+        color code: 1 color: LondonFog
+        color code: 2 color: ArizonaBrown
+'''
