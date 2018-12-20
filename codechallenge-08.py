@@ -39,7 +39,7 @@ Note, it is easier to hash the array by converting it into a dictionary.
 Also, no time gap in between back-to-back schedules is considered in this implementation.
 '''
 
-import random
+import random, time
 def reserveRooms(schedList):
 	# edge cases
 	if len(schedList) == 0:
@@ -80,15 +80,24 @@ def genRandomSchedule(slots):
 
 def test_code():
 	schedtime = [(30, 75), (0, 50), (60, 150)]
+	begin = time.time()
 	assert reserveRooms(schedtime) == 2
+	end = time.time()
+	print("Elapsed time: {}".format(end-begin))
 
 if __name__ == "__main__":
 	# test base case given in the problem
 	schedtime = [(30, 75), (0, 50), (60, 150)]
 	print("Given a schedule: {}".format(schedtime))
+	begin = time.time()
 	print ("Number of required room(s): {}".format(reserveRooms(schedtime)))
-	print("\n")
+	end = time.time()
+	print("Elapsed time: {}\n".format(end-begin))
+
 	# test using random generator
 	schedtime = genRandomSchedule(7)
 	print("Random generated schedule: {}".format(schedtime))
+	begin = time.time()
 	print ("Number of required room(s): {}".format(reserveRooms(schedtime)))
+	end = time.time()
+	print("Elapsed time: {}\n".format(end-begin))
