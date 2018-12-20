@@ -109,8 +109,8 @@ def print_cost_fn(m):
     for r in m:
         print(r)
 
-cost_fn = [[int(10*random.random()) for i in range(k)] for j in range(n)]
 '''
+# generate a sample of cost matrix interpreted from the given statement.
 cost_fn = [
         [3, 0, 3],  # i = 0 iterate over house number
         [8, 3, 0],  # i = 1
@@ -119,6 +119,9 @@ cost_fn = [
         [7, 8, 1]   # i = 4
         ]
 '''
+# generate a random matrix of cost
+cost_fn = [[int(10*random.random()) for i in range(k)] for j in range(n)]
+
 colors_of_homes_and_total_cost = {} # each entry is stringified colors of all homes and total cost
 
 print_cost_fn(cost_fn)
