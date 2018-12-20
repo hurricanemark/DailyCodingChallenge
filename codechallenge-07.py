@@ -18,7 +18,7 @@ Building a cost tree is a very nice solution.  I keep this code for reference.
 import random, math
 class Node:
     global cost_fn
-
+ 
     def __init__(self, \
             num_homes=1, \
             num_colors=1, \
@@ -88,15 +88,29 @@ class Node:
                     count = self.m_children_nodes[key].print_cost_homes(count)
                 return count
 
+
+
+
 n=5 # number of houses
-k=3 # number of colors available
+k=5 # number of colors available
+switcher = {
+    '0': "BambooGreen",
+    '1': "LondonFog",
+    '2': "ArizonaBrown",
+    '3': "ChicpeaBlue",
+    '4': "Turquoi",
+    '5': "CaliforniaPoppy",
+    '6': "HoneyBrown",
+    '7': "CiscoMist",
+}	
+
 
 def print_cost_fn(m):
     for r in m:
         print(r)
 
-# cost_fn == [[int(10*rand.random()) for i in range(k)] for j in range(n)]
-
+cost_fn = [[int(10*random.random()) for i in range(k)] for j in range(n)]
+'''
 cost_fn = [
         [3, 0, 3],  # i = 0 iterate over house number
         [8, 3, 0],  # i = 1
@@ -104,6 +118,7 @@ cost_fn = [
         [3, 4, 4],  # i = 3
         [7, 8, 1]   # i = 4
         ]
+'''
 colors_of_homes_and_total_cost = {} # each entry is stringified colors of all homes and total cost
 
 print_cost_fn(cost_fn)
@@ -117,4 +132,11 @@ for mkey in colors_of_homes_and_total_cost:
     if colors_of_homes_and_total_cost[mkey] < min_cost:
         min_cost = colors_of_homes_and_total_cost[mkey]
         min_cost_colors = mkey
-print('Min cost of ', min_cost, ' is achieved by coloring houses this way ', min_cost_colors)
+
+print('Min cost of {} is achieved by coloring houses this way {}'.format(min_cost, min_cost_colors))
+print("Where,")
+for color in min_cost_colors.split('_'):
+    coulor = switcher.get(color)
+    tmpstr = ';'.join(coulor)
+    print("\tcolor code: {} color: {}".format(color, coulor))
+
