@@ -22,6 +22,8 @@ Seldom, I would recommit update on further thoughts on improved or application o
 
 **     or, execute individual python solution (python codechalleng-##.py)
 
+**     or, execute python tests.py for comprehensive testing of the whole directory
+
 ## Organization
 
 One problem/solution per python file.
