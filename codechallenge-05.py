@@ -135,6 +135,12 @@ def addLinkedList(l1, l2):
 			carry = 0
 	return resultLklst
 
+
+'''
+Since unittest module is used here,
+py.test would probably complain!
+So, tests.py will fail here.
+'''
 def test_code(self):
 	A = LinkedList()
 	A.addNode(3)
