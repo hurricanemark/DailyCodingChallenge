@@ -93,3 +93,24 @@ if __name__ == "__main__":
 	printNodes(B)
 
 	print("The intersected node in these linked lists A, B is {}".format(findIntersectedNode(A,B)))
+
+
+'''
+Run-time output:
+===============
+$ python codechallenge-09.py
+Given
+A singly linked list A: 3 -> 7 -> 8 -> 10
+And a singly linked list B: 99 -> 1 -> 8 -> 10
+The intersected node in these linked lists A, B is 8
+
+$ pytest codechallenge-09.py
+=================== test session starts ===================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-09.py .                                 [100%]
+
+================ 1 passed in 0.06 seconds =================
+'''
