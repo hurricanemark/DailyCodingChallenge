@@ -53,15 +53,18 @@ def printNodes(nodeA):
 		nodeA = nodeA.next
 	print(' -> '.join(S))
 
-def findIntersectedNode(nodeA, nodeB):
-	currNodeA = nodeA
-	currNodeB = nodeB
-	while currNodeA is not None or currNodeB is not None:
-		if currNodeA.val == currNodeB.val:
-			return currNodeA.val
-		currNodeA = currNodeA.next
-		currNodeB = currNodeB.next
 
+def getIntersectedNode(headA, headB):
+	curNodeA = headA
+	while curNodeA is not None:
+		curNodeB = headB
+		while curNodeB is not None:
+			print("curA:{} curB:{}".format(curNodeA.val, curNodeB.val))
+			if curNodeB.val == curNodeA.val:
+				return curNodeB.val
+			curNodeB = curNodeB.next
+		curNodeA = curNodeA.next
+	
 def test_code():
 	A = linkedlistNode(3)
 	insertNode(A, 7)
@@ -72,7 +75,7 @@ def test_code():
 	insertNode(B, 8)
 	insertNode(B, 10)
 
-	assert findIntersectedNode(A,B) == 8
+	assert getIntersectedNode(A,B) == 8
 
 if __name__ == "__main__":
 	print("Given\nA singly linked list A: ", end='')
@@ -92,7 +95,7 @@ if __name__ == "__main__":
 	insertNode(B, 10)
 	printNodes(B)
 
-	print("The intersected node in these linked lists A, B is {}".format(findIntersectedNode(A,B)))
+	print("The intersected node on A and B is {}".format(getIntersectedNode(A,B)))
 
 
 '''
