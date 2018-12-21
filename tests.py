@@ -2,7 +2,10 @@
 from __future__ import print_function
 import os, sys
 import pytest
-path = '.'
+
+
+#path = '.'
+path = os.getcwd()
 if len(sys.argv) == 2:
 	path = sys.argv[1]
 
