@@ -36,6 +36,11 @@ Psuedo code:
     previous end-time then overlap occurs, get another room.
 Note, it is easier to hash the array by converting it into a dictionary.
 Also, no time gap in between back-to-back schedules is considered in this implementation.
+
+After thought:
+==============
+Resource allocation is applicable to many practical problems such as
+hotel reservation, directing uber drivers, etc.
 '''
 
 import random, time
@@ -72,7 +77,7 @@ def genRandomSchedule(slots):
 	# check if endTime is less than startTime.
 	# if found we ignore the particular item by removing it from the dictionary
 	for start, end in dsched.items():
-		if start > end:
+		if start >= end:
 			del dsched[start]
 			#print("Throw away time slot: {}".format(start,end))
 	sched = list(dsched.items())
@@ -95,7 +100,7 @@ if __name__ == "__main__":
 	print("Elapsed time: {}\n".format(end-begin))
 
 	# test using random generator
-	schedtime = genRandomSchedule(7)
+	schedtime = genRandomSchedule(100)
 	print("Random generated schedule: {}".format(schedtime))
 	begin = time.time()
 	print ("Number of required room(s): {}".format(reserveRooms(schedtime)))
@@ -125,3 +130,4 @@ codechallenge-08.py .                                                           
 
 ======================================================================= 1 passed in 0.12 seconds =======================================================================
 '''
+
