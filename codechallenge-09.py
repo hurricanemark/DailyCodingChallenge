@@ -17,13 +17,14 @@ Do this in O(M + N) time (where M and N are the lengths of the lists) and consta
 '''
 
 
-
 from __future__ import print_function
+
 class linkedlistNode:
 	def __init__(self, val, next=None):
 		self.val = val
 		self.next = next
 
+# add a node to end of linked list
 def insertNode(head, val):
 	currNode = head
 	while currNode is not None:
@@ -32,6 +33,7 @@ def insertNode(head, val):
 			return head
 		currNode = currNode.next
 
+# remove a node from linked list, needs work on head
 def deleteNode(head, value):
 	currNode = head
 	prevNode = None
@@ -46,6 +48,7 @@ def deleteNode(head, value):
 		currNode = currNode.next
 	return head
 
+# print linked list in ilustrated mode
 def printNodes(nodeA):
 	S=[]
 	while (nodeA is not None):
@@ -54,17 +57,19 @@ def printNodes(nodeA):
 	print(' -> '.join(S))
 
 
+# find the intersected node in lists a and B
 def getIntersectedNode(headA, headB):
 	curNodeA = headA
 	while curNodeA is not None:
 		curNodeB = headB
 		while curNodeB is not None:
-			print("curA:{} curB:{}".format(curNodeA.val, curNodeB.val))
+			#print("curA:{} curB:{}".format(curNodeA.val, curNodeB.val))
 			if curNodeB.val == curNodeA.val:
 				return curNodeB.val
 			curNodeB = curNodeB.next
 		curNodeA = curNodeA.next
-	
+
+# function written for pytest module	
 def test_code():
 	A = linkedlistNode(3)
 	insertNode(A, 7)
@@ -77,6 +82,7 @@ def test_code():
 
 	assert getIntersectedNode(A,B) == 8
 
+# client driver
 if __name__ == "__main__":
 	print("Given\nA singly linked list A: ", end='')
 	# A = 3 -> 7 -> 8 -> 10 
@@ -105,15 +111,16 @@ $ python codechallenge-09.py
 Given
 A singly linked list A: 3 -> 7 -> 8 -> 10
 And a singly linked list B: 99 -> 1 -> 8 -> 10
-The intersected node in these linked lists A, B is 8
+The intersected node on A and B is 8
+
 
 $ pytest codechallenge-09.py
-=================== test session starts ===================
+=============================== test session starts ================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
 rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
 collected 1 item
 
-codechallenge-09.py .                                 [100%]
+codechallenge-09.py .                                                        [100%]
 
-================ 1 passed in 0.06 seconds =================
+============================= 1 passed in 0.08 seconds =============================
 '''
