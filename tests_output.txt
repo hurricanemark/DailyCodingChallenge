@@ -1,0 +1,86 @@
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-01.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 2 items
+
+codechallenge-01.py ..                                                   [100%]
+
+=========================== 2 passed in 0.04 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-06.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-06.py .                                                    [100%]
+
+=========================== 1 passed in 0.03 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-02.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-02.py .                                                    [100%]
+
+=========================== 1 passed in 0.03 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-04.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-04.py .                                                    [100%]
+
+=========================== 1 passed in 0.03 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-07.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 0 items
+
+========================= no tests ran in 0.03 seconds =========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-05.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 2 items
+
+codechallenge-05.py ..                                                   [100%]
+
+=========================== 2 passed in 0.04 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-08.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-08.py .                                                    [100%]
+
+=========================== 1 passed in 0.03 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-09.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-09.py .                                                    [100%]
+
+=========================== 1 passed in 0.03 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-10.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-10.py .                                                    [100%]
+
+=========================== 1 passed in 0.03 seconds ===========================
+Unittest commences for /home/markn/devel/py-src/DailyCodeChallenge/codechallenge-03.py
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 0 items
+
+========================= no tests ran in 0.03 seconds =========================
