@@ -90,13 +90,23 @@ if __name__ == "__main__":
 '''
 Run-time output:
 ===============
-$ python codechallenge-10.py
+$ python codechallenge-10.py                       
 Given
 A word list: ['quick', 'brown', 'the', 'fox'] and a string: thequickbrownfox
-Matches are found in: ['the', 'quick', 'brown', 'fox']
+Words reconstruction: ['the', 'quick', 'brown', 'fox']
 
 Given
 A word list: ['bed', 'bath', 'bedbath', 'and', 'beyond'] and a string: bedbathandbeyond
-Matches are found in: ['bedbath', 'bath', 'and', 'beyond']
+Words reconstruction: ['bed', 'bath', 'and', 'beyond']
 
+
+$ pytest codechallenge-10.py                       
+========================================= test session starts ==========================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-10.py .                                                                            [100%]
+
+======================================= 1 passed in 0.08 seconds =======================================
 '''
