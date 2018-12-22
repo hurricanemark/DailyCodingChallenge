@@ -4,8 +4,10 @@ Date: 12/02/2018
 Problem description:
 ===================
 This problem was asked by Google.
+
 Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, 
 and deserialize(s), which deserializes the string back into the tree.
+
 For example, given the following Node class
 class Node:
     def __init__(self, val, left=None, right=None):
@@ -133,4 +135,21 @@ if __name__ == "__main__":
 	print(tree.val)
 	print(tree.left)
 	print(tree.right)
+'''
+
+'''
+Run-time output:
+===============
+markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python codechallenge-03.py
+root.left.left
+['root', 'left', 'left']
+['left', 'left', 'root']
+<type 'instance'>
+<type 'instance'>
+<type 'instance'>
+['left', 'left', 'root']
+<type 'instance'>
+<type 'instance'>
+<type 'instance'>
+None
 '''
