@@ -27,34 +27,46 @@ But will look into utf-8 implementation later.
 '''
 import collections
 
-dictRetString = {}
 
 def findWord(wordsList, wordString):
 	# edge case
 	if len(wordsList) == 0 or len(wordString) == 0:
 		return None
 
+	dictRetString = {}
+	lastpos = 0 #start index of wordString
 	for word in wordsList:
 		if word in wordString:
-			pos = wordString.find(word)
-			dictRetString[int(pos)] = str(word)
+			pos = wordString.find(word)  #index position of begining match
+
+			if lastpos > 0:
+				if dictRetString[lastpos] in word:
+					# strip out any value a substring of another in the list
+					# i.e. strip out 'bedbath' in ['bed', 'bedbath', 'bath', 'and', 'beyond']
+					pass
+				else:
+					dictRetString[int(pos)] = str(word)
+			else:
+				# first match word, take it.
+				dictRetString[int(pos)] = str(word)
+
+			lastpos = pos
 
 	# sort the keys 
 	sortedDList = collections.OrderedDict(sorted(dictRetString.items()))
+
 	return list(sortedDList.values())
 
 
 
 def test_code():
 	# test1:
-	dictRetString = {}
 	wList =[ 'quick', 'brown', 'the', 'fox' ] 
 	wStr = "thequickbrownfox"
 	expected = ['the', 'quick', 'brown', 'fox']
 	assert findWord(wList, wStr) == expected
 
 	#test2:  ** I know this test will fail...  will update fix here soon **
-	dictRetString = {}
 	words = ['bed', 'bath', 'bedbath', 'and', 'beyond'] 
 	string = "bedbathandbeyond"
 	expected = ['bed', 'bath', 'and', 'beyond'] 
@@ -62,19 +74,17 @@ def test_code():
 
 
 if __name__ == "__main__":
-	dictRetString = {}
 	wList =[ 'quick', 'brown', 'the', 'fox' ] 
 	wStr = "thequickbrownfox"
 	expected = ['the', 'quick', 'brown', 'fox']
 	print("Given\nA word list: {} and a string: {}".format(wList, wStr))
-	print("Matches are found in: {}\n".format(findWord(wList, wStr)))
+	print("Words reconstruction: {}\n".format(findWord(wList, wStr)))
 
-	dictRetString = {}
 	words = ['bed', 'bath', 'bedbath', 'and', 'beyond'] 
 	string = "bedbathandbeyond"
 	expected = ['bed', 'bath', 'and', 'beyond'] 
 	print("Given\nA word list: {} and a string: {}".format(words, string))
-	print("Matches are found in: {}\n".format(findWord(words, string)))
+	print("Words reconstruction: {}\n".format(findWord(words, string)))
 
 
 '''
