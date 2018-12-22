@@ -1,11 +1,13 @@
 '''
 Date: 12/01/2018
 
-This problem was asked by Uber.
 
 Problem description:
 ===================
+This problem was asked by Uber.
+
 Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
+
 For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6].
 Follow-up: what if you can't use division?
 '''
@@ -28,6 +30,7 @@ def doit(a):
 	print(p)
 	return p
 
+# unittest func written for pytest module
 def test_code():
 	nums=[3, 2, 1]
 	assert doit(nums) == [2,3,6]
@@ -36,3 +39,22 @@ def test_code():
 
 if __name__ == "__main__":
 	test_code()
+
+
+'''
+Runt-time output:
+================
+$ python codechallenge-02.py
+[2, 3, 6]
+[120, 60, 40, 30, 24]
+
+
+$ pytest codechallenge-02.py
+========================================= test session starts ==========================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-02.py .                                                                            [100%]
+
+======================================= 1 passed in 0.03 seconds ======================================='''
