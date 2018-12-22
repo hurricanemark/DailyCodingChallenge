@@ -86,6 +86,15 @@ class LinkedList:
 			curr = curr.getNextNode()
 		print(' -> '.join(retstr))
 
+	def revprintNode(self):
+		retstr = list()
+		curr = self.head
+		while curr:
+			retstr.append(str(curr.data))
+			curr = curr.getNextNode()
+		retstr.reverse()
+		print(' -> '.join(retstr))			
+
 	def getNodes(self):
 		ret = list()
 		curr = self.head
@@ -186,13 +195,13 @@ if __name__ == "__main__":
 	A.addNode(3)
 	A.addNode(4)
 	A.addNode(5)
-	A.printNode()
+	A.revprintNode()
 	print("+")
 	B = LinkedList()
 	B.addNode(2)
 	B.addNode(6)
 	B.addNode(3)
-	B.printNode()
+	B.revprintNode()
 	print("---------------")
 
 	starttime = time.time()
@@ -220,19 +229,19 @@ if __name__ == "__main__":
 Run-time output:
 ===============
 markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python codechallenge-05.py
-5 -> 4 -> 3
+3 -> 4 -> 5
 +
-3 -> 6 -> 2
+2 -> 6 -> 3
 ---------------
 6 -> 0 -> 8
-Elasped time = 0.000152111053467
+Elasped time = 0.000151872634888
 
 2 -> 5 -> 5
 +
 2 -> 5 -> 3
 ----------------
 5 -> 0 -> 8
-Elasped time = 2.90870666504e-05
+Elasped time = 2.78949737549e-05
 
 
 markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ pytest codechallenge-05.py
