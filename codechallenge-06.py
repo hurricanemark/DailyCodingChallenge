@@ -93,3 +93,24 @@ if __name__ == "__main__":
 	endtime = time.time()
 	print("Elapsed time in O(n) method: {} secs".format(endtime - starttime))
 	
+
+'''
+Run-time output:
+===============
+$ python codechallenge-06.py
+Original array: [10, 5, 2, 7, 8, 7]
+[10, 7, 8, 8]
+Elapsed time in brute force methob: 0.000123023986816 secs
+[10, 7, 8, 8]
+Elapsed time in O(n) method: 0.000108003616333 secs
+
+
+$ pytest codechallenge-06.py
+========================================= test session starts ==========================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-06.py .                                                                            [100%]
+
+======================================= 1 passed in 0.06 seconds ======================================='''
