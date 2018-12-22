@@ -18,6 +18,14 @@ Use addition technique taugh in elementary school.
 Iterate through the linked lists and add the respective digits, 
 Keep the carry over when the two digits adds up to more than 9.
 
+e.g.
+([3 -> 6 -> 5)] + ([2 -> 4 -> 3]) = ([6 -> 0 -> 8])
+
+	3 6 5
+   +
+	2 4 3
+   ------
+	6 0 8
 '''
 
 from collections import deque
