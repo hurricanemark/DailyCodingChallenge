@@ -1,16 +1,20 @@
 '''
 Date: 12/03/2018
+
 Problem description:
 ==================
 This problem was asked by Stripe.
+
 Given an array of integers, find the first missing positive integer in linear time and constant space. 
 In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+
 For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
 You can modify the input array in-place.
 ''' 
 
 '''
 Pseudo code:
+===========
 1.  Sort the array and remove duplicates
 2.  Shorten the array by eliminate elements having negative value.
     Note, zero is neither negative nor positive, so in step two, eliminate element with value zero as well.
@@ -74,8 +78,10 @@ def firstMissingValB(arr):
 				#print("k:{} v:{}  missing:{}".format(k, v, missing))
 				break
 	return missing
+
+
 '''
-if run using pytest.  i.e. pytest codechalleng-04.py
+unittest func written for pytest module  i.e. pytest codechalleng-04.py
 '''
 def test_code():
 	missing = 13
@@ -104,3 +110,24 @@ main driver, run using python
 '''
 if __name__ == "__main__":
 	test_code()
+
+
+'''
+Runt-time output:
+================
+$ python codechallenge-04.py
+Elasped time running firstFirstMissing() is 8.08238983154e-05
+Elasped time running firstMissingValA() is 6.19888305664e-05
+Elasped time running firstMissingValB() is 8.89301300049e-05
+
+ 
+$ pytest codechallenge-04.py
+========================================= test session starts ==========================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-04.py .                                                                            [100%]
+
+======================================= 1 passed in 0.06 seconds =======================================
+'''
