@@ -13,58 +13,65 @@ of steps required to reach the end coordinate from the start. If there is no pos
 then return null. You can move up, left, down, and right. You cannot move through walls.
 You cannot wrap around the edges of the board.
 
-For example, given the following board:
-[[f, f, f, f],
-[t, t, f, t],
-[f, f, f, f],
-[f, f, f, f]]
+  Board = [[F,F,F,F], [T,T,F,F], [F,F,F,F], [F,F,F,F]]
+    0   1   2   3
+  +----------------
+0 | F | F | F | F |
+  +----------------
+1 | T | T | F | F |
+  +----------------
+2 | F | F | F | F |
+  +----------------
+3 | F | F | F | F |
+  +----------------
+
 and start = (3, 0) (bottom left) and end = (0, 0) (top left), the minimum number of steps
 required to reach the end is 7, since we would need to go through (1, 2) because there
 is a wall everywhere else on the second row.
 
 
 
+Forethoughts:
+============
+1.  Construct a dictionary {"up":"?", "down":"?", "right":"?", "left":"?"} to determine
+    possible moves from current position.
+2.  Ask, is end_row above or below current row?
+    is end_column right or left of current collumn?
+
 Pseudo code:
 ===========
-1.  Determine the general direction of priority move, decondary move.
-Priority move is alway toward the end coordinate, secondary move is when priority move is blocked.
+1.  Make possible_moves() function to return a hash table containing elements up, down, left, right
+2.  Check against end point coordinate in a while loop,  Inside, at current position, determine 
+    up or down for virtical movement.  if blocked, determine left/right or up/down using the possible_move table. 
+
+i.e. Priority move is alway toward the end coordinate, secondary move is when priority move is blocked.
 i.e.  end(x0, y0) - start(x1,y1) ==>
     x1 - x0 == (3 - 0) = 3 means 3 moves in the virtical direction
     y1 - y0 == (0 - 0) = 0 means 0 moves in the horizontal direction necessary.
     We deduce the virtical movement takes priority in finding the end point.
 
-2.  Ways to move: virtical(row) or horizontal(column).
+3.  2 ways to move toward end point: virtical(row) or horizontal(column).
     Logically we seek virtical move first, if blocked, then try horizontal move, then back i
     to trying virtical move.
 
-3.  Rule of movement: always seek to reduce distance from the end point.
+4.  Rule of movement: always seek to reduce distance from the end point.
 '''
 
 import pytest
 
 F = 'Tile'   # you can pass
 T = 'Wall'   # you shall not pass
-class positions:
 
-    def __init__(self, startx, starty, endx, endy, next_x=None, next_y=None):
-        self.startx = startx
-        self.starty = starty
-        self.endx = endx
-        self.endy = endy
-        self.next_x = next_x
-        self.next_y = next_y
 
-'''right, left, up, down'''
-def whichway(curpos, endpos):
-    pass
-
-'''determine primary direction of movement'''
-def priorityaxis(startpos, endpos):
-    pass
-
+#
+# check if endpoint is not in the wall
+#
 def isEndpointApproachable(Board, endpos):
     return Board[endpos[0]][endpos[1]]
-    
+
+#
+# check if specified row is not a complete wall    
+#
 def isPassableRow(Board, row):
     passingcnt=0
     for col in range(len(Board[-1])):
@@ -75,71 +82,75 @@ def isPassableRow(Board, row):
         return False
     else:
         return True 
-
-
-def canGoUp(Board, row, col):
-    # can move up?
-    try:
-        if Board[row-1][col] == F:
-            return True
+#
+# is end_row above the current position?
+#
+def isAbove(Board, cur_row, end_row):
+    if cur_row <= end_row:
         return False
-    except IndexError:
-        return False
-
-def canGoDown(Board, row, col):
-    try:
-        if Board[row+1][col] is F:
-            return True
-        return False
-    except IndexError:
-        return False
-
-def canGoRight(Board, row, col):
-    try:
-        if Board[row][col+1] is F:
-            return True
-        return False
-    except IndexError:
-        return False
-
-def canGoLeft(Board, row, col):
-    try:
-        if Board[row][col-1] is F:
-            return True
-        return False
-    except IndexError:
-        return False
-def forwardLooking(Board, row, col, first_inclination, second_inclination):
-    # return tuple (virtical:(up, down), horizontal:(right,left)}
-    right = False
-    left = False
-    up = False
-    down = False
-    forward = {}
-    virt, hoz = 0
-    if first_inclination == one:
-        # downward 
-        try:
-            down = [True if Board[row-1][col] is F else False][:]
-        except IndexError:
-            down = False
     else:
-        # upward
-        try:
-            up = [True if Board[row+1][col] is F else False][:]
-        except IndexError:
-            up = False
-   
-   if second_inclination == one:
-        try:
-            right = [True if Board[row][col-1] is F else False]
-        exception IndexError:
-            right = False
+        return True
 
-        elif Board[row][col+1] is not T:
-            left = True
-    else: 
-        # upward
+#
+# is end_column right of the current position?
+#
+def isRight(Board, cur_col, end_col):
+    if cur_col >= end_col:
+        return False
+    else:
+        return True 
+
+# 
+# return the next possible moves from current row,col
+#
+def possible_moves(Board, row, col):
+    avail_moves = {"up":False, "down":False, "right":False, "left":False}
+
+    # up 
+    if row == 0:
+		avail_moves['up'] = False
+    elif row > 0:
+        try:
+			if (row-1) >= 0 and Board[row-1][col] is F:
+				avail_moves['up'] = True
+        except IndexError:
+            avail_moves['up'] = False
+
+    # down 
+    if row == len(Board[:]):
+        avail_moves['down'] = False
+    elif row < len(Board[:]):
+        try:
+            if (row+1) <= len(Board[:]) and Board[row+1][col] == F:
+                avail_moves['down'] = True
+        except IndexError:
+            avail_moves['down'] = False
+
+    # right 
+    if col == len(Board[-1]):
+        avail_move['right'] = False
+    elif col < len(Board[-1]):
+        try:
+            if (col+1) <= len(Board[-1]) and Board[row][col+1] == F:
+                avail_moves['right'] = True
+        except IndexError:
+            avail_moves['right'] = False
+
+    # left 
+    if col == 0:
+        avail_moves['left'] = False
+    elif col > 0:
+        try:
+            if (col-1) >= 0 and Board[row][col-1] == F:
+                avail_moves['left'] = True
+        except IndexError:
+            avail_moves['left'] = False
+
+    return avail_moves
+
+#
+# Let's walk the talk.
+#
 def gotoEndPoint(Board, startpos, endpos):
     minSteps = 0
    
@@ -163,7 +174,7 @@ def gotoEndPoint(Board, startpos, endpos):
     # is there a blocking wall on the way?
     for row in range(cur_row-1, endpos[0]-1, -1):
         if isPassableRow(Board, row) == False:
-            print("Founf impenetrable wall blocking endpoint.")
+            print("Found impenetrable wall blocking endpoint.")
             return None
 
     # is endpos passable. ie. F:yes, T:no
@@ -173,57 +184,39 @@ def gotoEndPoint(Board, startpos, endpos):
     else:
         # good, we know we can get to the endpos
         # let's go
-        if inclincation == negone:
-            # go upward as many step as possible
-            while cur_row > end_row >= 0:
-                if canGoUp(Board, cur_row, cur_col) is True:
-                    cur_row-=1
-                    minSteps+=1
-                    print("DBUG-- row upward  move: cur pos: {},{}".format(cur_row,cur_col))
-
-            if cur_col == 0 and cur_row > end_row:
-                # go right until you can go up again
-                while canGoUp(Board, cur_row, cur_col) is False and canGoRight(Board, cur_row, cur_col) == True:
-                        cur_col+=1
+        while cur_row > end_row >= 0:
+            if cur_row == end_row:
+                break
+            else:
+                for row in range(cur_row, endpos[0]-1, -1):
+                    possiblemoves = possible_moves(Board, row, cur_col)
+                    print("DBUG-- From position({},{}) possible moves: {}".format(row, cur_col, possiblemoves))
+                    if possiblemoves['up']:
+                        print("DBUG--from({},{}) move up to ({},{})".format(cur_row, cur_col, cur_row-1, cur_col))
+                        cur_row-=1
                         minSteps+=1
-                # go up
-                cur_row+=1
-                minSteps+=1
-                while cur_row > end_row and canGoLeft(Board, cur_row, cur_col) is True:
-                    cur_row-=1
-                    minSteps+=1
-                    if cur_row == end_row and cur_col == end_col:
-                        return minSteps
-
-            elif cur_col < end_col and canGoLeft(Board, cur_row, cur_col) is True:
-                print("Left:", canGoLeft(Board, cur_row, cur_col))
-                cur_col-=1
-                minSteps+=1
-                print("DBUG:-- col leftmove  cur pos: {},{}".format(cur_row,cur_col))
-
-            if cur_row == end_row and cur_col == end_col:
-                return MinSteps  # we whould be at the end point
-
-        elif inclination == one:
-            # go downward
-            while cur_row < endpos[0]:
-                while canGoDown(Board, cur_row, cur_col) is True:
-                    cur_row+=1
-                    minSteps+=1
-                    print("DBUG-- row downward  move: cur pos: {},{}".format(cur_row,cur_col))
-                if cur_col > endpos[1] and canGoLeft(Board, cur_row, cur_col) is True:
+                    elif possiblemoves['right']:
+                        print("DBUG--from({},{}) move right to ({},{})".format(cur_row, cur_col, cur_row, cur_col+1))
+                        cur_row+=1
+                        minSteps+=1
+            if cur_col == end_col:
+                break
+            elif cur_col > end_col:
+                for col in range(cur_col, end_col):
+                    if possiblemoves['left']:
+                        print("DBUG--from({},{}) move left to ({},{})".format(cur_row, cur_col, cur_row, cur_col-1))
+                        cur_col-=1
+                        minSteps+=1
+                if possibleMoves['right']:
+                    print("DBUG--from({},{}) move right to ({},{})".format(cur_row, cur_col, cur_row, cur_col+1))
                     cur_col-=1
                     minSteps+=1
-                    print("DBUG:-- col leftmove  cur pos: {},{}".format(cur_row,cur_col))
-                if cur_col < endpos[1] and canGoRight(Board, cur_row, cur_col) is True:
-                    cur_col+=1
-                    minSteps+=1
-                    print("DBUG:-- col rightmove  cur pos: {},{}".format(cur_row,cur_col))
-                if cur_col == endpos[1]:
-                    break  # we whould be at the end point
 
+            if cur_row == end_row and cur_col == end_col:
+                return minSteps
 
     return minSteps
+
 
 if __name__ == '__main__':
 
