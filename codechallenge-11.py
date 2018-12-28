@@ -37,129 +37,124 @@ Forethoughts:
     possible moves from current position.
 2.  Ask, is end_row above or below current row?
     is end_column right or left of current collumn?
-
-Pseudo code:
-===========
-1.  Make possible_moves() function to return a hash table containing elements up, down, left, right
-2.  Check against end point coordinate in a while loop,  Inside, at current position, determine 
-    up or down for virtical movement.  if blocked, determine left/right or up/down using the possible_move table. 
-
-i.e. Priority move is alway toward the end coordinate, secondary move is when priority move is blocked.
-i.e.  end(x0, y0) - start(x1,y1) ==>
+    i.e. Priority move is alway toward the end coordinate, 
+    secondary move is when priority move is blocked.
+    example: end(x0, y0) - start(x1,y1) ==>
     x1 - x0 == (3 - 0) = 3 means 3 moves in the virtical direction
     y1 - y0 == (0 - 0) = 0 means 0 moves in the horizontal direction necessary.
     We deduce the virtical movement takes priority in finding the end point.
 
-3.  2 ways to move toward end point: virtical(row) or horizontal(column).
-    Logically we seek virtical move first, if blocked, then try horizontal move, then back i
-    to trying virtical move.
-
+Pseudo code:
+===========
+1.  Re-assign data meaning for btter programmng flow.  F == True. T  == False 
+3.  Determine the direction toward end point.  Use it to go up/down, right/left 
+    i.e. Virtical = [-1 if end_row - start_row < 0 else 1][0]
+         Horizontal = [-1 if end_col - start_col < 0 else 1][0]
+    if direction is zero, then use arbitrary move and keep track of back-track logic
+2.  Write asubfunction to look two steps ahead in the specified derection.
+3.  Write a main function gotoEndPoint()
+    2 ways to move toward end point: virtical(row) or horizontal(column).
+    Logically we seek virtical move first, if blocked, then try horizontal move, 
+    then back to trying virtical move.
 4.  Rule of movement: always seek to reduce distance from the end point.
 '''
 
-import pytest
 
-F = 'Tile'   # you can pass
-T = 'Wall'   # you shall not pass
+import pytest
+# re-assign meaning of data so the logic can easily flow
+F = True    # you can pass
+T = False   # you shall not pass
 
 
 #
 # check if endpoint is not in the wall
 #
-def isEndpointApproachable(Board, endpos):
-    return Board[endpos[0]][endpos[1]]
+def isEndpointApproachable(DBoard, endpos):
+    try:
+        return DBoard[endpos[0]][endpos[1]]
+    except TypeError:
+        return False
+    except KeyError:
+        return False
+    except IndexError:
+        return False
 
 #
 # check if specified row is not a complete wall    
 #
-def isPassableRow(Board, row):
+def isPassableRow(DBoard, row):
     passingcnt=0
-    for col in range(len(Board[-1])):
-        if Board[row][col] == T:
+    for val in DBoard[row]:
+        if val == T:            #val==True
             passingcnt+=1
-    #print("PassingCnt:{} LenA:{}".format(passingcnt, len(Board[-1])))
-    if passingcnt == len(Board[-1]):
-        return False
-    else:
-        return True 
-#
-# is end_row above the current position?
-#
-def isAbove(Board, cur_row, end_row):
-    if cur_row <= end_row:
-        return False
-    else:
-        return True
-
-#
-# is end_column right of the current position?
-#
-def isRight(Board, cur_col, end_col):
-    if cur_col >= end_col:
+    #print("DBUG: cnt:{} len:{}".format(passingcnt, len(DBoard[row])))
+    if passingcnt == len(DBoard[row]):
         return False
     else:
         return True 
 
-# 
-# return the next possible moves from current row,col
+
 #
-def possible_moves(Board, row, col):
-    avail_moves = {"up":False, "down":False, "right":False, "left":False}
+# looking ahead for two virtical moves via direction
+#
+def peakTwoVirticalSteps(Board, row, col, direction):
+    one, two = False, False
+    try: 
+        one = Board[row+(1*direction)][col]
+    except KeyError:
+        pass
+    except IndexError:
+        pass
+    except TypeError:
+        pass
+    try: 
+        two = Board[row+(2*direction)][col]
+    except KeyError:
+        pass
+    except IndexError:
+        pass
+    except TypeError:
+        pass
 
-    # up 
-    if row == 0:
-		avail_moves['up'] = False
-    elif row > 0:
-        try:
-			if (row-1) >= 0 and Board[row-1][col] is F:
-				avail_moves['up'] = True
-        except IndexError:
-            avail_moves['up'] = False
+    return one, two
 
-    # down 
-    if row == len(Board[:]):
-        avail_moves['down'] = False
-    elif row < len(Board[:]):
-        try:
-            if (row+1) <= len(Board[:]) and Board[row+1][col] == F:
-                avail_moves['down'] = True
-        except IndexError:
-            avail_moves['down'] = False
+#
+# looking ahead for two horizonal moves vir direction
+#
+def peakTwoHorizontalSteps(Board, row, col, direction):
+    one, two = False, False
+    try: 
+        one = Board[row][col+(1*direction)]
+    except KeyError:
+        pass
+    except IndexError:
+        pass
+    except TypeError:
+        pass
+    try: 
+        two = Board[row][col+(2*direction)]
+    except KeyError:
+        pass
+    except IndexError:
+        pass
+    except TypeError:
+        pass
 
-    # right 
-    if col == len(Board[-1]):
-        avail_move['right'] = False
-    elif col < len(Board[-1]):
-        try:
-            if (col+1) <= len(Board[-1]) and Board[row][col+1] == F:
-                avail_moves['right'] = True
-        except IndexError:
-            avail_moves['right'] = False
+    return one, two
 
-    # left 
-    if col == 0:
-        avail_moves['left'] = False
-    elif col > 0:
-        try:
-            if (col-1) >= 0 and Board[row][col-1] == F:
-                avail_moves['left'] = True
-        except IndexError:
-            avail_moves['left'] = False
-
-    return avail_moves
 
 #
 # Let's walk the talk.
 #
 def gotoEndPoint(Board, startpos, endpos):
-    minSteps = 0
+    minSteps = 1
    
-    # declare unit of increment which dictates prioritized direction toward target
-    one=int(1)
-    negone=-one
-    row_unit_inclination = [one if startpos[0] < endpos[0] else negone][0]
-    col_unit_inclination = [one if startpos[1] < endpos[1] else negone][0]
-    inclincation = row_unit_inclination or col_unit_inclination
+    # Convert matrix into hash table so we can catch KeyError, IndexError 
+    # when traversing the dictionary
+    DBoard = dict()   # hash table for Board
+    for i in range(len(Board[-1])):
+        item = {i:Board[i]}
+        DBoard.update(item)
 
     rows = len(Board[:])
     cols = len(Board[-1])
@@ -167,73 +162,123 @@ def gotoEndPoint(Board, startpos, endpos):
     cur_col = startpos[1]
     end_row = endpos[0]
     end_col = endpos[1]
-    print("DBUG: endpos is {}".format(Board[endpos[0]][endpos[1]]))
-    print("DBUG: row_inclination={} col_inclination:{}".format(row_unit_inclination, col_unit_inclination))
-    print("DBUG: unit_inclination:{}".format(col_unit_inclination))
+    virtical_direction = [-1 if (end_row - cur_row) < 0 else 1][0]
+    horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
+
+    #print("DBUG: endpos is {}".format(DBoard[end_row][end_col]))
+    #print("DBUG: virtical_direction={} horizontal_direction:{}".format(virtical_direction, horizontal_direction))
 
     # is there a blocking wall on the way?
-    for row in range(cur_row-1, endpos[0]-1, -1):
-        if isPassableRow(Board, row) == False:
+    # i.e. all elements in the row are T's
+    for row in range(cur_row-1, end_row-1, -1):
+        if isPassableRow(DBoard, row) == False:
             print("Found impenetrable wall blocking endpoint.")
             return None
 
-    # is endpos passable. ie. F:yes, T:no
-    if isEndpointApproachable(Board,endpos) is not F: 
+    # is endpos passable. ie. endpos in not blocked
+    if isEndpointApproachable(DBoard,endpos) is not F: 
         print("Endpoint is in the wall.  Impassable!")
         return None
     else:
         # good, we know we can get to the endpos
         # let's go
-        while cur_row > end_row >= 0:
-            if cur_row == end_row:
-                break
+
+        # virtical moves:
+        while True:
+            step_one, step_two = peakTwoVirticalSteps(DBoard, cur_row, cur_col, virtical_direction)
+            #print("DBUG--Virtical Step_1:{} Step_2:{}".format(step_one, step_two))
+            if step_one and step_two:
+                cur_row = cur_row + (2 * virtical_direction)
+                minSteps+=2
+            elif step_one:
+                cur_row = cur_row + (1 * virtical_direction)
+                minSteps+=1 
             else:
-                for row in range(cur_row, endpos[0]-1, -1):
-                    possiblemoves = possible_moves(Board, row, cur_col)
-                    print("DBUG-- From position({},{}) possible moves: {}".format(row, cur_col, possiblemoves))
-                    if possiblemoves['up']:
-                        print("DBUG--from({},{}) move up to ({},{})".format(cur_row, cur_col, cur_row-1, cur_col))
-                        cur_row-=1
-                        minSteps+=1
-                    elif possiblemoves['right']:
-                        print("DBUG--from({},{}) move right to ({},{})".format(cur_row, cur_col, cur_row, cur_col+1))
-                        cur_row+=1
-                        minSteps+=1
+                side_step_one, side_step_two = peakTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
+                if side_step_one:
+                    cur_col = cur_col + (1 * horizontal_direction)
+            if cur_row == end_row:
+               break
+
+        #print("DBUG--We are at ({},{})".format(cur_row, cur_col))
+
+        # Horizontal moves
+        horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
+        while True:
+            step_one, step_two = peakTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
+            #print("DBUG--Horizontal Step_1:{} Step_2:{}".format(step_one, step_two))
+            if step_one:
+                cur_col = cur_col + (1 * horizontal_direction)
+                minSteps+=1 
+
             if cur_col == end_col:
+                minSteps+=1 
                 break
-            elif cur_col > end_col:
-                for col in range(cur_col, end_col):
-                    if possiblemoves['left']:
-                        print("DBUG--from({},{}) move left to ({},{})".format(cur_row, cur_col, cur_row, cur_col-1))
-                        cur_col-=1
-                        minSteps+=1
-                if possibleMoves['right']:
-                    print("DBUG--from({},{}) move right to ({},{})".format(cur_row, cur_col, cur_row, cur_col+1))
-                    cur_col-=1
-                    minSteps+=1
 
-            if cur_row == end_row and cur_col == end_col:
-                return minSteps
-
-    return minSteps
+        #print("DBUG-- We are should be at end point({},{})".format(cur_row, cur_col))
+        return minSteps
 
 
+def test_code():
+    Board = [[F,F,F,F], [T,T,F,F], [F,F,F,F], [F,F,F,F]]
+    start = (3,0) #tuple start[3][0]
+    end = (0,0)   #tuple end[0][0]
+    rows = len(Board[:])
+    cols = len(Board[-1])
+    assert gotoEndPoint(Board, start, end) == 7
+    
 if __name__ == '__main__':
 
-#    F = False  # you can pass
-#    T = True   # you shall not pass
     Board = [[F,F,F,F], [T,T,F,F], [F,F,F,F], [F,F,F,F]]
-    start = (3,0) #A[3][0]
-    end = (0,0) #A[0][0]
+    start = (3,0) #tuple start[3][0]
+    end = (0,0)   #tuple end[0][0]
+    rows = len(Board[:])
+    cols = len(Board[-1])
+
 
     print("Start pos:{}".format(start))
     print("End pos:{}".format(end))
     print("Board layout:")
-    rows = len(Board[:])
-    cols = len(Board[-1])
     for i in range(rows):
         for j in range(cols):
             print("({}, {}):{}".format(i,j,Board[i][j]))
 
     minSteps = gotoEndPoint(Board, start, end)
-    print("Minimum number of steps to reach the end position: {}".format(minSteps))
+    print("Minimum number of steps to reach the end position is {}".format(minSteps))
+
+
+'''
+Run-time output:
+================
+markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python codechallenge-11.py
+Start pos:(3, 0)
+End pos:(0, 0)
+Board layout:
+(0, 0):True
+(0, 1):True
+(0, 2):True
+(0, 3):True
+(1, 0):False
+(1, 1):False
+(1, 2):True
+(1, 3):True
+(2, 0):True
+(2, 1):True
+(2, 2):True
+(2, 3):True
+(3, 0):True
+(3, 1):True
+(3, 2):True
+(3, 3):True
+Minimum number of steps to reach the end position is 7
+
+markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ pytest codechallenge-11.py
+=================================== test session starts ====================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge-11.py .                                                                [100%]
+
+================================= 1 passed in 0.03 seconds =================================
+'''
