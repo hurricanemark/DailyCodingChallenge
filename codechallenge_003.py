@@ -21,8 +21,7 @@ assert deserialize(serialize(node)).left.left.val == 'left.left'
 
 
 Pseudo code:
------------
-
+============
 1.  Construct the __init__ with self, val, left, right
 2.  implement the Insert function
 3.  implement the serialize(root), where root is the initialized node
