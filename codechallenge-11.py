@@ -97,7 +97,7 @@ def isPassableRow(DBoard, row):
 #
 # looking ahead for two virtical moves via direction
 #
-def peakTwoVirticalSteps(Board, row, col, direction):
+def peekTwoVirticalSteps(Board, row, col, direction):
     one, two = False, False
     try: 
         one = Board[row+(1*direction)][col]
@@ -121,7 +121,7 @@ def peakTwoVirticalSteps(Board, row, col, direction):
 #
 # looking ahead for two horizonal moves vir direction
 #
-def peakTwoHorizontalSteps(Board, row, col, direction):
+def peekTwoHorizontalSteps(Board, row, col, direction):
     one, two = False, False
     try: 
         one = Board[row][col+(1*direction)]
@@ -184,14 +184,14 @@ def gotoEndPoint(Board, startpos, endpos):
 
         # First, virtical moves:
         while True:
-            step_one, step_two = peakTwoVirticalSteps(DBoard, cur_row, cur_col, virtical_direction)
+            step_one, step_two = peekTwoVirticalSteps(DBoard, cur_row, cur_col, virtical_direction)
             #print("DBUG--Virtical Step_1:{} Step_2:{}".format(step_one, step_two))
             if step_one:
                 debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 cur_row = cur_row + (1 * virtical_direction)
                 minSteps+=1 
             else:
-                side_step_one, side_step_two = peakTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
+                side_step_one, side_step_two = peekTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
                 if side_step_one:
                     debug_path += " -> ({},{})".format(cur_row, cur_col)   
                     cur_col = cur_col + (1 * horizontal_direction)
@@ -201,7 +201,7 @@ def gotoEndPoint(Board, startpos, endpos):
         # Second, Horizontal moves
         horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
         while True:
-            step_one, step_two = peakTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
+            step_one, step_two = peekTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
             #print("DBUG--Horizontal Step_1:{} Step_2:{}".format(step_one, step_two))
             if step_one:
                 debug_path += " -> ({},{})".format(cur_row, cur_col)   
