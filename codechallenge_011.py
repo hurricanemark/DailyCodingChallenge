@@ -162,8 +162,8 @@ def gotoEndPoint(Board, startpos, endpos):
     end_row = endpos[0]
     end_col = endpos[1]
     debug_path = ""   
-    virtical_direction = [-1 if (end_row - cur_row) < 0 else 1][0]
-    horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
+    virtical_direction = (-1 if (end_row - cur_row) < 0 else 1)
+    horizontal_direction = (-1 if (end_col - cur_col) < 0 else 1)
 
     #print("DBUG: endpos is {}".format(DBoard[end_row][end_col]))
     #print("DBUG: virtical_direction={} horizontal_direction:{}".format(virtical_direction, horizontal_direction))
