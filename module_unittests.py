@@ -23,10 +23,10 @@ class TestCodeChallenges(unittest.TestCase):
 		self.assertEqual(codechallenge_001.isSumEqualK(nums, k), True)
 
 	def test_codeChallenge002(self):
-		self.assertEqual(codechallenge_002.doit([3, 2, 1]), [2,3,6])
+		self.assertEqual(codechallenge_002.prodArray([3, 2, 1]), [2,3,6])
 
 		nums=list(range(1,6))
-		self.assertEqual(codechallenge_002.doit(nums), [120,60,40,30,24])
+		self.assertEqual(codechallenge_002.prodArray(nums), [120,60,40,30,24])
 
 	def test_codeChallenge004(self):
 		missing = 13
