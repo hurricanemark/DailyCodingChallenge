@@ -9,13 +9,33 @@ Given an array of integers, return a new array such that each element at index i
 
 For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6].
 Follow-up: what if you can't use division?
+
+
+Psuedo code:
+===========
+Input: A list of integers
+Output: A list of integers
+Algorithm: prodArray()
+1. Check edge cases for empty input
+2. Initialize an empty list 
+3. In a for loop, if product equals product time item in list except current item
+4. Append product into the initialized array above
 '''
 
+
+
+#
 # This implementation uses nested loop and the manipulation of slicing index 
 # Not a good performance code because the entire range gets traversed.
 # Note that I don't use division.
-def doit(a):
+#
+def prodArray(a):
 	p=[]
+	# edge case
+	if len(a) == 0:
+		return p
+
+	# have data, let's go
 	for i in range(len(a)):
 		prod=1
 		#for x, n in enumerate(range(0, len(a))):
@@ -32,9 +52,9 @@ def doit(a):
 # unittest func written for pytest module
 def test_code():
 	nums=[3, 2, 1]
-	assert doit(nums) == [2,3,6]
+	assert prodArray(nums) == [2,3,6]
 	nums=list(range(1,6))
-	assert doit(nums) == [120,60,40,30,24]
+	assert prodArray(nums) == [120,60,40,30,24]
 
 if __name__ == "__main__":
 	test_code()
