@@ -27,7 +27,7 @@ Pseudo code:
 for i in range(len(word_list)):
 	add lengths of words to be less than or equal k-(word_count-1)
 	string up the words separated by 
-	separator_len = (k//word_count)%(word_count)
+	separator_len = (k - words_length - word_count)//word_count
 	word[i] + ' ' * separator_len
 '''
 
