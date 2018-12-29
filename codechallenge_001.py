@@ -27,6 +27,10 @@ import random, time
 
 # Brute force using nested loop
 def isSumOfK(nums, k):
+	# edge cases
+	if (len(nums)) == 0 or type(k) is not int:
+		return False
+
 	# keep elements in nums that are less than k
 	nums.sort()
 	nums = [n for n in nums if n < k]
