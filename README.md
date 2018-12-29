@@ -6,12 +6,15 @@ Sign up for an account at <a href>"https://dailycodingproblem.com"</a> to automa
 This post contains continuous update of my solutions (code snippets).  I try to keep it a consistent activity as a way to keep my mind entertained.  
 
 ## Coding Practice
+Problem descriptions are here to require understanding before moving ahead!
 
+Comments are here to explain code to other programmers, better yet, to the future me.
 The comment section contains date, problem's description follows by my thought on computation flow and pseudo code.
 
+Codes are here to explain algorithms to the computer.
 The code section usually contains function(s) for addressing the main problem and test_func() written for pytest module.
 
-Seldom, I would recommit updates on individual file with further thoughts, improvement or total rewrite of the solution.
+Often, I would recommit updates on individual file with further thoughts, improvement or total rewrite of the solution.
 
 
 ## How to Run
@@ -25,6 +28,8 @@ Seldom, I would recommit updates on individual file with further thoughts, impro
 **     or, execute individual python solution (python codechalleng-##.py)
 
 **     or, execute python tests.py for comprehensive testing of the whole directory
+
+**     or, python3 module_unittests.py
 
 ## Organization
 
