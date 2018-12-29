@@ -148,7 +148,6 @@ def peakTwoHorizontalSteps(Board, row, col, direction):
 #
 def gotoEndPoint(Board, startpos, endpos):
     minSteps = 1
-   
     # Convert matrix into hash table so we can catch KeyError, IndexError 
     # when traversing the dictionary
     DBoard = dict()   # hash table for Board
@@ -162,6 +161,7 @@ def gotoEndPoint(Board, startpos, endpos):
     cur_col = startpos[1]
     end_row = endpos[0]
     end_col = endpos[1]
+    debug_path = "({},{})".format(cur_row, cur_col)   
     virtical_direction = [-1 if (end_row - cur_row) < 0 else 1][0]
     horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
 
@@ -180,17 +180,19 @@ def gotoEndPoint(Board, startpos, endpos):
         print("Endpoint is in the wall.  Impassable!")
         return None
     else:
-        # good, we know we can get to the endpos
-        # let's go
+        # let's go.  We know we can get to the endpos  
 
-        # virtical moves:
+        # First, virtical moves:
         while True:
             step_one, step_two = peakTwoVirticalSteps(DBoard, cur_row, cur_col, virtical_direction)
             #print("DBUG--Virtical Step_1:{} Step_2:{}".format(step_one, step_two))
             if step_one and step_two:
+                debug_path += " -> ({},{})".format(cur_row, cur_col)   
+                debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 cur_row = cur_row + (2 * virtical_direction)
                 minSteps+=2
             elif step_one:
+                debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 cur_row = cur_row + (1 * virtical_direction)
                 minSteps+=1 
             else:
@@ -202,7 +204,7 @@ def gotoEndPoint(Board, startpos, endpos):
 
         #print("DBUG--We are at ({},{})".format(cur_row, cur_col))
 
-        # Horizontal moves
+        # Second, Horizontal moves
         horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
         while True:
             step_one, step_two = peakTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
