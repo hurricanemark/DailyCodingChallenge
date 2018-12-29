@@ -58,6 +58,7 @@ def justifyWords(wordlist, k):
 
 				break #exit while loop
 		else:
+			# process the k length of words
 			if (k - wordslength) == (end_idx - start_idx)-1:
 				sepa_length = 1
 			else:
@@ -77,7 +78,7 @@ def justifyWords(wordlist, k):
 			wordslength = 0
 			start_idx = end_idx
 
-	# should be close to end of wordslist
+	# last few words in the dangling pipe
 	if wordslength > 0:
 		sepa_length = (k - wordslength) // (end_idx - start_idx)
 		separator = ' ' * sepa_length
