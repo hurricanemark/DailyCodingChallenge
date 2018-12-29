@@ -21,6 +21,10 @@ def encode(instr):
 	if len(instr) == 0:
 		return None
 	else:
+		# given instr="AAAABBOORRWMSSS"
+		# list comprehension [match[1] + match[0] for match in re.findall(r'(.)(\1*)', instr)]
+		# should produce a list: ['AAAA', 'BB', 'OO', 'RR', 'W', 'M', 'SSS']
+
 		matches = [match[1] + match[0] for match in re.findall(r'(.)(\1*)', instr)]
 		for i, s in enumerate(matches):
 			encoded_str += str(len(s))+s[0]
