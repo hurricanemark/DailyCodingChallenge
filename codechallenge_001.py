@@ -46,6 +46,10 @@ def isSumOfK(nums, k):
 # Bonus:
 # The objective is to do the function in one pass.
 def isSumEqualK(nums, k):
+	# edge cases
+	if (len(nums)) == 0 or type(k) is not int:
+		return False
+
 	nums.sort()
 	num = [n for n in nums if n < k]
 	for i in range(0, len(nums)):
