@@ -46,11 +46,11 @@ Forethoughts:
 
 Pseudo code:
 ===========
-1.  Re-assign data meaning for btter programmng flow.  F == True. T  == False 
+1.  Re-assign data meaning for better programming flow.  F == True. T  == False 
 3.  Determine the direction toward end point.  Use it to go up/down, right/left 
     i.e. Virtical = [-1 if end_row - start_row < 0 else 1][0]
          Horizontal = [-1 if end_col - start_col < 0 else 1][0]
-    if direction is zero, then use arbitrary move and keep track of back-track logic
+    If direction is zero, then use arbitrary move and keep track of back-track logic
 2.  Write asubfunction to look two steps ahead in the specified derection.
 3.  Write a main function gotoEndPoint()
     2 ways to move toward end point: virtical(row) or horizontal(column).
