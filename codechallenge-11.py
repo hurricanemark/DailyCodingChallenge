@@ -161,7 +161,7 @@ def gotoEndPoint(Board, startpos, endpos):
     cur_col = startpos[1]
     end_row = endpos[0]
     end_col = endpos[1]
-    debug_path = "({},{})".format(cur_row, cur_col)   
+    debug_path = ""   
     virtical_direction = [-1 if (end_row - cur_row) < 0 else 1][0]
     horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
 
@@ -186,23 +186,17 @@ def gotoEndPoint(Board, startpos, endpos):
         while True:
             step_one, step_two = peakTwoVirticalSteps(DBoard, cur_row, cur_col, virtical_direction)
             #print("DBUG--Virtical Step_1:{} Step_2:{}".format(step_one, step_two))
-            if step_one and step_two:
-                debug_path += " -> ({},{})".format(cur_row, cur_col)   
-                debug_path += " -> ({},{})".format(cur_row, cur_col)   
-                cur_row = cur_row + (2 * virtical_direction)
-                minSteps+=2
-            elif step_one:
+            if step_one:
                 debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 cur_row = cur_row + (1 * virtical_direction)
                 minSteps+=1 
             else:
                 side_step_one, side_step_two = peakTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
                 if side_step_one:
+                    debug_path += " -> ({},{})".format(cur_row, cur_col)   
                     cur_col = cur_col + (1 * horizontal_direction)
             if cur_row == end_row:
-               break
-
-        #print("DBUG--We are at ({},{})".format(cur_row, cur_col))
+                break
 
         # Second, Horizontal moves
         horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
@@ -210,14 +204,16 @@ def gotoEndPoint(Board, startpos, endpos):
             step_one, step_two = peakTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
             #print("DBUG--Horizontal Step_1:{} Step_2:{}".format(step_one, step_two))
             if step_one:
+                debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 cur_col = cur_col + (1 * horizontal_direction)
                 minSteps+=1 
 
             if cur_col == end_col:
+                debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 minSteps+=1 
                 break
 
-        #print("DBUG-- We are should be at end point({},{})".format(cur_row, cur_col))
+        print(debug_path)
         return minSteps
 
 
@@ -272,6 +268,7 @@ Board layout:
 (3, 1):True
 (3, 2):True
 (3, 3):True
+ -> (3,0) -> (2,0) -> (2,1) -> (2,2) -> (1,2) -> (0,2) -> (0,1) -> (0,0)
 Minimum number of steps to reach the end position is 7
 
 markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ pytest codechallenge-11.py
