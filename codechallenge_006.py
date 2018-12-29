@@ -21,7 +21,9 @@ You can simply print them out as you compute them.
 
 import time
 
-'''brute force'''
+#
+# brute force
+#
 def maxValInArray(arr, k):
 	''' check edge case '''
 	assert k >= 1
@@ -47,7 +49,9 @@ def maxValInArray(arr, k):
 		return listofmax
 			
 
-''' O(n) time and O(k) space '''
+#
+# O(n) time and O(k) space
+#
 def maxValsList(arr, k):
 	''' check edge case '''
 	assert k >= 1
@@ -113,4 +117,5 @@ collected 1 item
 
 codechallenge-06.py .                                                                            [100%]
 
-======================================= 1 passed in 0.06 seconds ======================================='''
+======================================= 1 passed in 0.06 seconds =======================================
+'''

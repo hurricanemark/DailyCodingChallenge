@@ -1,7 +1,8 @@
 '''
 Date: 12/19/2018
+
 Problem description:
---------------------
+====================
 A builder is looking to build a row of N houses with K different colors. 
 His goal is to minimize total cost while making sure that no two neighboring 
 houses have the same color. 

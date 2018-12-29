@@ -32,8 +32,6 @@ from collections import deque
 import time
 import unittest
 
-
-
 class Node:
 
 	def __init__(self,data,nextNode=None):
@@ -52,7 +50,9 @@ class Node:
 	def setNextNode(self,val):
 		self.nextNode = val
 
-''' Singly linked list '''
+#
+# Singly linked list
+#
 class LinkedList:
 
 	def __init__(self,head = None):
@@ -104,11 +104,11 @@ class LinkedList:
 		return ret
 
 
-'''
-Solution 1:
-Implement using the class LinkedList above
-Parameters: linkedlist l1, linkedlist l2
-'''
+#
+# Solution 1:
+# Implement using the class LinkedList above
+# Parameters: linkedlist l1, linkedlist l2
+#
 def addDigitsInLinkedLists(l1, l2):
 	result = LinkedList()
 	carry = 0
@@ -131,11 +131,11 @@ def addDigitsInLinkedLists(l1, l2):
 
 			
 	
-'''
-Solution 2:
-Implement using module collections.deque
-Parameters: deque l1, deque l2
-'''
+#
+# Solution 2:
+# Implement using module collections.deque
+# Parameters: deque l1, deque l2
+#
 def addLinkedList(l1, l2):
 	#assert len(l1) > 0
 	#assert len(l2) > 0
@@ -156,9 +156,9 @@ def addLinkedList(l1, l2):
 	return resultLklst
 
 
-'''
-unittest function written for pytest module
-'''
+#
+# unittest function written for pytest module
+#
 def test_addDigitsInLinkedLists():
 	A = LinkedList()
 	A.addNode(3)
