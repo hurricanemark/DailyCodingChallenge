@@ -9,6 +9,18 @@ Given a list of numbers and a number k, return whether any two numbers from the 
 For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
 
 Bonus: Can you do this in one pass?
+
+
+Psuedo code:
+===========
+Input: A list of integers
+Output: A boolean value
+Algorithm:
+1.  Check edge cases for empty list, or invalid k 
+2.  Sort the list ascendingly
+3.  (brute force) In a nested for loop, add current number with each of other number but itself and compare the sum to k
+4.  Or, (better) in a for loop with idx, check if k - list[idx] is true. 
+
 '''
 
 import random, time
