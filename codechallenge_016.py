@@ -13,11 +13,11 @@ deletions, and substitutions required to change one string to the other. For exa
 edit distance between 'kitten' and 'sitting' is three: substitute the 'k' for 's', 
 substitute the 'e' for 'i', and append a 'g'.
 
-Psuedo code:
+Algorithm:
 ===========
 Input: string1, string2
 Output: integer value
-Algorithm:
+Psuedo code:
 1.  Check edge cases
 2.  Align the two strings side-by-side mapping matching characters
     String is iterable, so let's traverse the longest string.
