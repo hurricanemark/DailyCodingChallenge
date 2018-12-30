@@ -17,14 +17,24 @@ string "bedbathandbeyond", return either ['bed', 'bath', 'and', 'beyond]
 or ['bedbath', 'and', 'beyond'].
 
 
-
 Assumption:
 The first sentence threw me off a bit because I was thinking python.  
 Dictionary and list in the same sentence makes me deduce it is a given list of words.
 
 The words are ASCII format
 But will look into utf-8 implementation later.
+
+Algorithm:
+=========
+Input: list of words
+Output: rearanged list of words
+Psuedo code:
+1.  Check edge cases
+2.  Iterate the length of list, use string.find() for locate index of matches
+3.  Write indecies into a dictionary. 
+4.  Return the sorted values in the dictionary
 '''
+
 import collections
 
 

@@ -14,6 +14,15 @@ return the node with value 8.
 In this example, assume nodes with the same value are the exact same node objects.
 
 Do this in O(M + N) time (where M and N are the lengths of the lists) and constant space.
+
+
+Algorithm:
+=========
+Input: two linked lists
+Output: integer value
+Psuedo code:
+1.  Check edge cases
+2.  Iterate in nested loops to determine the node where values matched
 '''
 
 

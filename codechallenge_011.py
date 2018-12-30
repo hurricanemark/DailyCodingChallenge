@@ -44,8 +44,11 @@ Forethoughts:
     y1 - y0 == (0 - 0) = 0 means 0 moves in the horizontal direction necessary.
     We deduce the virtical movement takes priority in finding the end point.
 
+Algorithm:
+==========
+Input: matrix of integer
+Output: an integer value
 Pseudo code:
-===========
 1.  Re-assign data meaning for better programming flow.  F == True. T  == False 
 3.  Determine the direction toward end point.  Use it to go up/down, right/left 
     i.e. Virtical = [-1 if end_row - start_row < 0 else 1][0]

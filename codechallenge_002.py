@@ -11,11 +11,11 @@ For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120
 Follow-up: what if you can't use division?
 
 
-Psuedo code:
-===========
+Algorithm: prodArray()
+======================
 Input: A list of integers
 Output: A list of integers
-Algorithm: prodArray()
+Psuedo code:
 1. Check edge cases for empty input
 2. Initialize an empty list 
 3. In a for loop, if product equals product time item in list except current item

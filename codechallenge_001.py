@@ -11,11 +11,11 @@ For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
 Bonus: Can you do this in one pass?
 
 
-Psuedo code:
+Algorithm:
 ===========
 Input: A list of integers
 Output: A boolean value
-Algorithm:
+Psuedo code:
 1.  Check edge cases for empty list, or invalid k 
 2.  Sort the list ascendingly
 3.  (brute force) In a nested for loop, add current number with each of other number but itself and compare the sum to k

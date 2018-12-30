@@ -16,6 +16,15 @@ we should get: [10, 7, 8, 8], since:
 Do this in O(n) time and O(k) space. You can modify the input array in-place 
 and you do not need to store the results. 
 You can simply print them out as you compute them.
+
+Algorithm:
+=========
+Input: list of integers and int k
+Output: integer value
+Psuedo code:
+1.  Check edge cases
+2.  Iterate the len of list, find max value using built-in function int.max() 
+
 '''
 
 

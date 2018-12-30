@@ -12,6 +12,17 @@ For example, the string "AAAABBBCCDAA" would be encoded as "4A3B2C1D2A".
 Implement run-length encoding and decoding. You can assume the string to be encoded 
 have no digits and consists solely of alphabetic characters. You can assume the string 
 to be decoded is valid.
+
+Algorithm:
+=========
+Input: A string
+Output: a string
+Pseudo code:
+1.  Check edge cases
+2.  import re
+3.  use list comprehension to concatinate second and first items from re.findall()
+4.  append length of item with value of item for each item in the resulted list
+5.  return the appended string 
 '''
 
 

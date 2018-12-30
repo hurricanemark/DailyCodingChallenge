@@ -10,6 +10,7 @@ import codechallenge_010
 import codechallenge_011
 import codechallenge_012
 import codechallenge_013
+import codechallenge_016
 
 class TestCodeChallenges(unittest.TestCase):
 
@@ -148,6 +149,12 @@ class TestCodeChallenges(unittest.TestCase):
 		EncodedS="4A2B2O2R1W1M3S"
 		S="AAAABBOORRWMSSS"
 		self.assertEqual(codechallenge_013.decode(EncodedS), S)
+
+
+	def test_codeChallenge016(self):
+		strA = 'kitten'
+		strB = 'sitting'
+		self.assertEqual(codechallenge_016.strDistSubstitution(strA, strB), 3)	
 
 if __name__ == '__main__':
 	unittest.main()

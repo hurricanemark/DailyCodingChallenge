@@ -22,8 +22,11 @@ For example, given the list of words ["the", "quick", "brown", "fox", "jumps", "
 "the   lazy   dog"] # 4 extra spaces distributed evenly
 
 
+Algorithm:
+==========
+Input: a list of words
+Output: left aligned pretty printed text
 Pseudo code:
-===========
 for i in range(len(word_list)):
 	add lengths of words to be less than or equal k-(word_count-1)
 	string up the words separated by 

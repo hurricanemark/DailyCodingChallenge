@@ -12,8 +12,8 @@ two numbers and return it as a linked list.
 You may assume the two numbers do not contain leading zero, except the 
 number zero itself.  i.e. no 0342 but 304.
 
-Approach:
------------
+Algorithm:
+=========
 Use addition technique taugh in elementary school.
 Iterate through the linked lists and add the respective digits, 
 Keep the carry over when the two digits adds up to more than 9.

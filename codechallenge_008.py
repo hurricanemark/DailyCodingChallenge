@@ -27,8 +27,11 @@ For example, given [(30, 75), (0, 50), (60, 150)], you should return 2.
 Base on the above graph of distribution, the return value is 2 rooms.
 
 
+Algorithm:
+=========
+Input: list of tuples
+Output: integer value
 Psuedo code:
-===========
 1.  Edge cases-- check empty array, start > end time
 2.  Convert the array of tuples into a hash table (dict).
 3.  Copy the keys into start-time list, values into end-time list
