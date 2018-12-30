@@ -23,7 +23,7 @@ Psuedo code:
     String is iterable, so let's traverse the longest string.
 4.  Count the characters that are not matched
 
-Assumption: Parallel matching and no match mean total replacement of one string over another.
+Assumption: Parallel matching and no match means total replacement of one string over another.
 '''
 
 #
