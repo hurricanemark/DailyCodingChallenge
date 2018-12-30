@@ -21,9 +21,9 @@ Psuedo code:
 1.  Check edge cases
 2.  Align the two strings side-by-side mapping matching characters
     String is iterable, so let's traverse the longest string.
-3.  Count the characters that are not matched
+4.  Count the characters that are not matched
 
-Assumption: No match mean total replacement of one string over another.
+Assumption: Parallel matching and no match mean total replacement of one string over another.
 '''
 
 #
