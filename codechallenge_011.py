@@ -186,7 +186,7 @@ def gotoEndPoint(Board, startpos, endpos):
 
         # First, virtical moves:
         while True:
-			# sentry goes here
+            # sentry goes here
             if cur_row == end_row:
                 break
 
@@ -205,7 +205,7 @@ def gotoEndPoint(Board, startpos, endpos):
         # Second, Horizontal moves
         horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
         while True:
-			# sentry goes here
+            # sentry goes here
             if cur_col == end_col:
                 debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 minSteps+=1 
