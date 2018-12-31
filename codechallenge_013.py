@@ -25,7 +25,6 @@ Pseudo code:
 5.  return the appended string 
 '''
 
-
 import re
 def encode(instr):
 	encoded_str = ""
