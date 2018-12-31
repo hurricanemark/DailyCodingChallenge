@@ -30,7 +30,6 @@ required to reach the end is 7, since we would need to go through (1, 2) because
 is a wall everywhere else on the second row.
 
 
-
 Forethoughts:
 ============
 1.  Construct a dictionary {"up":"?", "down":"?", "right":"?", "left":"?"} to determine
