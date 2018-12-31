@@ -50,8 +50,8 @@ Output: an integer value
 Pseudo code:
 1.  Re-assign data meaning for better programming flow.  F == True. T  == False 
 3.  Determine the direction toward end point.  Use it to go up/down, right/left 
-    i.e. Virtical = [-1 if end_row - start_row < 0 else 1][0]
-         Horizontal = [-1 if end_col - start_col < 0 else 1][0]
+    i.e. Virtical = (-1 if end_row - start_row < 0 else 1)
+         Horizontal = (-1 if end_col - start_col < 0 else 1)
     If direction is zero, then use arbitrary move and keep track of back-track logic
 2.  Write asubfunction to look two steps ahead in the specified derection.
 3.  Write a main function gotoEndPoint()
@@ -149,7 +149,7 @@ def peekTwoHorizontalSteps(Board, row, col, direction):
 # Let's walk the talk.
 #
 def gotoEndPoint(Board, startpos, endpos):
-    minSteps = 1
+    minSteps = 0
     # Convert matrix into hash table so we can catch KeyError, IndexError 
     # when traversing the dictionary
     DBoard = dict()   # hash table for Board
@@ -188,6 +188,7 @@ def gotoEndPoint(Board, startpos, endpos):
         while True:
             # sentry goes here
             if cur_row == end_row:
+                #debug_path += " -> ({},{})".format(cur_row, cur_col)   
                 break
 
             step_one, step_two = peekTwoVirticalSteps(DBoard, cur_row, cur_col, virtical_direction)
@@ -201,6 +202,7 @@ def gotoEndPoint(Board, startpos, endpos):
                 if side_step_one:
                     debug_path += " -> ({},{})".format(cur_row, cur_col)   
                     cur_col = cur_col + (1 * horizontal_direction)
+                    minSteps+=1 
 
         # Second, Horizontal moves
         horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
@@ -208,7 +210,6 @@ def gotoEndPoint(Board, startpos, endpos):
             # sentry goes here
             if cur_col == end_col:
                 debug_path += " -> ({},{})".format(cur_row, cur_col)   
-                minSteps+=1 
                 break
 
             step_one, step_two = peekTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
@@ -230,11 +231,13 @@ def test_code():
     rows = len(Board[:])
     cols = len(Board[-1])
     assert gotoEndPoint(Board, start, end) == 7
+    end = (3,3)   #tuple end[3][3]
+    assert gotoEndPoint(Board, start, end) == 3
     
 if __name__ == '__main__':
     Board = [[F,F,F,F], [T,T,F,F], [F,F,F,F], [F,F,F,F]]
     start = (3,0) #tuple start[3][0]
-    end = (0,0)   #tuple end[0][0]
+    end = (3,3)   #tuple end[3][3]
     rows = len(Board[:])
     cols = len(Board[-1])
 
