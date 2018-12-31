@@ -10,9 +10,7 @@ In other words, find the lowest positive integer that does not exist in the arra
 
 For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
 You can modify the input array in-place.
-''' 
 
-'''
 Pseudo code:
 ===========
 1.  Sort the array and remove duplicates
