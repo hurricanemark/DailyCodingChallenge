@@ -14,7 +14,6 @@ build the nth house with kth color, find the minimum cost which achieves this go
 90% OF THIS CODE BELONGS TO YOUTUBE AUTHOR: 'Happy Chuck Programming' 
 
 Building a cost tree is a very nice solution.  I keep this code for reference.
-
 '''
 
 import random, math
