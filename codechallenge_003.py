@@ -19,7 +19,6 @@ node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left'
 
 
-
 Pseudo code:
 ============
 1.  Construct the __init__ with self, val, left, right
