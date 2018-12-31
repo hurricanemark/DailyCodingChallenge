@@ -186,6 +186,10 @@ def gotoEndPoint(Board, startpos, endpos):
 
         # First, virtical moves:
         while True:
+			# sentry goes here
+            if cur_row == end_row:
+                break
+
             step_one, step_two = peekTwoVirticalSteps(DBoard, cur_row, cur_col, virtical_direction)
             #print("DBUG--Virtical Step_1:{} Step_2:{}".format(step_one, step_two))
             if step_one:
@@ -197,12 +201,16 @@ def gotoEndPoint(Board, startpos, endpos):
                 if side_step_one:
                     debug_path += " -> ({},{})".format(cur_row, cur_col)   
                     cur_col = cur_col + (1 * horizontal_direction)
-            if cur_row == end_row:
-                break
 
         # Second, Horizontal moves
         horizontal_direction = [-1 if (end_col - cur_col) < 0 else 1][0] 
         while True:
+			# sentry goes here
+            if cur_col == end_col:
+                debug_path += " -> ({},{})".format(cur_row, cur_col)   
+                minSteps+=1 
+                break
+
             step_one, step_two = peekTwoHorizontalSteps(DBoard, cur_row, cur_col, horizontal_direction)
             #print("DBUG--Horizontal Step_1:{} Step_2:{}".format(step_one, step_two))
             if step_one:
@@ -210,10 +218,6 @@ def gotoEndPoint(Board, startpos, endpos):
                 cur_col = cur_col + (1 * horizontal_direction)
                 minSteps+=1 
 
-            if cur_col == end_col:
-                debug_path += " -> ({},{})".format(cur_row, cur_col)   
-                minSteps+=1 
-                break
 
         print(debug_path)
         return minSteps
@@ -228,7 +232,6 @@ def test_code():
     assert gotoEndPoint(Board, start, end) == 7
     
 if __name__ == '__main__':
-
     Board = [[F,F,F,F], [T,T,F,F], [F,F,F,F], [F,F,F,F]]
     start = (3,0) #tuple start[3][0]
     end = (0,0)   #tuple end[0][0]
