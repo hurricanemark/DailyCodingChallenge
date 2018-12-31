@@ -34,6 +34,7 @@ for i in range(len(word_list)):
 	word[i] + ' ' * separator_len
 '''
 
+
 def justifyWords(wordlist, k):
 	justified_blob = ""
 	wordslength = 0
