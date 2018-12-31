@@ -18,11 +18,10 @@ or ['bedbath', 'and', 'beyond'].
 
 
 Assumption:
-The first sentence threw me off a bit because I was thinking python.  
+(*) The first sentence threw me off a bit because I was thinking python.  
 Dictionary and list in the same sentence makes me deduce it is a given list of words.
 
-The words are ASCII format
-But will look into utf-8 implementation later.
+(**) The words are ASCII format...  But will look into utf-8 implementation later.
 
 Algorithm:
 =========
