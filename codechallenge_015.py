@@ -60,6 +60,9 @@ def printNode(head):
 #
 def isMoreKnode(head, k):
     currNode = head
+    if currNode is None:
+        return False
+
     currNode = currNode.next
     while currNode is not None:
         if currNode.val == k:
@@ -80,7 +83,7 @@ def deleteLastKthNode(head, k):
     moreKNode = False
 
     # edge case
-    if currNode is None:
+    if currNode is None or type(k) is not int:
         return None
 
     while currNode is not None:
