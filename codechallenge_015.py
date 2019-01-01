@@ -66,10 +66,9 @@ def isMoreKnode(head, k):
     return False
     
 # 
-# Traverse the single linked list to find 
+# Traverse the singly linked list to find 
 # the last item matching k.
-# delete kth node in the linked list
-# if found one, call a look-ahead function
+# If found one, call a look-ahead function
 # to determine if more match is found further
 # up the linked list.
 # 
@@ -79,15 +78,20 @@ def deleteLastKthNode(head, k):
     moreKNode = False
     while currNode is not None:
         if currNode.val == k:
+            # found a match, let's see if there is more
             moreKNode = isMoreKnode(currNode, k)
             if isMoreKnode(currNode, k) == False:
                 #print("isMoreKnode:{}".format(moreKNode))
+
+				# let's delete the last kth node
                 if prevNode is None:
                     newHead = currNode.next
                     return newHead
                 else:
                     prevNode.next = currNode.next
                     return head
+
+        # progressing toward end of list 
         prevNode = currNode
         currNode = currNode.next
     return head
