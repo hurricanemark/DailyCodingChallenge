@@ -78,6 +78,11 @@ def deleteLastKthNode(head, k):
     currNode = head
     prevNode = None
     moreKNode = False
+
+    # edge case
+    if currNode is None:
+        return None
+
     while currNode is not None:
         if currNode.val == k:
             # found a match, let's see if there is more
