@@ -22,7 +22,9 @@ Psuedo code:
 4.  If more found, delete that last found node, else delete the currently matching k node
 
 '''
+
 from __future__ import print_function
+import random
 class linkedlistNode:
     def __init__(self, val, next=None):
         self.val = val
@@ -97,6 +99,7 @@ def deleteLastKthNode(head, k):
     return head
 
 
+
 if __name__ == '__main__':
     node = linkedlistNode(3)
     insertNode(node,4)
@@ -106,6 +109,7 @@ if __name__ == '__main__':
     insertNode(node,4)
     insertNode(node,7)
     k=4
+    print("Test#1")
     print("Original linked list: ", end='') 
     printNode(node)
     print("Deleting the last node having value: {}".format(k))
@@ -113,11 +117,32 @@ if __name__ == '__main__':
     print("Resulting linked list: ", end='')
     printNode(node)
 
+    k = 100
+    nodeX = linkedlistNode(10)
+    insertNode(nodeX, k)
+    [insertNode(nodeX, int(10*random.random())) for i in range(15)]
+    insertNode(nodeX, k)
+    insertNode(nodeX, k+1)
+    print("Test#2")
+    print("Original linked list: ", end='') 
+    printNode(nodeX)
+    print("Deleting the last node having value: {}".format(k))
+    deleteLastKthNode(nodeX, k)
+    print("Resulting linked list: ", end='')
+    printNode(nodeX)
+
+
+
 '''
 Run-time output:
 ===============
-markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python codechallenge_015.py
+markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python3 codechallenge_015.py
+Test#1
 Original linked list: 3 -> 4 -> 9 -> 8 -> 3 -> 4 -> 7
 Deleting the last node having value: 4
 Resulting linked list: 3 -> 4 -> 9 -> 8 -> 3 -> 7
+Test#2
+Original linked list: 10 -> 100 -> 7 -> 2 -> 9 -> 6 -> 5 -> 6 -> 8 -> 4 -> 0 -> 2 -> 7 -> 4 -> 5 -> 4 -> 2 -> 100 -> 101
+Deleting the last node having value: 100
+Resulting linked list: 10 -> 100 -> 7 -> 2 -> 9 -> 6 -> 5 -> 6 -> 8 -> 4 -> 0 -> 2 -> 7 -> 4 -> 5 -> 4 -> 2 -> 101
 '''
