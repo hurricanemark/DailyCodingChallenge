@@ -80,7 +80,7 @@ def deleteLastKthNode(head, k):
         if currNode.val == k:
             # found a match, let's see if there is more
             moreKNode = isMoreKnode(currNode, k)
-            if isMoreKnode(currNode, k) == False:
+            if moreKNode == False:
                 #print("isMoreKnode:{}".format(moreKNode))
 
                 # let's delete the last kth node
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     k=4
     print("Original linked list: ", end='') 
     printNode(node)
-    print("Deleting node kth having value: {}".format(k))
+    print("Deleting the last node having value: {}".format(k))
     deleteLastKthNode(node,k)
     print("Resulting linked list: ", end='')
     printNode(node)
@@ -118,6 +118,6 @@ Run-time output:
 ===============
 markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python codechallenge_015.py
 Original linked list: 3 -> 4 -> 9 -> 8 -> 3 -> 4 -> 7
-Deleting node kth having value: 4
+Deleting the last node having value: 4
 Resulting linked list: 3 -> 4 -> 9 -> 8 -> 3 -> 7
 '''
