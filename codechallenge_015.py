@@ -83,7 +83,7 @@ def deleteLastKthNode(head, k):
             if isMoreKnode(currNode, k) == False:
                 #print("isMoreKnode:{}".format(moreKNode))
 
-				# let's delete the last kth node
+                # let's delete the last kth node
                 if prevNode is None:
                     newHead = currNode.next
                     return newHead
