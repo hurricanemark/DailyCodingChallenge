@@ -16,16 +16,20 @@ Algorithm:
 Input: A linked list
 Output: A modified linked list
 Psuedo code:
-
+1.  Check edge cases
+2.  Travese the linked list until value k is found
+3.  Continue by calling a sub-function to travese the rest of the list for more matching k
+4.  If more found, delete that last found node, else delete the currently matching k node
 
 '''
-
+from __future__ import print_function
 class linkedlistNode:
     def __init__(self, val, next=None):
         self.val = val
         self.next = next
-
+#
 # add a node to end of linked list
+#
 def insertNode(head, val):
     currNode = head
     while currNode is not None:
@@ -34,42 +38,82 @@ def insertNode(head, val):
             return head
         currNode = currNode.next
 
-# remove a node from linked list, needs work on head
-def deleteNode(head, value):
-    currNode = head
-    prevNode = None
-    while currNode is not None:
-        if currNode.val == value:
-            if prevNode is None:
-                newHead = currNode.next
-                return newHead
-            prevNode.next = currNode.next
-            return head
-        prevNode = currNode
-        currNode = currNode.next
-    return head
 
+#
+# print linked list
+#
+def printNode(head):
+    retstr = []
+    curr = head
+    while curr:
+        retstr.append(str(curr.val))
+        #print(curr.val)
+        curr = curr.next
+
+    print(' -> '.join(retstr))
+
+#
+# search for node.val == k in
+# sub-linked list
+#
+def isMoreKnode(head, k):
+    currNode = head
+    currNode = currNode.next
+    while currNode is not None:
+        if currNode.val == k:
+            return True
+        currNode = currNode.next
+    return False
+    
 # 
 # Traverse the single linked list to find 
 # the last item matching k.
 # delete kth node in the linked list
+# if found one, call a look-ahead function
+# to determine if more match is found further
+# up the linked list.
 # 
-def deleteKthNode(nodeA, k):
+def deleteLastKthNode(head, k):
     currNode = head
     prevNode = None
-	lastkNode = head
-	while currNode is not None:
-		if currNode.val == k:
-			# found one, keep searching!
-			lastkNode = currNode
-
-		prevNode = currNode
-		currNode = currNode.next
-	
-	if prevNode is None:
-		newHead = currNode.next
-		return newHead
-	else:
-		prevNode.next = lastkNode.next
+    moreKNode = False
+    while currNode is not None:
+        if currNode.val == k:
+            moreKNode = isMoreKnode(currNode, k)
+            if isMoreKnode(currNode, k) == False:
+                #print("isMoreKnode:{}".format(moreKNode))
+                if prevNode is None:
+                    newHead = currNode.next
+                    return newHead
+                else:
+                    prevNode.next = currNode.next
+                    return head
+        prevNode = currNode
+        currNode = currNode.next
     return head
 
+
+if __name__ == '__main__':
+    node = linkedlistNode(3)
+    insertNode(node,4)
+    insertNode(node,9)
+    insertNode(node,8)
+    insertNode(node,3)
+    insertNode(node,4)
+    insertNode(node,7)
+    k=4
+    print("Original linked list: ", end='') 
+    printNode(node)
+    print("Deleting node kth having value: {}".format(k))
+    deleteLastKthNode(node,k)
+    print("Resulting linked list: ", end='')
+    printNode(node)
+
+'''
+Run-time output:
+===============
+markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python codechallenge_015.py
+Original linked list: 3 -> 4 -> 9 -> 8 -> 3 -> 4 -> 7
+Deleting node kth having value: 4
+Resulting linked list: 3 -> 4 -> 9 -> 8 -> 3 -> 7
+'''
