@@ -19,14 +19,9 @@ Arbitrage involves three immediate transactions of buy low sell high.
 For example, we use 2 US dollars to buy 1 British pound sterling, 
 then use that pound to buy 1.50 euros, and then use the l.50 euros 
 to buy $2.50. By trading this way we have gained $0.50
-In actuality, arbitrage take advantage of market inefficiency in infomation 
-sharing to trade for fractional gain
+In actuality, arbitrage takes advantage of market inefficiency(delay in infomation 
+sharing) to trade for fractional gain
 
-For example: 
-1. Use 1 US dollar to buy 0.783992 British Pound
-2. Then use 0.783992 British Pound to buy 0.783992/0.009128 = 85.89302281164 Yen 
-3. Then use 85.89302281164 Yen to buy  
-Capital gain: 1.0705896596330116 - 2 = -0.9294103403669884
 
 Below is the actual currency exchange rate table on 12-31-2018
 US Dollar 			1.00 USD 	inv. 1.00 USD
@@ -72,7 +67,7 @@ USInversionRate = {
                 "Chinese Renminbi": 0.145456
 			}
 
-The marginal gain is 1 * (lowest inversion rate / highest inversion rate)
+The best marginal gain is 1 * (lowest inversion rate / highest inversion rate)
 e.g. 1US * (0.009128Yen/1.275523Pound) = 0.007156280208196952US
 If we invest 1000US buying Pound then Yen then back to US dollars, we gain 1000 * 0.007156280208196952 = 7.156$
 
@@ -108,7 +103,7 @@ def gainArbitrage(USCurrencyEquivalent, AmountUSD):
 	minrate = min([inversionHash[k] for k in inversionHash])
 	XAmount=str(AmountUSD/maxrate) + str(name[0])
 	name = [k for k,v in inversionHash.items() if v == minrate]
-	print("Step2: Trade {} for {}.{}".format(XAmount, (AmountUSD/maxrate)/minrate, str(name[0])))
+	print("Step2: Trade {} for {}{}".format(XAmount, (AmountUSD/maxrate)/minrate, str(name[0])))
 	YAmount = (AmountUSD/maxrate)/minrate
 
 	# step3
@@ -130,3 +125,14 @@ if __name__ == '__main__':
                 "Chinese Renminbi": 6.874934
                 }
 	print("Gain from arbitrage trades: {}USD".format(gainArbitrage(USCurrencyEquivalent, Amount)))
+
+
+'''
+Run-time output:
+===============
+Step1: Trade 1000.USD for 783.992.British Pound
+Step2: Trade 783.992British Pound for 85893.0228116Japanese Yen
+Step3: Trade 85893.0228116Japanese Yen back to 1007.15591833USD
+Gain from arbitrage trades: 7.15591832659USD
+'''
+
