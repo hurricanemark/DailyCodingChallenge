@@ -83,12 +83,19 @@ Pseudo code:
 4.  Output the InvestAmount * (ratio)
 '''
 
+def invert(func):
+	def inner(dict_of_currencies):
+		for k in dict_of_currencies:
+			#print (k, 1/dict_of_currencies[k])		
+			dict_of_currencies[k] = 1 / dict_of_currencies[k]
+		return func(dict_of_currencies)
+	return inner
+
+@invert
+def inversionRatio(USCurrencyEquivalent={}):
+	return USCurrencyEquivalent
+
 def gainArbitrage(USCurrencyEquivalent, AmountUSD):
-    def inversionRatio(USCurrencyEquivalent={}):
-        for k in USCurrencyEquivalent:
-            #print (k, 1/USCurrencyEquivalent[k])		
-            USCurrencyEquivalent[k] = 1 / USCurrencyEquivalent[k]
-        return USCurrencyEquivalent
 
     inversionHash = inversionRatio(USCurrencyEquivalent)
 
