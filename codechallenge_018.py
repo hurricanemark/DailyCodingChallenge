@@ -33,10 +33,9 @@ Pseudo code:
 
 from __future__ import division
 def runningMedian(nums=[]):
+	retstr = []  # return string for unittest purpose
 	if len(nums) == 0:
 		return None
-	if len(nums) == 1:
-		return nums[0]
 
 	growinglist = []
 	for n in nums:
@@ -59,21 +58,41 @@ def runningMedian(nums=[]):
 			#odd-numbered list
 			median = growinglist[mid_idx]	
 
+		retstr.append(median)
 		print(median)
+	return(retstr)
+
+def test_code():
+	Arr = [2, 1, 5, 7, 2, 0, 5]
+	assert runningMedian(Arr) == [2,1.5,2,3.5,2,2.0,2]
 
 if __name__ == '__main__':
 	Arr = [2, 1, 5, 7, 2, 0, 5]
 	runningMedian(Arr)
+
+
+
 '''
 Run-time output:
 ===============
+markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ python codechallenge_018.py
 2
 1.5
 2
 3.5
 2
-0
 2.0
 2
+
+markn@raspberrypi3:~/devel/py-src/DailyCodeChallenge $ pytest codechallenge_018.py
+=================================== test session starts ===================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+collected 1 item
+
+codechallenge_018.py .                                                              [100%]
+
+================================ 1 passed in 0.03 seconds =================================
+
 '''
 
