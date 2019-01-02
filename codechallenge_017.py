@@ -81,36 +81,34 @@ Pseudo code:
 2.  Convert dictionary into inversion hash table
 3.  Find the highest ratio in the hash table. i.e. lowest/highest
 4.  Output the InvestAmount * (ratio)
-
 '''
 
-
-def inversionRatio(USCurrencyEquivalent={}):
-	for k in USCurrencyEquivalent:
-		#print (k, 1/USCurrencyEquivalent[k])		
- 		USCurrencyEquivalent[k] = 1 / USCurrencyEquivalent[k]
-	return USCurrencyEquivalent
-
 def gainArbitrage(USCurrencyEquivalent, AmountUSD):
-	inversionHash = inversionRatio(USCurrencyEquivalent)
+    def inversionRatio(USCurrencyEquivalent={}):
+        for k in USCurrencyEquivalent:
+            #print (k, 1/USCurrencyEquivalent[k])		
+            USCurrencyEquivalent[k] = 1 / USCurrencyEquivalent[k]
+        return USCurrencyEquivalent
 
-	# step1
-	maxrate = max([inversionHash[k] for k in inversionHash])
-	XAmount = AmountUSD/maxrate
-	XCurrencyName = [k for k,v in inversionHash.items() if v == maxrate]
-	print("Step1: Trade {} USD for {} {}".format(AmountUSD, XAmount, str(XCurrencyName[0])))
+    inversionHash = inversionRatio(USCurrencyEquivalent)
 
-	# step2
-	minrate = min([inversionHash[k] for k in inversionHash])
-	YAmount = XAmount/minrate	
-	YCurrencyName = [k for k,v in inversionHash.items() if v == minrate]
-	print("Step2: Trade {} {} for {}{}".format(XAmount, str(XCurrencyName[0]), YAmount, str(YCurrencyName[0])))
+    # step1
+    maxrate = max([inversionHash[k] for k in inversionHash])
+    XAmount = AmountUSD/maxrate
+    XCurrencyName = [k for k,v in inversionHash.items() if v == maxrate]
+    print("Step1: Trade {} USD for {} {}".format(AmountUSD, XAmount, str(XCurrencyName[0])))
 
-	# step3
-	ZAmount = AmountUSD + AmountUSD *(minrate/maxrate)
-	print("Step3: Trade {} {} back to {} USD".format(YAmount, str(YCurrencyName[0]), ZAmount)) 
+    # step2
+    minrate = min([inversionHash[k] for k in inversionHash])
+    YAmount = XAmount/minrate	
+    YCurrencyName = [k for k,v in inversionHash.items() if v == minrate]
+    print("Step2: Trade {} {} for {}{}".format(XAmount, str(XCurrencyName[0]), YAmount, str(YCurrencyName[0])))
 
-	return AmountUSD * (minrate/maxrate)
+    # step3
+    ZAmount = AmountUSD + AmountUSD *(minrate/maxrate)
+    print("Step3: Trade {} {} back to {} USD".format(YAmount, str(YCurrencyName[0]), ZAmount)) 
+
+    return AmountUSD * (minrate/maxrate)
 
 
 def test_code():
@@ -129,8 +127,8 @@ def test_code():
     assert gainArbitrage(USCurrencyEquivalent, InvestAmount) == 7155.91832658968 
 
 if __name__ == '__main__':
-	Amount = 1000000 # US dollars
-	USCurrencyEquivalent = {
+    Amount = 1000000 # US dollars
+    USCurrencyEquivalent = {
                 "Euro": 0.870903,
                 "British Pound": 0.783992,
                 "Indian Rupee": 69.605725,
@@ -142,16 +140,27 @@ if __name__ == '__main__':
                 "Japanese Yen": 109.558545,
                 "Chinese Renminbi": 6.874934
                 }
-	print("Gain from arbitrage trades: {} USD".format(gainArbitrage(USCurrencyEquivalent, Amount)))
+    print("Gain from arbitrage trades: {} USD".format(gainArbitrage(USCurrencyEquivalent, Amount)))
 
 
 
 '''
 Run-time output:
 ===============
-Step1: Trade 1000 USD for 783.992 British Pound
-Step2: Trade 783.992 British Pound for 85893.0228116Japanese Yen
-Step3: Trade 85893.0228116 Japanese Yen back to 1007.15591833 USD
-Gain from arbitrage trades: 7.15591832659 USD
+markn@u17101vaio:~/devel/python-prj/DailyCodingChallenge$ python codechallenge_017.py
+Step1: Trade 1000000 USD for 783992.0000000001 British Pound
+Step2: Trade 783992.0000000001 British Pound for 85893022.81164001Japanese Yen
+Step3: Trade 85893022.81164001 Japanese Yen back to 1007155.9183265896 USD
+Gain from arbitrage trades: 7155.91832658968 USD
+
+markn@u17101vaio:~/devel/python-prj/DailyCodingChallenge$ pytest codechallenge_017.py
+===================================== test session starts =====================================
+platform linux -- Python 3.6.4, pytest-4.0.2, py-1.7.0, pluggy-0.8.0
+rootdir: /home/markn/devel/python-prj/DailyCodingChallenge, inifile:
+collected 1 item
+
+codechallenge_017.py .                                                                  [100%]
+
+================================== 1 passed in 0.65 seconds ===================================
 '''
 
