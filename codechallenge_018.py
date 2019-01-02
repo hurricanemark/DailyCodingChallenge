@@ -32,7 +32,7 @@ Pseudo code:
 
 
 from __future__ import division
-def RunningMeadians(nums=[]):
+def runningMedian(nums=[]):
 	if len(nums) == 0:
 		return None
 	if len(nums) == 1:
@@ -64,8 +64,8 @@ def RunningMeadians(nums=[]):
 		print(median)
 
 if __name__ == '__main__':
-	A = [2, 1, 5, 7, 2, 0, 5]
-	RunningMeadians(A)
+	Arr = [2, 1, 5, 7, 2, 0, 5]
+	runningMedian(Arr)
 '''
 Run-time output:
 ===============
