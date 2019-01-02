@@ -1,0 +1,132 @@
+'''
+Date: 12/29/2018
+
+Problem description:
+===================
+This problem was asked by Jane Street.
+
+Suppose you are given a table of currency exchange rates, represented as a 2D array. 
+Determine whether there is a possible arbitrage: that is, whether there is some sequence 
+of trades you can make, starting with some amount A of any currency, so that you can 
+end up with some amount greater than A of that currency.
+
+There are no transaction costs and you can trade fractional quantities.
+
+
+Some research:
+=============
+Arbitrage involves three immediate transactions of buy low sell high.
+For example, we use 2 US dollars to buy 1 British pound sterling, 
+then use that pound to buy 1.50 euros, and then use the l.50 euros 
+to buy $2.50. By trading this way we have gained $0.50
+In actuality, arbitrage take advantage of market inefficiency in infomation 
+sharing to trade for fractional gain
+
+For example: 
+1. Use 1 US dollar to buy 0.783992 British Pound
+2. Then use 0.783992 British Pound to buy 0.783992/0.009128 = 85.89302281164 Yen 
+3. Then use 85.89302281164 Yen to buy  
+Capital gain: 1.0705896596330116 - 2 = -0.9294103403669884
+
+Below is the actual currency exchange rate table on 12-31-2018
+US Dollar 			1.00 USD 	inv. 1.00 USD
+---------    		--------    -------------
+Euro 				0.870903 	1.148233
+British Pound 		0.783992 	1.275523
+Indian Rupee 		69.605725 	0.014367
+Australian Dollar 	1.420549 	0.703953
+Canadian Dollar 	1.363172 	0.733583
+Singapore Dollar 	1.362844 	0.733760
+Swiss Franc 		0.983397 	1.016883
+Malaysian Ringgit 	4.132583 	0.241979
+Japanese Yen 		109.558545 	0.009128
+Chinese Renminbi 	6.874934 	0.145456
+
+
+
+Given:
+USCurrencyEquivalent = {
+				"Euro": 0.870903,
+				"British Pound": 0.783992,
+				"Indian Rupee": 69.605725,
+				"Australian Dollar": 1.420549,
+				"Canadian Dollar": 1.363172,
+				"Singapore Dollar": 1.362844,
+				"Swiss Franc": 0.983397,
+				"Malaysian Ringgit": 4.132583,
+				"Japanese Yen": 109.558545,
+				"Chinese Renminbi": 6.874934
+				}
+Then figure out the inversion rate, 
+# e.g. 1 Euro = 1.148233 US
+USInversionRate = {
+				"Euro": 1.148233,
+                "British Pound": 1.275523,
+                "Indian Rupee": 0.014367,
+                "Australian Dollar": 0.703953,
+                "Canadian Dollar": 0.733583,
+                "Singapore Dollar": 0.733760,
+                "Swiss Franc": 1.016883,
+                "Malaysian Ringgit": 0.241979,
+                "Japanese Yen": 0.009128,
+                "Chinese Renminbi": 0.145456
+			}
+
+The marginal gain is 1 * (lowest inversion rate / highest inversion rate)
+e.g. 1US * (0.009128Yen/1.275523Pound) = 0.007156280208196952US
+If we invest 1000US buying Pound then Yen then back to US dollars, we gain 1000 * 0.007156280208196952 = 7.156$
+
+
+Algorithm:
+=========
+Input: A dictionary of USCurrencyEquivalent, and an investment number in US dollars
+Ouput: Gain in decimal value of US dollars
+Pseudo code:
+1.  Check for valid input
+2.  Convert dictionary into inversion hash table
+3.  Find the highest ratio in the hash table. i.e. lowest/highest
+4.  Output the InvestAmount * (ratio)
+
+'''
+
+
+def inversionRatio(USCurrencyEquivalent={}):
+	for k in USCurrencyEquivalent:
+		#print (k, 1/USCurrencyEquivalent[k])		
+ 		USCurrencyEquivalent[k] = 1 / USCurrencyEquivalent[k]
+	return USCurrencyEquivalent
+
+def gainArbitrage(USCurrencyEquivalent, AmountUSD):
+	inversionHash = inversionRatio(USCurrencyEquivalent)
+
+	# step1
+	maxrate = max([inversionHash[k] for k in inversionHash])
+	name = [k for k,v in inversionHash.items() if v == maxrate]
+	print("Step1: Trade {}.USD for {}.{}".format(AmountUSD, AmountUSD/maxrate, str(name[0])))
+
+	# step2
+	minrate = min([inversionHash[k] for k in inversionHash])
+	XAmount=str(AmountUSD/maxrate) + str(name[0])
+	name = [k for k,v in inversionHash.items() if v == minrate]
+	print("Step2: Trade {} for {}.{}".format(XAmount, (AmountUSD/maxrate)/minrate, str(name[0])))
+	YAmount = (AmountUSD/maxrate)/minrate
+
+	# step3
+	print("Step3: Trade {}{} back to {}USD".format(YAmount, str(name[0]), AmountUSD + (AmountUSD*(minrate/maxrate)))) 
+	return AmountUSD * (minrate/maxrate)
+
+if __name__ == '__main__':
+	Amount = 1000 # US dollars
+	USCurrencyEquivalent = {
+                "Euro": 0.870903,
+                "British Pound": 0.783992,
+                "Indian Rupee": 69.605725,
+                "Australian Dollar": 1.420549,
+                "Canadian Dollar": 1.363172,
+                "Singapore Dollar": 1.362844,
+                "Swiss Franc": 0.983397,
+                "Malaysian Ringgit": 4.132583,
+                "Japanese Yen": 109.558545,
+                "Chinese Renminbi": 6.874934
+                }
+	print("Gain from arbitrage trades: {}USD".format(gainArbitrage(USCurrencyEquivalent, Amount)))
