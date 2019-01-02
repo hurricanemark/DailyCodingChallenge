@@ -40,8 +40,6 @@ def runningMedian(nums=[]):
 
 	growinglist = []
 	for n in nums:
-		if n == 0:
-			print(n)
 		growinglist.append(n)
 		growinglist.sort()
 		mid_idx = len(growinglist)//2
