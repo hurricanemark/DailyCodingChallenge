@@ -34,7 +34,7 @@ Often, I would recommit updates on individual file with further thoughts, improv
 ## Organization
 
 One problem/solution per python file.
-Each python file contains the given problem in the commented section and my attempted code below it.  The files are not linked or referenced to one another.  However, you could run pytest on the entire directory.  Be sure to open it up and read it.  
+Each python file contains the given problem in the commented section and my attempted code below it.  The files are not linked or referenced to one another.  However, you could import each one as module (see module_test.py) or run pytest on the entire directory (see tests.py).  Be sure to open it up and read it.  
 
 Feel free to suggest better performance for any of my solution here.
 
