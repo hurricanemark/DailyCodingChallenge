@@ -109,7 +109,24 @@ def gainArbitrage(USCurrencyEquivalent, AmountUSD):
 	# step3
 	ZAmount = AmountUSD + AmountUSD *(minrate/maxrate)
 	print("Step3: Trade {} {} back to {} USD".format(YAmount, str(YCurrencyName[0]), ZAmount)) 
+
 	return AmountUSD * (minrate/maxrate)
+
+
+def test_code():
+    InvestAmount = 1000000
+    USCurrencyEquivalent = {
+                "Euro": 0.870903,
+                "British Pound": 0.783992,
+                "Indian Rupee": 69.605725,
+                "Australian Dollar": 1.420549,
+                "Canadian Dollar": 1.363172,
+                "Singapore Dollar": 1.362844,
+                "Swiss Franc": 0.983397,
+                "Malaysian Ringgit": 4.132583,
+                "Japanese Yen": 109.558545,
+                "Chinese Renminbi": 6.874934 }
+    assert gainArbitrage(USCurrencyEquivalent, InvestAmount) == 7155.91832658968 
 
 if __name__ == '__main__':
 	Amount = 1000000 # US dollars
