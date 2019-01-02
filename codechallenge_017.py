@@ -112,7 +112,7 @@ def gainArbitrage(USCurrencyEquivalent, AmountUSD):
 	return AmountUSD * (minrate/maxrate)
 
 if __name__ == '__main__':
-	Amount = 1000 # US dollars
+	Amount = 1000000 # US dollars
 	USCurrencyEquivalent = {
                 "Euro": 0.870903,
                 "British Pound": 0.783992,
