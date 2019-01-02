@@ -96,18 +96,19 @@ def gainArbitrage(USCurrencyEquivalent, AmountUSD):
 
 	# step1
 	maxrate = max([inversionHash[k] for k in inversionHash])
-	name = [k for k,v in inversionHash.items() if v == maxrate]
-	print("Step1: Trade {}.USD for {}.{}".format(AmountUSD, AmountUSD/maxrate, str(name[0])))
+	XAmount = AmountUSD/maxrate
+	XCurrencyName = [k for k,v in inversionHash.items() if v == maxrate]
+	print("Step1: Trade {} USD for {} {}".format(AmountUSD, XAmount, str(XCurrencyName[0])))
 
 	# step2
 	minrate = min([inversionHash[k] for k in inversionHash])
-	XAmount=str(AmountUSD/maxrate) + str(name[0])
-	name = [k for k,v in inversionHash.items() if v == minrate]
-	print("Step2: Trade {} for {}{}".format(XAmount, (AmountUSD/maxrate)/minrate, str(name[0])))
-	YAmount = (AmountUSD/maxrate)/minrate
+	YAmount = XAmount/minrate	
+	YCurrencyName = [k for k,v in inversionHash.items() if v == minrate]
+	print("Step2: Trade {} {} for {}{}".format(XAmount, str(XCurrencyName[0]), YAmount, str(YCurrencyName[0])))
 
 	# step3
-	print("Step3: Trade {}{} back to {}USD".format(YAmount, str(name[0]), AmountUSD + (AmountUSD*(minrate/maxrate)))) 
+	ZAmount = AmountUSD + AmountUSD *(minrate/maxrate)
+	print("Step3: Trade {} {} back to {} USD".format(YAmount, str(YCurrencyName[0]), ZAmount)) 
 	return AmountUSD * (minrate/maxrate)
 
 if __name__ == '__main__':
@@ -124,15 +125,16 @@ if __name__ == '__main__':
                 "Japanese Yen": 109.558545,
                 "Chinese Renminbi": 6.874934
                 }
-	print("Gain from arbitrage trades: {}USD".format(gainArbitrage(USCurrencyEquivalent, Amount)))
+	print("Gain from arbitrage trades: {} USD".format(gainArbitrage(USCurrencyEquivalent, Amount)))
+
 
 
 '''
 Run-time output:
 ===============
-Step1: Trade 1000.USD for 783.992.British Pound
-Step2: Trade 783.992British Pound for 85893.0228116Japanese Yen
-Step3: Trade 85893.0228116Japanese Yen back to 1007.15591833USD
-Gain from arbitrage trades: 7.15591832659USD
+Step1: Trade 1000 USD for 783.992 British Pound
+Step2: Trade 783.992 British Pound for 85893.0228116Japanese Yen
+Step3: Trade 85893.0228116 Japanese Yen back to 1007.15591833 USD
+Gain from arbitrage trades: 7.15591832659 USD
 '''
 
