@@ -24,9 +24,9 @@ sharing) to trade for fractional gain
 
 
 Below is the actual currency exchange rate table on 12-31-2018
-US Dollar 			1.00 USD 	inv. 1.00 USD
+US Dollar 		1.00 USD 	inv. 1.00 USD
 ---------    		--------    -------------
-Euro 				0.870903 	1.148233
+Euro 			0.870903 	1.148233
 British Pound 		0.783992 	1.275523
 Indian Rupee 		69.605725 	0.014367
 Australian Dollar 	1.420549 	0.703953
