@@ -13,6 +13,9 @@ Do this in linear time and in-place.
 For example, given the array ['G', 'B', 'R', 'R', 'B', 'R', 'G'], 
 it should become ['R', 'R', 'R', 'G', 'G', 'B', 'B'].
 
+
+(*) Wow! google asked an easy question for a chance...
+
 Algorithm:
 ==========
 Input: An list of 'R's, 'G's, and 'B's
