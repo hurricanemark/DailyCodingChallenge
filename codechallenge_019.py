@@ -193,5 +193,10 @@ Input: race
 Output: ecarace
 Validate palindrome string: 'ecarace' as True.
 
+Test3:
+Input: ABBA
+Output: ABBA
+Validate palindrome string: 'ABBA' as True.
+
 '''
 
