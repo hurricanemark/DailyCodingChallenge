@@ -30,6 +30,11 @@ Pseudo code:
 3.  Handling the complex case:
     3.1 Iterate the string from middle index toward the end
     3.2 compare the mirrored characters, prepend mirrored character if not a match. 
+
+
+Further thoughts:
+================
+What happens if input is already a palindrome?
 '''
 import re
 
@@ -107,6 +112,10 @@ def getPalindrome(instr):
 	if not instr.isalpha():
 		return "Invalid input.  Not an alphabetic string"
 
+	# in case it is already a palindrome.  just return it!
+	if isValidPalindrome(instr):
+		return instr
+
 	if isRepeatedChars(instr):
 		# found consecutively repeated characters such as 'oo' in 'google'
 		# deal with the offset index
@@ -165,6 +174,11 @@ if __name__ == '__main__':
 	print("Output: {}".format(PalindStr))
 	print("Validate palindrome string: \'{}\' as {}.".format(PalindStr, isValidPalindrome(PalindStr)))
 
+	A='ABBA'
+	print("\nTest3:\nInput: {}".format(A))
+	PalindStr = getPalindrome(A)
+	print("Output: {}".format(PalindStr))
+	print("Validate palindrome string: \'{}\' as {}.".format(PalindStr, isValidPalindrome(PalindStr)))
 '''
 Run-time output:
 ================
