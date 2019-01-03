@@ -21,98 +21,151 @@ Input: A string
 Output A palindrome string
 Pseudo code:
 1.  Check for valid input
-2.  Write a decorator function that returns True if the string is a palindrome
-	For index from the edge of the string toward the middle, iterate inward.
-3.	For index from the middle, iterate outward imagining a paper folded in half
+2.  Check if the string has consecutively repeated chars
+    If yes.  Handle the complex case of 'oo' in the word 'google'
+    else, 
+	copy the string into another, reverse the order of the new string and pop the last item
+	prepend the new string to the original string and we have ourself a palindrome.
   	If not a palindrome, prepend a mirrored character to the beginning of the string and go check in step 2
-
+3.  Handling the complex case:
+    Iterate the string from 
 '''
 import re
 
 #
+# return True if there are repeated chars in instr
+#
+def isRepeatedChars(instr):
+	repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
+	try:
+		# locate the consecutively repeated characters
+		midstr = [i for i in repchars if len(i) > 1][0]
+		return (len(midstr) > 0)
+	except IndexError:
+		return False
+
+#
 # use re.findall() method to find middle index+offset
 # this allows us to deal with words such as 'oo' in 'google'
-# return 3 parameters: 
-#    True if there are repeated characters in the string
+# return start and end indices of the consecutively repeated characters substring: 
 #    Starting index of the repeated character
 #    Ending index of the repeated character
-#    e.g. return False, None, None
-#         return True, 1, 2
+#    e.g. return  None, None
+#         return 1, 2
 #
-def idxOfRepeatedChars(str):
+def idxOfRepeatedChars(instr):
 	# Find repeated chracters by converting string into an array of characters
-	arrstr = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', str)]
+	repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
 
 	try:
 		# locate the consecutively repeated characters
-		midstr = [i for i in arrstr if len(i) > 1][0]
-	
-		if len(midstr) == 0:
+		midstr = [i for i in repchars if len(i) > 1][0]
+		if len(midstr) > 0:
 			# find index of this midstr above and its offset
-			mididx = str.index(midstr)
-			return True, mididx, mididx+len(midstr)
+			mididx = instr.index(midstr)
+			return int(mididx), int(mididx+len(midstr)-1)
 		else:
-			return False, None, None
+			return None, None
 	except IndexError:
-		return False, None, None
+		return None, None
 
 #
 # decorator function
 #
 def palindrome(func):
 	def inner(*args):
-		ret = False
-
-		# remaining cases such as word 'race'
-		halfidx = len(args)//2
+		instr = args[0]
+		mididx = len(instr)//2
 
 		# iterate from edge toward middle
-		for i in range(halfidx):
-			ret = False
-			if args[i] == args[-1 + i*-1]:
+		ret = False
+		for i in range(mididx):
+			if instr[i] == instr[-1 + (i * -1)]:
 				ret = True
 			else:
 				ret = False
-		print("str is:{}".format(ret))
 		return ret
 	return inner
 		
-
+#
+# validate that the string is a palindrome
+#
 @palindrome
-def isValidPalindrome(str):
-	if len(str) == 0:
+def isValidPalindrome(instr):
+	if len(instr) == 0:
 		return False
 	# remove any extra white space tat both ends
-	str.strip()
+	instr.strip()
 
-	return palindrome(str)
+	return palindrome(instr)
 
-
+#
+# Create a palindrome string
+#
 def getPalindrome(instr):
 	if not instr.isalpha():
 		return "Invalid input.  Not an alphabetic string"
-	repchars, startidx, endidx = idxOfRepeatedChars(str(instr))
-	if repchars:
+
+	if isRepeatedChars(instr):
 		# found consecutively repeated characters such as 'oo' in 'google'
 		# deal with the offset index
-			
+
+		startidx, endidx = idxOfRepeatedChars(str(instr))
+		#print("DBUG: instr:{} startidx:{} endidx:{}".format(instr, startidx, endidx))			
 		# iterate from middle toward edge 
-		for i in range(endidx+1, len(instr), 1): 
-			if instr[startidx-i] == instr[i]:
+		# e.g.
+		# 0  1  2  3  4  5
+		# g  o  o  g  l  e
+		# startidx:1, endidx:2
+		count = 1
+		for i in range(endidx+1, len(instr)+1, 1):
+			if instr[i] == instr[startidx - count]:
 				pass
 			else:
-				# prepend mirrored character 
-				instr[:0] + instr[-i] + instr[0:]
+				instr = instr[:0] + instr[i] + instr[0:]
+			count+=1
+	else: # remaining cases such as word 'race'
+		halfidx = len(instr)//2
 
-	while not isValidPalindrome(instr):
-		half_idx = len(instr)//2
-		for i in range(half_idx, -1, -1):
-			# prepend mirrored character 
-			instr[:0] + instr[-i] + instr[0:]
-			print("DBUG-- halfidx:{} idx:{} current string:{}".format(half_idx, i, instr))
+		# iterate from edge toward middle
+		# e.g.
+		# from 0 .. halfidx
+		flipchars = list(instr)
+		flipchars.reverse() 
+		flipchars.pop()
+		flipstr = ''.join(flipchars)
+		instr = instr[:0] + flipstr + instr[0:]
 
-	print(instr)
 
-A='google'
-A='race'
-getPalindrome(A)
+	#print(instr)
+	return instr
+#
+# unittest fucntion
+#
+def test_palindrome():
+	A='google'
+	assert getPalindrome(A) == 'elgoogle'
+	A = 'race'
+	assert getPalindrome(A) == 'ecarace'
+
+#
+# client function
+#
+if __name__ == '__main__':
+	A='google'
+	#A='race'
+	print("Input: {}".format(A))
+	PalindStr = getPalindrome(A)
+	print("Output: {}".format(PalindStr))
+	print("Validate palindrome string: \'{}\' as {}.".format(PalindStr, isValidPalindrome(PalindStr)))
+
+'''
+Run-time output:
+================
+linux1@sles12sp3:/data/devel/py-src/DailyCodingChallenge> python codechallenge_019.py
+
+Input: google
+Output: elgoogle
+Validate palindrome string: 'elgoogle' as True.
+'''
+
