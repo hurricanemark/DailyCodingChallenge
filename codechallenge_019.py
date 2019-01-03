@@ -96,17 +96,30 @@ def isValidPalindrome(str):
 	return palindrome(str)
 
 
-def getPalindrome(str):
-	if not str.isalpha():
+def getPalindrome(instr):
+	if not instr.isalpha():
 		return "Invalid input.  Not an alphabetic string"
-	while not isValidPalindrome(str):
-		half_idx = len(str)//2
+	repchars, startidx, endidx = idxOfRepeatedChars(str(instr))
+	if repchars:
+		# found consecutively repeated characters such as 'oo' in 'google'
+		# deal with the offset index
+			
+		# iterate from middle toward edge 
+		for i in range(endidx+1, len(instr), 1): 
+			if instr[startidx-i] == instr[i]:
+				pass
+			else:
+				# prepend mirrored character 
+				instr[:0] + instr[-i] + instr[0:]
+
+	while not isValidPalindrome(instr):
+		half_idx = len(instr)//2
 		for i in range(half_idx, -1, -1):
 			# prepend mirrored character 
-			str[:0] + A[-i] + str[0:]
-			print("DBUG-- halfidx:{} idx:{} current string:{}".format(half_idx, i, str))
+			instr[:0] + instr[-i] + instr[0:]
+			print("DBUG-- halfidx:{} idx:{} current string:{}".format(half_idx, i, instr))
 
-	print(str)
+	print(instr)
 
 A='google'
 getPalindrome(A)
