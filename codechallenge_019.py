@@ -59,7 +59,7 @@ def idxOfRepeatedChars(str):
 def palindrome(func):
 	def inner(*args):
 		ret = False
-		repchars, startidx, endidx = idxOfRepeatedChars(args)
+		repchars, startidx, endidx = idxOfRepeatedChars(str(args))
 		if repchars:
 			# found consecutively repeated characters such as 'oo' in 'google'
 			# deal with the offset index
