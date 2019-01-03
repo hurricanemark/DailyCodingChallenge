@@ -27,6 +27,7 @@ Pseudo code:
   	If not a palindrome, prepend a mirrored character to the beginning of the string and go check in step 2
 
 '''
+import re
 
 #
 # use re.findall() method to find middle index+offset
