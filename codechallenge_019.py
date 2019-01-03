@@ -154,8 +154,13 @@ def test_palindrome():
 #
 if __name__ == '__main__':
 	A='google'
-	#A='race'
-	print("Input: {}".format(A))
+	print("Test1:\nInput: {}".format(A))
+	PalindStr = getPalindrome(A)
+	print("Output: {}".format(PalindStr))
+	print("Validate palindrome string: \'{}\' as {}.".format(PalindStr, isValidPalindrome(PalindStr)))
+
+	A='race'
+	print("\nTest2:\nInput: {}".format(A))
 	PalindStr = getPalindrome(A)
 	print("Output: {}".format(PalindStr))
 	print("Validate palindrome string: \'{}\' as {}.".format(PalindStr, isValidPalindrome(PalindStr)))
@@ -164,9 +169,15 @@ if __name__ == '__main__':
 Run-time output:
 ================
 linux1@sles12sp3:/data/devel/py-src/DailyCodingChallenge> python codechallenge_019.py
-
+Test1:
 Input: google
 Output: elgoogle
 Validate palindrome string: 'elgoogle' as True.
+
+Test2:
+Input: race
+Output: ecarace
+Validate palindrome string: 'ecarace' as True.
+
 '''
 
