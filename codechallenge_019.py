@@ -30,6 +30,7 @@ Pseudo code:
 
 #
 # use re.findall() method to find middle index+offset
+# this allows us to deal with words such as 'oo' in 'google'
 # return 3 parameters: 
 #    True if there are repeated characters in the string
 #    Starting index of the repeated character
@@ -45,7 +46,7 @@ def idxOfRepeatedChars(str):
 	midstr = [i for i in arrstr if len(i) > 1][0]
 	
 	if len(midstr) == 0:
-		# find index of this mistr above
+		# find index of this midstr above and its offset
 		mididx = str.index(midstr)
 		return True, mididx, mididx+len(midstr)
 	else:
@@ -56,14 +57,21 @@ def idxOfRepeatedChars(str):
 #
 def palindrome(func):
 	def inner(*args):
+		ret = False
 		repchars, startidx, endidx = idxOfRepeatedChars(args)
 		if repchars:
 			# found consecutively repeated characters such as 'oo' in 'google'
-
+			# deal with the offset index
+			
+			# iterate from middle toward edge 
+			for i in range(endidx+1, len(args), 1): 
+				if args[startidx-i] == args[i]:
+					ret = True
+				else:
+					ret = False
 		else: 
 			# remaining cases such as word 'race'
 			halfidx = len(args)//2
-			ret = False
 
 			# iterate from edge toward middle
 			for i in range(halfidx):
