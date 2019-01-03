@@ -41,7 +41,7 @@ import re
 #
 def idxOfRepeatedChars(str):
 	# Find repeated chracters by converting string into an array of characters
-	arrstr = [m[1] + m[0] for m in re.findall(r'(.)(\1*)', str)]
+	arrstr = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', str)]
 
 	# locate the consecutively repeated characters
 	midstr = [i for i in arrstr if len(i) > 1][0]
