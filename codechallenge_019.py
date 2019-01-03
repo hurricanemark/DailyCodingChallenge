@@ -28,7 +28,8 @@ Pseudo code:
 	prepend the new string to the original string and we have ourself a palindrome.
   	If not a palindrome, prepend a mirrored character to the beginning of the string and go check in step 2
 3.  Handling the complex case:
-    Iterate the string from 
+    3.1 Iterate the string from middle index toward the end
+    3.2 compare the mirrored characters, prepend mirrored character if not a match. 
 '''
 import re
 
