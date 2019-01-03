@@ -43,14 +43,17 @@ def idxOfRepeatedChars(str):
 	# Find repeated chracters by converting string into an array of characters
 	arrstr = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', str)]
 
-	# locate the consecutively repeated characters
-	midstr = [i for i in arrstr if len(i) > 1][0]
+	try:
+		# locate the consecutively repeated characters
+		midstr = [i for i in arrstr if len(i) > 1][0]
 	
-	if len(midstr) == 0:
-		# find index of this midstr above and its offset
-		mididx = str.index(midstr)
-		return True, mididx, mididx+len(midstr)
-	else:
+		if len(midstr) == 0:
+			# find index of this midstr above and its offset
+			mididx = str.index(midstr)
+			return True, mididx, mididx+len(midstr)
+		else:
+			return False, None, None
+	except IndexError:
 		return False, None, None
 
 #
@@ -59,30 +62,19 @@ def idxOfRepeatedChars(str):
 def palindrome(func):
 	def inner(*args):
 		ret = False
-		repchars, startidx, endidx = idxOfRepeatedChars(str(args))
-		if repchars:
-			# found consecutively repeated characters such as 'oo' in 'google'
-			# deal with the offset index
-			
-			# iterate from middle toward edge 
-			for i in range(endidx+1, len(args), 1): 
-				if args[startidx-i] == args[i]:
-					ret = True
-				else:
-					ret = False
-		else: 
-			# remaining cases such as word 'race'
-			halfidx = len(args)//2
 
-			# iterate from edge toward middle
-			for i in range(halfidx):
+		# remaining cases such as word 'race'
+		halfidx = len(args)//2
+
+		# iterate from edge toward middle
+		for i in range(halfidx):
+			ret = False
+			if args[i] == args[-1 + i*-1]:
+				ret = True
+			else:
 				ret = False
-				if args[i] == args[-1 + i*-1]:
-					ret = True
-				else:
-					ret = False
-			print("str is:{}".format(ret))
-			return ret
+		print("str is:{}".format(ret))
+		return ret
 	return inner
 		
 
@@ -122,4 +114,5 @@ def getPalindrome(instr):
 	print(instr)
 
 A='google'
+A='race'
 getPalindrome(A)
