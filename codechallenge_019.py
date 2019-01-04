@@ -27,11 +27,11 @@ Pseudo code:
     Else, make the smallest amount of work in making a palindrome.  i.e. 
 	copy the string into another, reverse the order of the new string and pop the last item
 	prepend the new string to the original string and we have ourselve a palindrome.
-  	If not a palindrome, prepend a mirrored character to the beginning of the string and go back to
-	check it again.  Thia ahould be verry intuitive once you had pictured it in your head.
 3.  Handling the complex case:
     3.1 Iterate the string from middle index toward the end
     3.2 compare the mirrored characters, prepend mirrored character if not a match. 
+  	If not yet a palindrome, keep prependng a mirrored character to the beginning of the string and 
+	go back to check it again.  This ahould be verry intuitive once you had pictured it in your head.
 
 
 Further thoughts:
