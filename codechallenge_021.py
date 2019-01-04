@@ -22,6 +22,14 @@ Psuedo code:
 2.	We will search for two cases 
 	2.1  If root is None return None
 	2.2  If root->right->right is None, return root->data
+
+
+After thoughts:
+==============
+Try to assign and return an array of values in a recursive function
+and you will be surprised what will come out.  For example, the index of
+your list may be recursively retro to zero each time the function called itself.
+Haha!
 '''
 
 class BSTNode:
