@@ -21,12 +21,14 @@ Input: A string
 Output A palindrome string
 Pseudo code:
 1.  Check for valid input
+
 2.  Check if the string has consecutively repeated chars
     If yes.  Handle the complex case of 'oo' in the word 'google' (step3 below).
 
     Else, make the smallest amount of work in making a palindrome.  i.e. 
 	copy the string into another, reverse the order of the new string and pop the last item
 	prepend the new string to the original string and we have ourselve a palindrome.
+
 3.  Handling the complex case:
     3.1 Iterate the string from middle index toward the end
     3.2 compare the mirrored characters, prepend mirrored character if not a match. 
@@ -63,6 +65,14 @@ def isRepeatedChars(instr):
 #
 def idxOfRepeatedChars(instr):
 	# Find repeated chracters by converting string into an array of characters
+	# e.g. See the interactive result here:
+	'''
+	>>> instr = 'google'
+	>>> repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
+	>>> repchars
+	['g', 'oo', 'g', 'l', 'e']
+	'''
+	
 	repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
 
 	try:
