@@ -75,3 +75,12 @@ print("Given a binaray search tree having data:")
 node.print_tree()	
 print("\nSecond largest value in the BST is:")
 node.get_second_last_right()
+'''
+Run-time output:
+===============
+Given a binaray search tree having data:
+5  7  8  9  10  17  19  
+Second largest value in the BST is:
+17
+'''
+
