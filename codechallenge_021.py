@@ -18,11 +18,9 @@ Algorithm:
 Input: Root of a binary search tree
 Output: Node of second to right most.
 Psuedo code:
-	Since the left subtree of a node contains only nodes with keys less than the node's key.
-    The right subtree of a node contains only nodes with keys greater than the node's key.
 	We will search for two cases 
 1.  If root is None return None
-2.  If node->next is None, return previous node
+2.  If root->right->right is None, return root->data
 '''
 
 class BSTNode:
