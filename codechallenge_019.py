@@ -43,9 +43,17 @@ What happens if input is already a palindrome?
 import re
 
 #
-# return True if there are repeated chars in instr
+#  Check if the string has consecutively repeated chars
+#  return True if there are repeated chars in instr
 #
 def isRepeatedChars(instr):
+	# e.g. See the interactive python result here:
+	'''
+	>>> instr = 'google'
+	>>> repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
+	>>> repchars
+	['g', 'oo', 'g', 'l', 'e']
+	'''
 	repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
 	try:
 		# locate the consecutively repeated characters
@@ -65,19 +73,14 @@ def isRepeatedChars(instr):
 #
 def idxOfRepeatedChars(instr):
 	# Find repeated chracters by converting string into an array of characters
-	# e.g. See the interactive result here:
-	'''
-	>>> instr = 'google'
-	>>> repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
-	>>> repchars
-	['g', 'oo', 'g', 'l', 'e']
-	'''
-	
 	repchars = [s[1] + s[0] for s in re.findall(r'(.)(\1*)', instr)]
 
 	try:
 		# locate the consecutively repeated characters
+		# it should be where length of item is greater than one
+		# e.g. if instr='google', midstr should be 'oo'
 		midstr = [i for i in repchars if len(i) > 1][0]
+
 		if len(midstr) > 0:
 			# find index of this midstr above and its offset
 			mididx = instr.index(midstr)
