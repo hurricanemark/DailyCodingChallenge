@@ -33,20 +33,23 @@ class BSTNode:
 	def add(self, data):
 		if self.data:
 			if data < self.data:
+				# left branches
 				if self.left is None:
 					self.left = BSTNode(data)
 				else:
 					self.left.add(data)
 			elif data > self.data:
+				# right branches
 				if self.right is None:
 					self.right = BSTNode(data)
 				else:
 					self.right.add(data)
 		else:
+			# root
 			self.data = data
 
 	def print_tree(self):
-		# in-order traversal
+		# in-order traversal: left-root-right
 		if self.left:
 			self.left.print_tree()
 		print ("{} ".format(self.data)),
