@@ -18,6 +18,7 @@ Algorithm:
 Input: Root of a binary search tree
 Output: Node of second to right most.
 Psuedo code:
+	Binary Search Tree inherently contains sorted data.
 1.	Write the BST constructor, add function, print function
 2.	We will search for two cases 
 	2.1  If root is None return None
