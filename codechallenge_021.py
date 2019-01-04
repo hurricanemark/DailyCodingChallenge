@@ -18,9 +18,10 @@ Algorithm:
 Input: Root of a binary search tree
 Output: Node of second to right most.
 Psuedo code:
-	We will search for two cases 
-1.  If root is None return None
-2.  If root->right->right is None, return root->data
+1.	Write the BST constructor, add function, print function
+2.	We will search for two cases 
+	2.1  If root is None return None
+	2.2  If root->right->right is None, return root->data
 '''
 
 class BSTNode:
@@ -53,6 +54,9 @@ class BSTNode:
 			self.right.print_tree()
 
 	def get_second_last_right(self):
+		if self.data is None:
+			print(None)
+			return None
 		# traverse only the right sub tree
 		if self.right:
 			if self.right.right is None:
@@ -61,20 +65,27 @@ class BSTNode:
 			self.right.get_second_last_right()
 
 
+def run_test(root):
+	print("Given a binaray search tree having data:")
+	root.print_tree()	
+	print("\nSecond largest value in the BST is:")
+	root.get_second_last_right()
+	
+if __name__ == '__main__':
+	node = BSTNode(8)
+	node.add(5)
+	node.add(7)
+	node.add(9)
+	node.add(10)
+	node.add(17)
+	node.add(19)
+	run_test(node)
+	xNode = BSTNode(None)
+	run_test(xNode)
 
 
-node = BSTNode(8)
-node.add(5)
-node.add(7)
-node.add(9)
-node.add(10)
-node.add(17)
-node.add(19)
 
-print("Given a binaray search tree having data:")
-node.print_tree()	
-print("\nSecond largest value in the BST is:")
-node.get_second_last_right()
+
 '''
 Run-time output:
 ===============
@@ -82,5 +93,9 @@ Given a binaray search tree having data:
 5  7  8  9  10  17  19  
 Second largest value in the BST is:
 17
+Given a binaray search tree having data:
+None  
+Second largest value in the BST is:
+None
 '''
 
