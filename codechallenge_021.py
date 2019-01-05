@@ -59,6 +59,10 @@ class BSTNode:
 			# root
 			self.data = data
 
+
+	#
+	# in-order traversal print
+	#
 	def print_tree(self):
 		# in-order traversal: left-root-right
 		if self.left:
@@ -67,25 +71,70 @@ class BSTNode:
 		if self.right:
 			self.right.print_tree()
 
+	#
+	# breadth first traversal
+	#
 	def get_second_last_right(self):
 		if self.data is None:
 			print(None)
 			return None
-		# traverse only the right sub tree
 		if self.right:
+			# traverse only the right sub tree
 			if self.right.right is None:
 				print(self.data)
+				retNode = self.data
 				return self.data
+			# recursively calling itself to move down the right branch
 			self.right.get_second_last_right()
 
 
-def run_test(root):
-	print("Given a binaray search tree having data:")
+	#
+	# list generator for BST data
+	#
+	def tree_data(self):
+		datalist = []
+		node = self
+		while datalist or node:
+			if node:
+				datalist.append(node)
+				node = node.left
+			else:
+				node = datalist.pop()
+				yield node.data
+				node = node.right			
+#
+# This way of getting the second largest data is 
+# a deviation from the scope of BST question but 
+# it demonstrates the use of generator 
+def test_code():
+	tnode = BSTNode(2)
+	tnode.add(3)
+	tnode.add(4)
+	tnode.add(9)
+	tnode.add(7)
+	data = list(tnode.tree_data())
+	if len(data) > 1:
+		assert data[-2] == 7	
+
+
+def run_test(root, testnum):
+	print("\nTest{}:\nGiven a binaray search tree having data:".format(testnum))
 	root.print_tree()	
 	print("\nSecond largest value in the BST is:")
 	root.get_second_last_right()
 	
 if __name__ == '__main__':
+	tnode = BSTNode(3)
+	tnode.add(2)
+	tnode.add(4)
+	tnode.add(19)
+	tnode.add(7)
+	tnode.add(9)
+	print("Test1:\nGiven a binaray search tree having data:")
+	tnode.print_tree()	
+	data = list(tnode.tree_data())
+	print("\nSecond largest value in the BST is: {}".format(data[-2]))	
+
 	node = BSTNode(8)
 	node.add(5)
 	node.add(7)
@@ -93,9 +142,12 @@ if __name__ == '__main__':
 	node.add(10)
 	node.add(17)
 	node.add(19)
-	run_test(node)
+	run_test(node, 2)
+
 	xNode = BSTNode(None)
-	run_test(xNode)
+	run_test(xNode,3)
+
+
 
 
 
@@ -103,13 +155,34 @@ if __name__ == '__main__':
 '''
 Run-time output:
 ===============
+markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_021.py
+
+Test1:
+Given a binaray search tree having data:
+2  3  4  7  9  19  
+Second largest value in the BST is: 9
+
+Test2:
 Given a binaray search tree having data:
 5  7  8  9  10  17  19  
 Second largest value in the BST is:
 17
+
+Test3:
 Given a binaray search tree having data:
 None  
 Second largest value in the BST is:
 None
+
+
+markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_021.py
+====================================== test session starts ======================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
+collected 1 item
+
+codechallenge_021.py .                                                                    [100%]
+
+=================================== 1 passed in 0.08 seconds ====================================
 '''
 
