@@ -115,14 +115,16 @@ if __name__ == "__main__":
 '''
 Run-time output:
 ===============
-markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_001.py
+
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_001.py
 Test function isSumOfK:
-Elapsed time: 0.250101089478 mili-secs
+Elapsed time: 0.3135204315185547 mili-secs
 
 Test function isSumEqualK  --(one pass solution):
-Elapsed time: 0.0450611114502 mili-secs
+Elapsed time: 0.09489059448242188 mili-secs
 
-markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_001.py
+
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_001.py
 ====================================== test session starts ======================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
 rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
@@ -130,5 +132,5 @@ collected 2 items
 
 codechallenge_001.py ..                                                                   [100%]
 
-=================================== 2 passed in 0.13 seconds ====================================
+=================================== 2 passed in 0.22 seconds ====================================
 '''
