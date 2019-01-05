@@ -65,7 +65,7 @@ def test_BruteForceCode():
 		k = 28
 		assert isSumOfK(nums,k) == True
 		end = time.time()
-		print("Elapsed time: {}".format(end-start))
+		print("Elapsed time: {} mili-secs".format((end-start)*1000))
 
 		nums = random.sample(range(1,1000),50)
 		k=nums[0]+nums[-1] #this ensure the test returns True
@@ -89,7 +89,7 @@ def test_BonusCode():
 		k = 28
 		assert isSumEqualK(nums, k) == True
 		end = time.time()
-		print("Elapsed time: {}".format(end-start))
+		print("Elapsed time: {} mili-secs".format((end-start)*1000))
 
 		k=nums[0]+nums[-1] #this ensures the test returns True
 		assert isSumEqualK(nums, k) == True
@@ -115,21 +115,20 @@ if __name__ == "__main__":
 '''
 Run-time output:
 ===============
-$ python codechallenge-01.py
+markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_001.py
 Test function isSumOfK:
-Elapsed time: 0.000257015228271
+Elapsed time: 0.250101089478 mili-secs
 
 Test function isSumEqualK  --(one pass solution):
-Elapsed time: 4.50611114502e-05
+Elapsed time: 0.0450611114502 mili-secs
 
-
-$ pytest codechallenge-01.py
-========================================= test session starts ==========================================
+markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_001.py
+====================================== test session starts ======================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
-rootdir: /home/markn/devel/py-src/DailyCodeChallenge, inifile:
+rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
 collected 2 items
 
-codechallenge-01.py ..                                                                           [100%]
+codechallenge_001.py ..                                                                   [100%]
 
-======================================= 2 passed in 0.04 seconds =======================================
+=================================== 2 passed in 0.13 seconds ====================================
 '''
