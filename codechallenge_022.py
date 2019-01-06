@@ -60,6 +60,15 @@ def powerlist(s1):
 
 	return powerset
 
+
+#
+# unittest
+# 
+def test_code():
+	s1 = [1,2,3,4,5]
+	assert powerlist(s1) == [{}, {1}, {2}, {3}, {4}, {5}, {1, 2}, {1, 3}, {1, 4}, {1, 5}, {2, 3}, {2, 4}, {2, 5}, {3, 4}, {3, 5}, {4, 5}, {1, 2, 3, 4, 5}]
+
+
 #
 # one-liner output
 #
@@ -93,8 +102,13 @@ Run-time output:
 ===============
 
 (interactive python)
+>>> import codechallenge_022
+>>> str = 'mark'
+>>> codechallenge_022.powerlist(list(str))
+[{}, {'m'}, {'a'}, {'r'}, {'k'}, {'m', 'a'}, {'m', 'r'}, {'m', 'k'}, {'a', 'r'}, {'k', 'a'}, {'k', 'r'}, {'m', 'k', 'a', 'r'}]
+>>>
 >>> s1 = [1,2,3,4,5]
->>> ps = powerlist(s1)
+>>> ps = codechallenge_022.powerlist(s1)
 >>> ps
 [{}, {1}, {2}, {3}, {4}, {5}, {1, 2}, {1, 3}, {1, 4}, {1, 5}, {2, 3}, {2, 4}, {2, 5}, {3, 4}, {3, 5}, {4, 5}, {1, 2, 3, 4, 5}]
 
@@ -116,4 +130,13 @@ Given a set:
 Its powerset:
 [], ['m'], ['a'], ['r'], ['k'], ['m', 'a'], ['r', 'm'], ['k', 'm'], ['r', 'a'], ['k', 'a'], ['r', 'k'], ['r', 'k', 'm', 'a'],
 
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_022.py
+======================================= test session starts ========================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
+collected 1 item
+
+codechallenge_022.py .                                                                       [100%]
+
+===================================== 1 passed in 0.06 seconds =====================================
 '''
