@@ -19,9 +19,10 @@ Psuedo code:
 To maximize the use of real-estate, we want to go extra by placing 
 the most number of queens on the given square NxN board.
 1.  Check for valid input
-2.  Placing the first Queen at (0, N-1) will guarantee each row has a 
-    queen except the N row.  You could trace it out on the board to 
-    prove it to yourself.
+
+2.  Placing the first Queen at (0, N-2) will guarantee each row has a 
+    queen.  See the illustration below.
+
 3.  By deviding the board into lower half and upper half, we can place
     queens as follow:
 
@@ -29,9 +30,9 @@ the most number of queens on the given square NxN board.
     cur_row = 0
     bottom_Queens = [(cur_row, N-2), (cur_row+1, N-2-2), (cur_row+2, N-2-2-2), ...]
 
-	# top half of the board (excluding the top most row):
-	cur_row = N//2
-	top_queens = [(cur_row, N-1), (cur_row+1, N-1-2), (cur_row+1+1, N-1-2-2),...]
+    # top half of the board (excluding the top most row):
+    cur_row = N//2
+    top_queens = [(cur_row, N-1), (cur_row+1, N-1-2), (cur_row+1+1, N-1-2-2),...]
 
 4.  Return number of queens == len(top_queens.append(bottom_queens))
  
