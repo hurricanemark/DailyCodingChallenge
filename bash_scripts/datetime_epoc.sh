@@ -4,7 +4,7 @@
 ##------------------------------------------------##
 # This script takes a list of date-time values and
 # convert each to epoc equivalent.  It then 
-# print out the longest length of time between
+# prints out the longest length of time between
 # any two date-time in the list.
 ##------------------------------------------------##
 # File name: datetime_epoc.sh
