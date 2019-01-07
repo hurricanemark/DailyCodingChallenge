@@ -46,11 +46,11 @@ function find_longest_time()
 {
 	local infile=$1
 	if test -f $infile; then
-    	# read all line in file into an array
-    	IFS=$'\n' read -d '' -r -a std_dt < $infile
+		# read all line in file into an array
+		IFS=$'\n' read -d '' -r -a std_dt < $infile
 
-    	# Explicitly report array content.
-    	let idx=0
+		# Explicitly report array content.
+		let idx=0
 		let MAX=0
 		let MIN=$((X=2**32))
 
