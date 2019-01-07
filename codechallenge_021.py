@@ -32,7 +32,7 @@ and you will be surprised what will come out.  For example, if you initialized
 a list in the print_tree(self) function and append data to it.  The index of
 your list may be recursively retro to zero each time the function called itself.
 Haha!
-(**) When root.data is None.  Is data literally equals to 'None' or null?
+(**) When root.data is None.  Is data literally equal to 'None' or null?
 '''
 
 class BSTNode:
