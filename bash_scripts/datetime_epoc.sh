@@ -54,9 +54,9 @@ function find_longest_time()
 		let MAX=0
 		let MIN=$((X=2**32))
 
-    	if [[ "${#std_dt[@]}" -gt 0 ]]; then
-    		#-- process each line --#
-        	for line in "${std_dt[@]}" ; do
+		if [[ "${#std_dt[@]}" -gt 0 ]]; then
+			#-- process each line --#
+			for line in "${std_dt[@]}" ; do
 				# ignore comment line 
 				[[ "$line" =~ ^#.*$ ]] && continue
 
@@ -64,16 +64,14 @@ function find_longest_time()
 				epoc_dt=$(date --date "${line}" +%s)
 
 				# find max value
-    			if [ ${epoc_dt} -gt $MAX ] ; then
-        			MAX=${epoc_dt}
-    			fi
+				if [ ${epoc_dt} -gt $MAX ] ; then
+					MAX=${epoc_dt}
+				fi
 
 				# find min value
-    			if [ ${epoc_dt} -lt $MIN ] ; then
-        			MIN=${epoc_dt}
-    			fi
-
-				
+				if [ ${epoc_dt} -lt $MIN ] ; then
+					MIN=${epoc_dt}
+				fi
 			done
 			# calculate long length of time between for two set of date-time 
 			DIFF=$(( $MAX - $MIN ))
