@@ -34,7 +34,7 @@ your list may be recursively retro to zero each time the function called itself.
 Haha!
 (**) When root.data is None.  Is data literally equal to 'None' or null?
 '''
-
+from __future__ import print_function
 class BSTNode:
 	def __init__(self, data, right=None, left=None):
 		self.data = data
@@ -67,7 +67,7 @@ class BSTNode:
 		# in-order traversal: left-root-right
 		if self.left:
 			self.left.print_tree()
-		print ("{} ".format(self.data)),
+		print ("{} ".format(self.data), end=''),
 		if self.right:
 			self.right.print_tree()
 
@@ -124,28 +124,23 @@ def run_test(root, testnum):
 	root.get_second_last_right()
 	
 if __name__ == '__main__':
-	tnode = BSTNode(3)
-	tnode.add(2)
-	tnode.add(4)
-	tnode.add(19)
-	tnode.add(7)
-	tnode.add(9)
+	t1node = BSTNode(3)
+	values = [2,4,19,7,9]
+	for num in values:
+		t1node.add(num)
 	print("Test1:\nGiven a binaray search tree having data:")
-	tnode.print_tree()	
-	data = list(tnode.tree_data())
+	t1node.print_tree()	
+	data = list(t1node.tree_data())
 	print("\nSecond largest value in the BST is: {}".format(data[-2]))	
 
-	node = BSTNode(8)
-	node.add(5)
-	node.add(7)
-	node.add(9)
-	node.add(10)
-	node.add(17)
-	node.add(19)
-	run_test(node, 2)
+	t2node = BSTNode(8)
+	values = [5,7,17,9,10,19]
+	for num in values:
+		t2node.add(num)
+	run_test(t2node, 2)
 
-	xNode = BSTNode(None)
-	run_test(xNode,3)
+	t3node = BSTNode(None)
+	run_test(t3node,3)
 
 
 
