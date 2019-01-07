@@ -82,7 +82,6 @@ class BSTNode:
 			# traverse only the right sub tree
 			if self.right.right is None:
 				print(self.data)
-				retNode = self.data
 				return self.data
 			# recursively calling itself to move down the right branch
 			self.right.get_second_last_right()
