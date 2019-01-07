@@ -75,7 +75,7 @@ def test_code():
 	expected = ['the', 'quick', 'brown', 'fox']
 	assert findWord(wList, wStr) == expected
 
-	#test2:  ** I know this test will fail...  will update fix here soon **
+	#test2:  
 	words = ['bed', 'bath', 'bedbath', 'and', 'beyond'] 
 	string = "bedbathandbeyond"
 	expected = ['bed', 'bath', 'and', 'beyond'] 
