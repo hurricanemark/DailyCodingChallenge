@@ -3,7 +3,7 @@
 Sign up for an account at <a href>"https://dailycodingproblem.com"</a> to automatically receive  a daily coding problem in your mail box.
 
 
-This post contains continuous update of my solutions (code snippets).  I try to keep it a consistent activity as a way to keep my mind entertained.  
+This repository contains continuous update of my solutions (code snippets).  I try to keep it a consistent activity as a way to keep my mind entertained.  
 
 ## Coding Practice
 Problem descriptions are here to require understanding before moving ahead!
@@ -13,6 +13,8 @@ The comment section contains date, problem's description follows by my thought o
 
 Codes are here to explain algorithms to the computer.
 The code section usually contains function(s) for addressing the main problem and test_func() written for pytest module.
+In order to optimize, we first take measurement.  Some solutions here also output elapsed runtime if there are multiple 
+ways to implement a solution.
 
 Often, I would recommit updates on individual file with further thoughts, improvement or total rewrite of the solution.
 
