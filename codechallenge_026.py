@@ -78,7 +78,9 @@ def count_life_signs(Board, row, col):
                 continue
     return life_cnt
 
-#
+def my_life_sign(Board, row, col):
+    return 1 if Board[row][col] == '*' else 0
+
 # generate board at initialization
 # and update board after each tick
 #
@@ -87,24 +89,22 @@ def board_gen(*args):
     tick_count = 0
     Board = init_board(args[0], args[1])
     yield Board
-    def inner(*args):
-        while tick_count < ticks:
-            for i in range(len(Board)):
-                for j in range(len(Board[i])):
-                    life_count = count_life_sings(Board, i, j)
-                    if Board[i][j] == '*' and (life_count < 2 or life_count > 3):
-                        Board[i][j] = '.'
-                    if Board[i][j] == '.' and (life_count == 3 or life_count >= 2):
-                        Board[i][j] = '*'
-            yield Board
-            tick_count += 1
-    return inner
+    while tick_count < ticks:
+        for i in range(len(Board)):
+            for j in range(len(Board[i])):
+                life_count = count_life_signs(Board, i, j) - int(my_life_sign(Board, i, j))
+                if life_count < 2 or life_count > 3:
+                    Board[i][j] = '.'
+                if life_count == 3 or life_count == 2:
+                    Board[i][j] = '*'
+        yield Board
+        tick_count += 1
     
 #
 # Altogether now!
 #
-def determine_mortality(Board, row, col):
-    iterB = board_gen(5,5,5)
+def determine_mortality(rows, cols, ticks):
+    iterB = board_gen(rows,cols,ticks)
     for i,board in enumerate(iterB):
         print_board(board,i)
 
@@ -113,11 +113,86 @@ def determine_mortality(Board, row, col):
 
 
 if __name__ == '__main__':
-    Board = init_board(6,6)
-    print_board(Board,0)
-    print("neighbor's lifesign count at (0,0) is {}".format(count_life_signs(Board, 0,0)))
-    print("neighbor's lifesign count at (5,5) is {}".format(count_life_signs(Board, 5,5)))
-    print("neighbor's lifesign count at (0,5) is {}".format(count_life_signs(Board, 0,5)))
-    print("neighbor's lifesign count at (5,0) is {}".format(count_life_signs(Board, 5,0)))
-    print("neighbor's lifesign count at (2,2) is {}".format(count_life_signs(Board, 2,2)))
+    #Board = init_board(6,6)
+    #print_board(Board,0)
+    #print("neighbor's lifesign count at (0,0) is {}".format(count_life_signs(Board, 0,0)))
+    #print("neighbor's lifesign count at (5,5) is {}".format(count_life_signs(Board, 5,5)))
+    #print("neighbor's lifesign count at (0,5) is {}".format(count_life_signs(Board, 0,5)))
+    #print("neighbor's lifesign count at (5,0) is {}".format(count_life_signs(Board, 5,0)))
+    #print("neighbor's lifesign count at (2,2) is {}".format(count_life_signs(Board, 2,2)))
 
+    determine_mortality(5,5,5)
+
+
+
+'''
+Run-time output:
+===============
+[markn@thinksver DailyCodingChallenge]$ python codechallenge_026.py
+Board layout at tick count: 0.
+ * | * | * | * | * |
+
+ * | * | * | * | * |
+
+ * | * | * | * | * |
+
+ * | * | * | * | * |
+
+ * | * | * | * | * |
+
+Board layout at tick count: 1.
+ * | . | . | . | * |
+
+ . | . | . | . | * |
+
+ * | . | . | . | * |
+
+ . | . | . | . | * |
+
+ . | . | . | * | * |
+
+Board layout at tick count: 2.
+ . | . | . | * | * |
+
+ . | . | . | . | * |
+
+ . | . | . | * | * |
+
+ . | . | * | . | . |
+
+ . | . | * | * | . |
+
+Board layout at tick count: 3.
+ . | . | . | * | * |
+
+ . | . | * | . | . |
+
+ . | * | . | * | . |
+
+ . | * | . | * | * |
+
+ . | * | . | * | * |
+
+Board layout at tick count: 4.
+ . | . | * | * | . |
+
+ . | * | . | * | * |
+
+ * | * | . | . | . |
+
+ . | * | . | * | * |
+
+ * | * | . | * | * |
+
+Board layout at tick count: 5.
+ . | * | . | * | * |
+
+ . | * | . | * | * |
+
+ * | * | . | . | . |
+
+ . | . | . | * | * |
+
+ . | . | * | . | * |
+
+'''
