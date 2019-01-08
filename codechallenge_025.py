@@ -44,6 +44,11 @@ if __name__ == '__main__':
 '''
 Run-time output:
 ===============
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_025.py
+Test1:
+Given a list [9, 5, 5, 5, 8, 9, 8, 9, 3, 4, 4, 4]
+The non-duplicate value is 3
+
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_025.py
 ================================ test session starts =================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
@@ -52,4 +57,7 @@ collected 1 item
 
 codechallenge_025.py .                                                         [100%]
 
-============================== 1 passed in 0.03 seconds =============================='''
+============================== 1 passed in 0.03 seconds ==============================
+
+'''
+
