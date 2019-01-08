@@ -59,7 +59,7 @@ def print_board(Board, tick_count):
 #
 # Return count of life_signs from adjacent cells
 #
-def count_life_sings(Board, row, col):
+def count_life_signs(Board, row, col):
     life_cnt = 0
 
     start_row_idx = row-1
@@ -78,7 +78,10 @@ def count_life_sings(Board, row, col):
                 continue
     return life_cnt
 
-
+#
+# generate board at initialization
+# and update board after each tick
+#
 def board_gen(*args):
     ticks = args[2]
     tick_count = 0
@@ -97,9 +100,13 @@ def board_gen(*args):
             tick_count += 1
     return inner
     
-
+#
+# Altogether now!
+#
 def determine_mortality(Board, row, col):
-    pass
+    iterB = board_gen(5,5,5)
+    for i,board in enumerate(iterB):
+        print_board(board,i)
 
 
 
@@ -108,13 +115,9 @@ def determine_mortality(Board, row, col):
 if __name__ == '__main__':
     Board = init_board(6,6)
     print_board(Board,0)
-    print("neighbor's lifesign count at (0,0) is {}".format(count_life_sings(Board, 0,0)))
-    print("neighbor's lifesign count at (5,5) is {}".format(count_life_sings(Board, 5,5)))
-    print("neighbor's lifesign count at (0,5) is {}".format(count_life_sings(Board, 0,5)))
-    print("neighbor's lifesign count at (5,0) is {}".format(count_life_sings(Board, 5,0)))
-    print("neighbor's lifesign count at (2,2) is {}".format(count_life_sings(Board, 2,2)))
+    print("neighbor's lifesign count at (0,0) is {}".format(count_life_signs(Board, 0,0)))
+    print("neighbor's lifesign count at (5,5) is {}".format(count_life_signs(Board, 5,5)))
+    print("neighbor's lifesign count at (0,5) is {}".format(count_life_signs(Board, 0,5)))
+    print("neighbor's lifesign count at (5,0) is {}".format(count_life_signs(Board, 5,0)))
+    print("neighbor's lifesign count at (2,2) is {}".format(count_life_signs(Board, 2,2)))
 
-    iterB = board_gen(5,5,5)
-
-    for i,board in enumerate(iterB):
-        print_board(board,i)
