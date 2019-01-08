@@ -20,7 +20,7 @@ Input: A list of numbers
 Output: An integer represeting the non-duplicate value
 Psuedo code:
 1.  Check for valid input
-2.  Rerurn value from set(list-comprehension) to find element 
+2.  Rerurn value from set(list-comprehension) where element 
     count equals to one
 
 Note:  This is why I love Python!!!
