@@ -30,7 +30,7 @@ def find_non_dup(A=[]):
 	if len(A) == 0:
 		return None
 	non_dup = list(set([x for x in A if A.count(x) == 1]))
-	return non_dup[0]
+	return non_dup[-1]
 
 def test_code():
 	A = [7,3,3,3,7,8,7]
