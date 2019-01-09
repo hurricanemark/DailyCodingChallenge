@@ -18,7 +18,8 @@ Forethoughts:
 ============
 Any puzzle having to do with matrix (i.e. board games) will require manually tracing
 at first hand.  This gives you a chance to visually approach and stratezige a more 
-clever algorithm.  You will find that adjacency can be grouped by identifying the squares surrounding the current coordination.
+clever algorithm.  You will find that adjacency can be grouped by identifying the 
+squares surrounding the current coordinate.
 
 
 Algorithm:
@@ -29,12 +30,13 @@ Psuedo code:
 1.  Check for valid input
 2.  Initilize the board with '*'
 3.  Create function count_life_sign()
-    3.1  Check neighbors from cur_row-1 to cur_row+1 and cur_col-1 to cur_col+1
-         return total number of alive cells      
-4.  Create a generator that yields 
+    Check neighbors from cur_row-1 to cur_row+1 and cur_col-1 to cur_col+1
+    return total number of alive cells      
+4.  Create a function to return 1 if you're alive and 0 otherwise
+5.  Create a generator that yields 
     - the initialized board,
     - the board after each tick (each loop)
-5.  Create a function to print out the board
+6.  Create a function to print out the board
 '''
 
 from __future__ import print_function
@@ -59,7 +61,7 @@ def print_board(Board, tick_count):
 #
 # Return count of life_signs from adjacent cells
 #
-def neighbor_lif_signs(Board, row, col):
+def neighbor_life_signs(Board, row, col):
     life_cnt = 0
 
     start_row_idx = row-1
@@ -99,7 +101,7 @@ def board_gen(*args):
     while tick_count < ticks:
         for i in range(len(Board)):
             for j in range(len(Board[i])):
-                life_count = neighbor_lif_signs(Board, i, j) - int(my_life_sign(Board, i, j))
+                life_count = neighbor_life_signs(Board, i, j) - int(my_life_sign(Board, i, j))
                 if life_count < 2 or life_count > 3:
                     Board[i][j] = '.'
                 if life_count == 3 or life_count == 2:
@@ -116,7 +118,7 @@ def determine_mortality(rows, cols, ticks):
         print("Invalid input.  Please provide rows, coloumns and number of iterations")
 
     iterB = board_gen(rows,cols,ticks)
-    print("Test1:\nGiven board {} by {}, and ticks:{}.".format(rows, cols, ticks))
+    print("Test1:\nGiven board with dimension of {} by {}, and number of ticks: {}.".format(rows, cols, ticks))
     for i,board in enumerate(iterB):
         print_board(board,i)
 
@@ -127,11 +129,11 @@ def determine_mortality(rows, cols, ticks):
 if __name__ == '__main__':
     #Board = init_board(6,6)
     #print_board(Board,0)
-    #print("neighbor's lifesign count at (0,0) is {}".format(neighbor_lif_signs(Board, 0,0)))
-    #print("neighbor's lifesign count at (5,5) is {}".format(neighbor_lif_signs(Board, 5,5)))
-    #print("neighbor's lifesign count at (0,5) is {}".format(neighbor_lif_signs(Board, 0,5)))
-    #print("neighbor's lifesign count at (5,0) is {}".format(neighbor_lif_signs(Board, 5,0)))
-    #print("neighbor's lifesign count at (2,2) is {}".format(neighbor_lif_signs(Board, 2,2)))
+    #print("neighbor's lifesign count at (0,0) is {}".format(neighbor_life_signs(Board, 0,0)))
+    #print("neighbor's lifesign count at (5,5) is {}".format(neighbor_life_signs(Board, 5,5)))
+    #print("neighbor's lifesign count at (0,5) is {}".format(neighbor_life_signs(Board, 0,5)))
+    #print("neighbor's lifesign count at (5,0) is {}".format(neighbor_life_signs(Board, 5,0)))
+    #print("neighbor's lifesign count at (2,2) is {}".format(neighbor_life_signs(Board, 2,2)))
 
     determine_mortality(5,5,5)
 
@@ -140,9 +142,9 @@ if __name__ == '__main__':
 '''
 Run-time output:
 ===============
-[markn@thinksver DailyCodingChallenge]$ python codechallenge_026.py
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_026.py
 Test1:
-Given board 5 by 5, and ticks:5.
+Given board with dimension of 5 by 5, and number of ticks: 5.
 
 Board layout at tick count: 0.
  * | * | * | * | * |
