@@ -112,6 +112,9 @@ def board_gen(*args):
 # Altogether now!
 #
 def determine_mortality(rows, cols, ticks):
+    if rows <= 0 or cols <= 0 or ticks < 0:
+        print("Invalid input.  Please provide rows, coloumns and number of iterations")
+
     iterB = board_gen(rows,cols,ticks)
     print("Test1:\nGiven board {} by {}, and ticks:{}.".format(rows, cols, ticks))
     for i,board in enumerate(iterB):
