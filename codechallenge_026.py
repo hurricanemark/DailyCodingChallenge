@@ -28,8 +28,8 @@ Input: Rows, Columns, N-times
 Output: Matrix at each sequence in N-times
 Psuedo code:
 1.  Check for valid input
-2.  Initilize the board with '*'
-3.  Create function count_life_sign()
+2.  Create a function to initilize the board with '*'
+3.  Create function neighbor_life_signs()
     Check neighbors from cur_row-1 to cur_row+1 and cur_col-1 to cur_col+1
     return total number of alive cells      
 4.  Create a function to return 1 if you're alive and 0 otherwise
@@ -114,6 +114,7 @@ def board_gen(*args):
 # Altogether now!
 #
 def determine_mortality(rows, cols, ticks):
+	# validate input  
     if rows <= 0 or cols <= 0 or ticks < 0:
         print("Invalid input.  Please provide rows, coloumns and number of iterations")
 
@@ -122,18 +123,22 @@ def determine_mortality(rows, cols, ticks):
     for i,board in enumerate(iterB):
         print_board(board,i)
 
-
+# 
+# test neighbor's life sign
+#
+def neighbor_life_sign_test():
+    Board = init_board(6,6)
+	# test edge cases (four corners of the board)
+    print("neighbor's lifesign count at (0,0) is {}".format(neighbor_life_signs(Board, 0,0)))
+    print("neighbor's lifesign count at (5,5) is {}".format(neighbor_life_signs(Board, 5,5)))
+    print("neighbor's lifesign count at (0,5) is {}".format(neighbor_life_signs(Board, 0,5)))
+    print("neighbor's lifesign count at (5,0) is {}".format(neighbor_life_signs(Board, 5,0)))
+	# and an arbitrary point
+    print("neighbor's lifesign count at (2,2) is {}".format(neighbor_life_signs(Board, 2,2)))
 
 
 
 if __name__ == '__main__':
-    #Board = init_board(6,6)
-    #print_board(Board,0)
-    #print("neighbor's lifesign count at (0,0) is {}".format(neighbor_life_signs(Board, 0,0)))
-    #print("neighbor's lifesign count at (5,5) is {}".format(neighbor_life_signs(Board, 5,5)))
-    #print("neighbor's lifesign count at (0,5) is {}".format(neighbor_life_signs(Board, 0,5)))
-    #print("neighbor's lifesign count at (5,0) is {}".format(neighbor_life_signs(Board, 5,0)))
-    #print("neighbor's lifesign count at (2,2) is {}".format(neighbor_life_signs(Board, 2,2)))
 
     determine_mortality(5,5,5)
 
