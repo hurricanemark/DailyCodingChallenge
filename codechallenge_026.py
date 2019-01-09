@@ -116,7 +116,7 @@ def board_gen(*args):
                         Board[i][j] = '*'
 
                 #Any dead cell with exactly three live neighbours becomes a live cell.
-                if Board[i][j] == '.' and life_count == 3:
+                elif Board[i][j] == '.' and life_count == 3:
                     Board[i][j] = '*'
 
         yield Board
