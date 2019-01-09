@@ -78,9 +78,16 @@ def count_life_signs(Board, row, col):
                 continue
     return life_cnt
 
+
+#
+# feel my own pulse
+# return 1 if alive 0 if dead
+#
 def my_life_sign(Board, row, col):
     return 1 if Board[row][col] == '*' else 0
 
+
+#
 # generate board at initialization
 # and update board after each tick
 #
@@ -99,12 +106,14 @@ def board_gen(*args):
                     Board[i][j] = '*'
         yield Board
         tick_count += 1
+
     
 #
 # Altogether now!
 #
 def determine_mortality(rows, cols, ticks):
     iterB = board_gen(rows,cols,ticks)
+    print("Test1:\nGiven board {} by {}, and ticks:{}.".format(rows, cols, ticks))
     for i,board in enumerate(iterB):
         print_board(board,i)
 
@@ -129,6 +138,9 @@ if __name__ == '__main__':
 Run-time output:
 ===============
 [markn@thinksver DailyCodingChallenge]$ python codechallenge_026.py
+Test1:
+Given board 5 by 5, and ticks:5.
+
 Board layout at tick count: 0.
  * | * | * | * | * |
 
