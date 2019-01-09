@@ -97,7 +97,9 @@ def board_gen(*args):
     ticks = args[2]
     tick_count = 0
     Board = init_board(args[0], args[1])
-    yield Board
+
+    yield Board # yield the initialized board on the first iteration
+
     while tick_count < ticks:
         for i in range(len(Board)):
             for j in range(len(Board[i])):
@@ -119,7 +121,7 @@ def board_gen(*args):
                 elif Board[i][j] == '.' and life_count == 3:
                     Board[i][j] = '*'
 
-        yield Board
+        yield Board  #yield the Board at each tick
         tick_count += 1
 
     
