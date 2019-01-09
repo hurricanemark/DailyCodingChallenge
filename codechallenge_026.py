@@ -24,8 +24,8 @@ squares surrounding the current coordinate.
 
 Algorithm:
 =========
-Input: Rows, Columns, N-times
-Output: Matrix at each sequence in N-times
+Input: Rows, Columns, ticks
+Output: Matrix at each sequence in 0 to nth tick
 Psuedo code:
 1.  Check for valid input
 2.  Create a function to initilize the board with '*'
