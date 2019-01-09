@@ -102,10 +102,23 @@ def board_gen(*args):
         for i in range(len(Board)):
             for j in range(len(Board[i])):
                 life_count = neighbor_life_signs(Board, i, j) - int(my_life_sign(Board, i, j))
-                if life_count < 2 or life_count > 3:
-                    Board[i][j] = '.'
-                if life_count == 3 or life_count == 2:
+
+                ##
+                # Note: There might be a chicken-n-egg issue here
+                ##
+                if Board[i][j] == '*':
+                    #Any live cell with less than 2 or more than three live neighbours dies.
+                    if life_count < 2 or life_count > 3:
+                        Board[i][j] = '.'
+                    #Any live cell with 2 or 3 live neighbors remains alive.  
+                    #Ahh, but we don't even need to check it here
+                    if life_count == 3 or life_count == 2:
+                        Board[i][j] = '*'
+
+                #Any dead cell with exactly three live neighbours becomes a live cell.
+                if Board[i][j] == '.' and life_count == 3:
                     Board[i][j] = '*'
+
         yield Board
         tick_count += 1
 
@@ -150,7 +163,6 @@ Run-time output:
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_026.py
 Test1:
 Given board with dimension of 5 by 5, and number of ticks: 5.
-
 Board layout at tick count: 0.
  * | * | * | * | * |
 
@@ -174,47 +186,47 @@ Board layout at tick count: 1.
  . | . | . | * | * |
 
 Board layout at tick count: 2.
+ . | . | . | . | . |
+
+ . | . | . | . | . |
+
+ . | . | . | . | . |
+
  . | . | . | * | * |
 
- . | . | . | . | * |
-
  . | . | . | * | * |
-
- . | . | * | . | . |
-
- . | . | * | * | . |
 
 Board layout at tick count: 3.
+ . | . | . | . | . |
+
+ . | . | . | . | . |
+
+ . | . | . | . | . |
+
  . | . | . | * | * |
 
- . | . | * | . | . |
-
- . | * | . | * | . |
-
- . | * | . | * | * |
-
- . | * | . | * | * |
+ . | . | . | * | * |
 
 Board layout at tick count: 4.
- . | . | * | * | . |
+ . | . | . | . | . |
 
- . | * | . | * | * |
+ . | . | . | . | . |
 
- * | * | . | . | . |
-
- . | * | . | * | * |
-
- * | * | . | * | * |
-
-Board layout at tick count: 5.
- . | * | . | * | * |
-
- . | * | . | * | * |
-
- * | * | . | . | . |
+ . | . | . | . | . |
 
  . | . | . | * | * |
 
- . | . | * | . | * |
+ . | . | . | * | * |
+
+Board layout at tick count: 5.
+ . | . | . | . | . |
+
+ . | . | . | . | . |
+
+ . | . | . | . | . |
+
+ . | . | . | * | * |
+
+ . | . | . | * | * |
 
 '''
