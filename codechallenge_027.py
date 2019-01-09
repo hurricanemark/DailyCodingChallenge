@@ -44,8 +44,8 @@ def getItin(FLIGHTS, START):
 	try:
 		for idx,val in enumerate(FLIGHTS):
 			DEP=[(i,d[0]) for i,d in enumerate(iter(FLIGHTS))]
-			endidx = [list(i)[0] for i in DEP if list(i)[1] == START][-1]
-			ITIN.append(FLIGHTS[endidx])
+			hop_idx = [list(i)[0] for i in DEP if list(i)[1] == START][-1]
+			ITIN.append(FLIGHTS[hop_idx])
 			START = list(ITIN[-1])[1]
 	except IndexError:
 		pass
