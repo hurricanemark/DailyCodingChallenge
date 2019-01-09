@@ -40,6 +40,7 @@ Psuedo code:
 '''
 
 from __future__ import print_function
+import sys
 #
 # Initialize board with '*'
 #
@@ -128,8 +129,15 @@ def board_gen(*args):
 #
 # Altogether now!
 #
-def determine_mortality(rows, cols, ticks):
+def determine_mortality(rows=5, cols=5, ticks=5):
 	# validate input  
+    try:
+        rows = int(rows)
+        cols = int(cols)
+        ticks = int(ticks)
+    except:
+        rows = cols = ticks = 5
+	
     if rows <= 0 or cols <= 0 or ticks < 0:
         print("Invalid input.  Please provide rows, coloumns and number of iterations")
 
@@ -154,9 +162,10 @@ def neighbor_life_sign_test():
 
 
 if __name__ == '__main__':
-
-    determine_mortality(5,5,5)
-
+    # run with commandline arguments.
+    # e.g. python codechallenge_026.py 10 10 5
+    # if nothing passed from commandline, the denerator will use defaults of 5 5 5
+    determine_mortality(*sys.argv[1:])
 
 
 '''
