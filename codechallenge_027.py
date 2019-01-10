@@ -35,6 +35,9 @@ Psuedo code:
 6.  keep doing step4,5 until the available flight list is exhausted
 7.  return the itineray list
 
+After thoughts:
+==============
+I think lexcicographic order has very little meaning in flight itinerary.
 '''
 
 #
