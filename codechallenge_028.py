@@ -28,11 +28,31 @@ Psuedo code:
     -  Change state by decrementing the list index finding sum equals to k
        Append elements to the subset list 
 	-  Call itself until it reaches the base case.
+
 3.  Return the subset list
+
+Alternatively, 
+1.  Check for valid input
+2.  Assume that numbers can appear more than once in the subset,
+	Iterate through the given set and add the number in the cumulative sum
+	Compare cumulative sum to k.  If cumulative sum equals to k return subset
+	Else if cumulaive sum > k return empty set.
+	
+
 '''
 
 import sys
 
+#
+# return subset using recursive calls
+#
+def subset(S, k):
+	pass
+
+#
+# Alternaively, return a subset using some 
+# elements in the given list more than once
+#
 def get_subset(S, k):
 	subset = []
 	if len(S) == 0:
