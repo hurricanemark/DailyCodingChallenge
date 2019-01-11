@@ -119,7 +119,7 @@ def main():
 	s.push(1000)
 	s.push(231)
 	s.push(88)
-	print("After poping twice, push thrice, the content of the stack is {}".format(s.print_stack()))
+	print("After poping twice, pushing thrice, the content of the stack is {}".format(s.print_stack()))
 	print("The size of the stack now is {}".format(s.size()))
 	print("The top element in the stack now is {}".format(s.peek()))
 	print("Max value now is {}".format(s.max()))
