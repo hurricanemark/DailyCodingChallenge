@@ -97,13 +97,13 @@ def test_stack():
 # direct client program
 #
 def main():
-	print("Test1:\nThe followings print the stack content with starting line as bottom and ending line as top of the stack.\n")
+	print("The followings print the stack content with starting line as bottom and ending line as top of the stack.\n")
 	s = Stack()
 	s.push(9)
 	s.push(10)
 	s.push(23)
 	s.push(5)
-	print("Content of the stack is {}".format(s.print_stack()))
+	print("Test1:\nContent of the stack is {}".format(s.print_stack()))
 	s.pop()
 	print("After poping once, the content of the stack is {}".format(s.print_stack()))
 	print("The size of the stack is {}".format(s.size()))
@@ -113,7 +113,7 @@ def main():
 	s.push(99)
 	s.push(55)
 	s.push(1)
-	print("Content of the stack now is {}".format(s.print_stack()))
+	print("\n\nTest2:\nContent of the stack now is {}".format(s.print_stack()))
 	s.pop()
 	s.pop()
 	s.push(1000)
@@ -130,19 +130,23 @@ if __name__ == '__main__':
 Run-time output:
 ===============
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_029.py
-Test1:
 The followings print the stack content with starting line as bottom and ending line as top of the stack.
 
+Test1:
 Content of the stack is 9, 10, 23, 5
 After poping once, the content of the stack is 9, 10, 23
 The size of the stack is 3
 The top element in the stack is 23
 Max value is 23
+
+
+Test2:
 Content of the stack now is 9, 10, 99, 55, 1
 After poping twice, push once, the content of the stack is 9, 10, 99, 1000
 The size of the stack now is 4
 The top element in the stack now is 1000
 Max value now is 1000
+
 
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_029.py
 ==================================== test session starts =====================================
