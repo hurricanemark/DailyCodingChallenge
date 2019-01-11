@@ -23,31 +23,21 @@ Output: A subset of the given list or None
 Assumption: Integers can appear more than one in the output list.
 Psuedo code:
 1.  Check for valid input
-2.  Create a recursive function with 
-    -  Base case: list of length 1
-    -  Change state by decrementing the list index finding sum equals to k
-       Append elements to the subset list 
-	-  Call itself until it reaches the base case.
-
-3.  Return the subset list
-
-Alternatively, 
-1.  Check for valid input
 2.  Assume that numbers can appear more than once in the subset,
 	Iterate through the given set and add the number in the cumulative sum
 	Compare cumulative sum to k.  If cumulative sum equals to k return subset
 	Else if cumulaive sum > k return empty set.
-	
+3.  Return the subset list
 
 '''
 
-import sys
+def cumulativeSum(sub_set):
+	if len(sub_set) == 0:
+		return 0
+	else:
+		return sub_set[0] + cumulativeSum(sub_set[1:])
 
-#
-# return subset using recursive calls
-#
-def subset(S, k):
-	pass
+
 
 #
 # Alternaively, return a subset using some 
@@ -79,7 +69,9 @@ def get_subset(S, k):
 def test_get_subset():
 	S = [12, 1, 61, 5, 9, 2]
 	k = 24
-	assert get_subset(S, k) == [12, 1, 9, 2]
+	s_set = get_subset(S, k)
+	
+	assert cumulativeSum(s_set) == cumulativeSum([12, 1, 9, 2])
 
 	S = []
 	k = 'a'
@@ -94,6 +86,7 @@ def main():
 		print("Test1:\nGiven a set of numbers: [{}] and a number k: {}.".format(\
 			', '.join(str(n) for n in S), k))
 		print("A subset that adds up to k is [{}]".format(' '.join(str(i) for i in s_set)))
+		print("i.e. sum(subset):{}.".format(cumulativeSum(s_set)))
 
 	k = 100
 	s_set = get_subset(S, k)
@@ -101,6 +94,7 @@ def main():
 		print("\nTest2:\nGiven a set of numbers: [{}] and a number k: {}.".format(\
 			', '.join(str(n) for n in S), k))
 		print("A subset that adds up to k is [{}]".format(' '.join(str(i) for i in s_set)))
+		print("i.e. sum(subset):{}.".format(cumulativeSum(s_set)))
 
 if __name__ == '__main__':
 	main()
@@ -113,10 +107,13 @@ Run-time output:
 Test1:
 Given a set of numbers: [12, 1, 5, 9, 2] and a number k: 24.
 A subset that adds up to k is [12 1 9 2]
+i.e. sum(subset):24.
 
 Test2:
 Given a set of numbers: [12, 1, 5, 9, 2] and a number k: 100.
 A subset that adds up to k is [12 1 5 9 2 12 1 5 9 2 12 1 5 9 2 12 1]
+i.e. sum(subset):100.
+
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_028.py
 ===================================== test session starts ======================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
@@ -124,6 +121,6 @@ rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
 collected 1 item
 
 codechallenge_028.py .                                                                   [100%]
-
 =================================== 1 passed in 0.03 seconds ===================================
+
 '''
