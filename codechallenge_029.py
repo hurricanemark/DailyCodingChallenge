@@ -117,7 +117,9 @@ def main():
 	s.pop()
 	s.pop()
 	s.push(1000)
-	print("After poping twice, push once, the content of the stack is {}".format(s.print_stack()))
+	s.push(231)
+	s.push(88)
+	print("After poping twice, push thrice, the content of the stack is {}".format(s.print_stack()))
 	print("The size of the stack now is {}".format(s.size()))
 	print("The top element in the stack now is {}".format(s.peek()))
 	print("Max value now is {}".format(s.max()))
@@ -142,9 +144,9 @@ Max value is 23
 
 Test2:
 Content of the stack now is 9, 10, 99, 55, 1
-After poping twice, push once, the content of the stack is 9, 10, 99, 1000
-The size of the stack now is 4
-The top element in the stack now is 1000
+After poping twice, push thrice, the content of the stack is 9, 10, 99, 1000, 231, 88
+The size of the stack now is 6
+The top element in the stack now is 88
 Max value now is 1000
 
 
