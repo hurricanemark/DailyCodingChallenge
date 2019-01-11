@@ -144,7 +144,7 @@ Max value is 23
 
 Test2:
 Content of the stack now is 9, 10, 99, 55, 1
-After poping twice, push thrice, the content of the stack is 9, 10, 99, 1000, 231, 88
+After poping twice, pushing thrice, the content of the stack is 9, 10, 99, 1000, 231, 88
 The size of the stack now is 6
 The top element in the stack now is 88
 Max value now is 1000
