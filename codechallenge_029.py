@@ -25,8 +25,8 @@ Implement stack methods using list.
 2.  Implement push method to "prepend" element onto the stack
 3.  Implement pop method to pop element from the "list"
 4.  Implement method to return max value in the stack 
-	-  Check if stack is not empty,
-	-  For stack size, peek - pop - peek until max value is found
+	-  Check if stack is not empty, try, except - raise
+	-  For stack size, loop the iterable until max value is found
 	-  Return max value
 To achieve constant time, each method is implemented inside the class method.
 '''
