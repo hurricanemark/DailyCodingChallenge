@@ -47,7 +47,7 @@ class Stack:
 	def print_stack(self):
 		return ', '.join(str(val) for val in self.items)
  
-	def max(self, key=None):
+	def max(self):
 		# generate an iterable
 		iteritems = iter(self.items)
 
@@ -56,17 +56,9 @@ class Stack:
 		except StopIteration:
 			raise ValueError("max() called with no value")
 
-		if key is None:               # use the pre-assign max value
-			for val in iteritems:
-				if val > max_val:
-					max_val = val
-		else:
-			maxkey_val = key(max_val) # use the pass-in key value as key comparision
-			for val in iteritems:
-				keyval = key(val)
-				if keyval > max_val:
-					max_val = val
-					maxkey_val = keyval
+		for val in iteritems:
+			if val > max_val:
+				max_val = val
 		return max_val	
 
 '''
@@ -123,6 +115,7 @@ def main():
 	print("The size of the stack now is {}".format(s.size()))
 	print("The top element in the stack now is {}".format(s.peek()))
 	print("Max value now is {}".format(s.max()))
+
 
 
 if __name__ == '__main__':
