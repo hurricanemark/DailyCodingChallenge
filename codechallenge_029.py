@@ -69,6 +69,11 @@ class Stack:
 					maxkey_val = keyval
 		return max_val	
 
+'''
+Run-time output:
+===============
+
+'''
 #
 # unittest module
 #
@@ -118,3 +123,33 @@ def main():
 	print("Max value now is {}".format(s.max()))
 
 main()
+
+'''
+Run-time output:
+===============
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_029.py
+Test1:
+The followings print the stack content with starting line as bottom and ending line as top of the stack.
+
+Content of the stack is 9, 10, 23, 5
+After poping once, the content of the stack is 9, 10, 23
+The size of the stack is 3
+The top element in the stack is 23
+Max value is 23
+Content of the stack now is 9, 10, 99, 55, 1
+After poping twice, push once, the content of the stack is 9, 10, 99, 1000
+The size of the stack now is 4
+The top element in the stack now is 1000
+Max value now is 1000
+
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_029.py
+==================================== test session starts =====================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
+collected 1 item
+
+codechallenge_029.py .                                                                 [100%]
+
+================================== 1 passed in 0.09 seconds ==================================
+
+'''
