@@ -39,7 +39,10 @@ class Stack:
 	def push(self, item):
 		self.items.append(item) # use the convention of end means top
 	def pop(self):
-		return self.items.pop()
+		try:
+			return self.items.pop()
+		except IndexError:
+			return None
 	def size(self):
 		return len(self.items)
 	def peek(self):
@@ -55,6 +58,7 @@ class Stack:
 			max_val = next(iteritems) # assign the first value as the max value
 		except StopIteration:
 			raise ValueError("max() called with no value")
+			return None
 
 		for val in iteritems:
 			if val > max_val:
