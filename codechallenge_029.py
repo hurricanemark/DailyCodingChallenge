@@ -122,7 +122,9 @@ def main():
 	print("The top element in the stack now is {}".format(s.peek()))
 	print("Max value now is {}".format(s.max()))
 
-main()
+
+if __name__ == '__main__':
+	main()
 
 '''
 Run-time output:
