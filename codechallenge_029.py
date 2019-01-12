@@ -28,9 +28,11 @@ Implement stack methods using list.
 	-  Check if stack is not empty, try, except - raise
 	-  For stack size, loop the iterable until max value is found
 	-  Return max value
-To achieve constant time, each method is implemented inside the class method.
+To achieve constant time, the max method would make use of max(list) function.
 '''
 
+
+import time
 class Stack:
 	def __init__(self):
 		self.items = []
@@ -47,10 +49,21 @@ class Stack:
 		return len(self.items)
 	def peek(self):
 		return self.items[len(self.items)-1]
+	def peek_top(self):
+		return self.items[0]
 	def print_stack(self):
 		return ', '.join(str(val) for val in self.items)
- 
+
+	# return max value in constant time
 	def max(self):
+		try:
+			return max(self.items)
+		except:
+			raise ValueError("null data")
+			return None	
+
+	# return max value in O(n), N time	 
+	def mad_max(self):
 		# generate an iterable
 		iteritems = iter(self.items)
 
@@ -65,11 +78,6 @@ class Stack:
 				max_val = val
 		return max_val	
 
-'''
-Run-time output:
-===============
-
-'''
 #
 # unittest module
 #
@@ -88,6 +96,23 @@ def test_stack():
 	S.push(21)
 	assert S.peek() == 21
 	assert S.max() == 100
+
+
+#
+# generate a stack containing fibonacci sequence for testing
+#
+def fibon(n):
+	if n <= 1:
+		return n
+	else:
+		return fibon(n-1) + fibon(n-2)
+def gen_stack(n):
+	S = Stack()
+	for i in range(n):
+		S.push(fibon(i))
+	return S
+
+
 
 #
 # direct client program
@@ -120,6 +145,19 @@ def main():
 	print("The top element in the stack now is {}".format(s.peek()))
 	print("Max value now is {}".format(s.max()))
 
+	# timing test between constant space max() and mad_max() 
+	s = gen_stack(15)
+	print("\nTest3:(run-time test)\nContent of the stack is {}".format(s.print_stack()))
+	s_time = time.time()
+	print("Using max() method, max value is {}".format(s.max()))
+	e_time = time.time()
+	print("Elapsed time is {} secs".format((e_time - s_time)*1000))
+
+	s_time = time.time()
+	print("\nUsing mad_max() method, max value is {}".format(s.mad_max()))
+	e_time = time.time()
+	print("Elapsed time is {} secs".format((e_time - s_time)*1000))
+
 
 
 if __name__ == '__main__':
@@ -145,6 +183,14 @@ After poping twice, pushing thrice, the content of the stack is 9, 10, 99, 1000,
 The size of the stack now is 6
 The top element in the stack now is 88
 Max value now is 1000
+
+Test3:(run-time test)
+Content of the stack is 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377
+Using max() method, max value is 377
+Elapsed time is 0.03933906555175781 secs
+
+Using mad_max() method, max value is 377
+Elapsed time is 0.05364418029785156 secs
 
 
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_029.py
