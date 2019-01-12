@@ -28,7 +28,7 @@ def bruteforce_inversion_count(L=[]):
 		return None
 	cnt = 0
 	for i in range(len(L)):
-		for j in range(i, len(L)):
+		for j in range(i+1, len(L)):
 			if L[i] > L[j]:
 				cnt +=1
 	return cnt
