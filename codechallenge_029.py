@@ -166,7 +166,7 @@ def main():
 	print("The top element in the stack now is {}".format(s.peek()))
 	print("Max value now is {}".format(s.max()))
 
-	# timing test between constant space max() and mad_max() 
+	# timing test between constant time max() and variable time mad_max() 
 	s = gen_stack(15)
 	print("\nTest3:(run-time test)\nContent of the stack is {}".format(s.print_stack()))
 	s_time = time.time()
