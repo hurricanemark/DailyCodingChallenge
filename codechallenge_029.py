@@ -29,6 +29,22 @@ Implement stack methods using list.
 	-  For stack size, loop the iterable until max value is found
 	-  Return max value
 To achieve constant time, the max method would make use of max(list) function.
+
+
+After thoughts:
+==============
+Remember the trick question on reversing the string?
+We automatically thought of the reversed(list) method.  
+Now, think of how the stack s applied in solving it.
+e.g.  
+s.push('I')
+s.push('am'
+s.push('groot')
+while not s.isEmpty():
+	print(s.pop())
+
+The output would be the reversed string: 'groot am I'.
+
 '''
 
 
