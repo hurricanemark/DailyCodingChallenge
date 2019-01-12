@@ -44,12 +44,11 @@ s.push('groot')
 while not s.isEmpty():
 	print(s.pop())
 
-# master Yoda speech:
+The output would be the reversed string: 'groot am I'.
+Hmm, someone should build a master Yoda speech function:
 s.push('groot')
 s.push('are')
 s.push('you')
-
-The output would be the reversed string: 'groot am I'.
 
 '''
 
