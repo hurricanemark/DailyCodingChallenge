@@ -42,7 +42,8 @@ def fast_inversion_count(L=[]):
 	if len(L) == 0:
 		return None
 	#print("DBUG-- L:{}".format(', '.join(str(i) for i in L)))
-	inv_lst = [(j,k) for idx1,j in enumerate(L) for idx2,k in enumerate(L[1:]) if j>k and idx1<=idx2]
+
+	inv_lst = [(j, k) for idx1, j in enumerate(L) for idx2, k in enumerate(L[1:]) if j > k and idx1 <= idx2]
 	#print("DBUG-- inv_lst:{}".format(', '.join(str(i) for i in inv_lst)))
 	return len(inv_lst)
 	
