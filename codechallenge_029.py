@@ -37,11 +37,17 @@ Remember the trick question on reversing the string?
 We automatically thought of the reversed(list) method.  
 Now, think of how the stack s applied in solving it.
 e.g.  
+s = Stack()
 s.push('I')
 s.push('am'
 s.push('groot')
 while not s.isEmpty():
 	print(s.pop())
+
+# master Yoda speech:
+s.push('groot')
+s.push('are')
+s.push('you')
 
 The output would be the reversed string: 'groot am I'.
 
