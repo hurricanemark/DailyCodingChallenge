@@ -106,15 +106,13 @@ def test_stack():
 	#init
 	S = Stack()
 	assert S.isEmpty() == True
-	S.push(11)
-	S.push(19)
-	S.push(100)
+	A = [11,19,100]
+	[S.push(i) for i in A] # push items in the array A onto stack S
 	assert S.size() == 3
 	S.pop()
 	assert S.print_stack() == "11, 19"
-	S.push(100)
-	S.push(3)
-	S.push(21)
+	A = [100, 3, 21]
+	[S.push(i) for i in A] # push items in the array A onto stack S
 	assert S.peek() == 21
 	assert S.max() == 100
 
@@ -130,7 +128,7 @@ def fibon(n):
 def gen_stack(n):
 	S = Stack()
 	for i in range(n):
-		S.push(fibon(i))
+		S.push(fibon(i))  # push the fibo value onto the stack
 	return S
 
 
@@ -141,10 +139,9 @@ def gen_stack(n):
 def main():
 	print("The followings print the stack content with starting line as bottom and ending line as top of the stack.\n")
 	s = Stack()
-	s.push(9)
-	s.push(10)
-	s.push(23)
-	s.push(5)
+	lst = [9, 10, 23, 5]
+	[s.push(i) for i in lst] # push values in array lst onto the stack s
+
 	print("Test1:\nContent of the stack is {}".format(s.print_stack()))
 	s.pop()
 	print("After poping once, the content of the stack is {}".format(s.print_stack()))
@@ -152,15 +149,13 @@ def main():
 	print("The top element in the stack is {}".format(s.peek()))
 	print("Max value is {}".format(s.max()))
 	s.pop()
-	s.push(99)
-	s.push(55)
-	s.push(1)
+	lst = [99, 55, 1]
+	[s.push(i) for i in lst] # push values in array lst onto the stack s
+
 	print("\n\nTest2:\nContent of the stack now is {}".format(s.print_stack()))
-	s.pop()
-	s.pop()
-	s.push(1000)
-	s.push(231)
-	s.push(88)
+	[s.pop() for _ in range(2)] # do two popings
+	lst = [1000, 231, 88]
+	[s.push(i) for i in lst] # push values in array lst onto the stack s
 	print("After poping twice, pushing thrice, the content of the stack is {}".format(s.print_stack()))
 	print("The size of the stack now is {}".format(s.size()))
 	print("The top element in the stack now is {}".format(s.peek()))
