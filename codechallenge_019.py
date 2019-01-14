@@ -102,9 +102,9 @@ def palindrome(func):
 		ret = False
 		for i in range(mididx):
 			if instr[i] == instr[-1 + (i * -1)]:
-				ret = True
+				ret  = True
 			else:
-				ret = False
+				return False
 		return ret
 	return inner
 		
@@ -190,6 +190,12 @@ if __name__ == '__main__':
 	print("Validate palindrome string: \'{}\' as {}.".format(PalindStr, isValidPalindrome(PalindStr)))
 
 	A='ABBA'
+	print("\nTest3:\nInput: {}".format(A))
+	PalindStr = getPalindrome(A)
+	print("Output: {}".format(PalindStr))
+	print("Validate palindrome string: \'{}\' as {}.".format(PalindStr, isValidPalindrome(PalindStr)))
+
+	A='bananas'
 	print("\nTest3:\nInput: {}".format(A))
 	PalindStr = getPalindrome(A)
 	print("Output: {}".format(PalindStr))
