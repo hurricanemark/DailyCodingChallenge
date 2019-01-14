@@ -18,7 +18,23 @@ Write an efficient algorithm for the following assumptions:
 
         N is an integer within the range [1..2,147,483,647].
 
+
+Algorithm:
+==========
+Input: An integer
+Output: An integer
+
+Pseudo code:
+
+1.  Check for valid input
+2.  Convert integer into binary string
+3.  Trim both ends of the string of any 0's
+4.  Count the number of '1'
+	if count('1') is 2, return count('0')
+	else, split the binary string into groups of 0's
+	and return the greater count(group('0'))
 '''
+
 from __future__ import print_function
 def solution(N):
 	b = bin(N)[2:]
