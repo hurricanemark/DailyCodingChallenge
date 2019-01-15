@@ -44,6 +44,7 @@ def all_palindromes(instr):
 
     while start < end-1:
         temp = instr[start:j] #Time complexity O(k)
+		#print("DBUG-- {}".format(temp))
         j-=1
 
         if isPalindrome(temp):
