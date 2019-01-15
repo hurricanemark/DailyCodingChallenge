@@ -33,9 +33,9 @@ To achieve constant time, the max method would make use of max(list) function.
 
 After thoughts:
 ==============
-(*) Note that the difference between stack and queue is when we can decide
+(*) Note that the difference between stack and queue is when decide
 the order (LIFO or FIFO) in which items are push/enqueue and pop/dequeue.  
-is FIFO.  Really, the only method needs to be differentiate is push/enqueue 
+Really, the only method needs to be differentiated is push/enqueue 
 in O(1)/O(n) complexity.
 i.e.
 	#LIFO 
