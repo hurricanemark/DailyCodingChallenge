@@ -43,6 +43,9 @@ i.e.
 
 	#FIFO
 	def enqueue(self, item): self.items.insert(0, item)
+If you could picture standing up an array, you'd see a stack.  Leave it lying
+horizontally, you'd see a queue.
+
 
 (**) Remember the trick question on reversing the string?
 We automatically thought of the reversed(list) method.  
