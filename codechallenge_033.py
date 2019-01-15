@@ -54,7 +54,10 @@ def profit(price_list=[]):
 	profit = sellPrice - buyPrice
 
 	# verbish
-	print("For maximum profit we buy at {} and sell at {} for the profit of {}.".format(buyPrice, sellPrice, profit))
+	if profit > 0:
+		print("For maximum profit we buy at {} and sell at {} for the profit of {}.".format(buyPrice, sellPrice, profit))
+	else:
+		print("We bought at {}, We haven't sold it yet.  Price is still equaled or lower than the invested capital.".format(buyPrice, profit=0))
 	
 	# return profit
 	return int(profit)
@@ -75,6 +78,10 @@ def main():
 	print("Test1:\nGiven progressing stock prices {}".format('->'.join(str(i) for i in stock_prices)))
 	profit(stock_prices)
 
+	stock_prices = [157 , 160, 99, 88, 77, 66, 66, 66]
+	print("Test2:\nGiven progressing stock prices {}".format('->'.join(str(i) for i in stock_prices)))
+	profit(stock_prices)
+
 if __name__ == '__main__':
 	main()
 
@@ -85,6 +92,9 @@ Run-time output:
 Test1:
 Given progressing stock prices 9->11->8->5->7->10
 For maximum profit we buy at 5 and sell at 10 for the profit of 5.
+Test2:
+Given progressing stock prices 157->160->99->88->77->66->66->66
+We bought at 66, We haven't sold it yet.  Price is still equaled or lower than the invested capital.
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_033.py
 =============================== test session starts ===============================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
@@ -93,5 +103,6 @@ collected 1 item
 
 codechallenge_033.py .                                                      [100%]
 
-============================ 1 passed in 0.12 seconds =============================
+============================ 1 passed in 0.06 seconds =============================
+
 '''
