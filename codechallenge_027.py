@@ -35,12 +35,35 @@ Psuedo code:
 6.  keep doing step4,5 until the available flight list is exhausted
 7.  return the itineray list
 
+
 After thoughts:
 ==============
-I think lexcicographic order has very little meaning in flight itinerary.
+The solution above is not exacly what the task asks for.
+Need to write lexicoItinerary().
 '''
 
+import itertools
+
+
+def lexicoItinerary(FLIGHTS, START):
+    DEP=[(i,d[0]) for i,d in enumerate(iter(FLIGHTS))]
+    iterFts = itertools.combinations_with_replacement(DEP, 2)
+    templist = []
+    for flight in iterFts:
+        templist.append(i)
+    DEST = [list(i)[0] for i in DEP if list(i)[1] == START]
+
+    # figure out the shortest path of connecting flights
+    shortest_itin = []
+    max_len = int(2**32)
+    for itin in templist:
+	if len(itin) < max_len:
+		shortest_itin = itin
+		max_len = len(shortest_itin)
+    return shortest_itin
+
 #
+# (Real world application)
 # return list of connecting flights
 #
 def getItin(FLIGHTS, START):
