@@ -8,7 +8,7 @@ This repository contains continuous update of my solutions (code snippets).  I t
 ## Coding Practice
 Problem descriptions are here to require understanding before moving ahead!
 
-Comments are here to explain code to other programmers, better yet, to the future me.
+Comments are here to explain code to other programmers, better yet, as notes to my future self.
 The comment section contains date, problem's description follows by my thought on computation flow and pseudo code.
 
 Codes are here to explain algorithms to the computer.
