@@ -25,8 +25,8 @@ Topdown tasks:
 	1. Retrieve
 	2. Parse
 	3. Evaluate
-	Here, we have to construct the tree, fill it before we can get the anser out.
-	1. Construct
+	Here, we have to construct the tree, fill it before we can get the answer out.
+	1. Construct class Tree
 	2. Fill
 	3. Retrieve
 	4. Parse
