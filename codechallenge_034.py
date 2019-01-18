@@ -51,7 +51,7 @@ def kadane_largest_sum(arr=[]):
 #
 # Feed each sub array into the Kadane function 
 # return highest sum among the sub arrays 
-# O(n**2)
+# O(n)
 #
 def highest_sum(arr=[]):
     start,end=0,len(arr)
