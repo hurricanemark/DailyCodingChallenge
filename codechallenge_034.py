@@ -23,7 +23,7 @@ Output: An integer
 Pseudo code:
 1.  Check for valid input
 2.  Write a function to return the sum of elements in a contiguous sub array.
-    if the sum is less than 0, return 0.  (I had to look up the Kadane's algorithm for this task)!
+    if the sum is less than 0, return 0.  (I looked up at the Kadane's algorithm for this task and it made just a bit of sense)!
 3.  Write a main function that take a given array of numbers and iterate though
     to producw sub arrays.  Feed each sub array to the function in step2 and keep
     track of the returned sum.
@@ -47,7 +47,7 @@ def culmulative_sum(arr=[]):
         return cur_sum
 
 #
-# Feed each sub array into the Kadane function 
+# Feed each sub array into the cumulative_sum function 
 # return highest sum among the sub arrays 
 # O(n)
 #
