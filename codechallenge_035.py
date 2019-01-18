@@ -38,12 +38,68 @@ Output: A numer
 Pseudo code:
 1.  Construct a root tree class including insert method
 2.  Write a function to traverse and return a string representing the mathematical expression
-3.  Import modules SymPy
+3.  Import modules SymPy [https://docs.sympy.org/latest/tutorial/manipulation.html#understanding-expression-trees]
 4.  Write a function to evaluate the string expression
 
 '''            
 
 import sympy
+
+class Tree:
+    def __init__(self, item, left=None, right=None):
+        self.item = item
+        self.right = right
+        self.left = left
+
+    def insert(self, item, ):
+        if self.item:
+            # left branches
+            if self.left is None:
+                self.left = Tree(item)
+            else:
+                self.left.insert(item)
+
+            # right branches
+            if self.right is None:
+                self.right = Tree(item)
+            else:
+                self.right.insert(item)
+
+        else:
+            # root
+            self.item = item
+
+
+    def tree_to_str(self, mystr=""):
+        if self.left:
+            self.left.tree_to_str(mystr)
+        mystr += str(self.item)
+        if self.right:
+            self.right.tree_to_str(mystr)
+
+        return mystr
+
+        
+def parse_assemble_str(mystr):
+    # expect mystr === 3+4*5+6
+    # transform to subs = {a:3, b:4, c:5, d:6}
+    # and ops = "(a + b) * (c + d)"
+    s_cnt = 0
+    o_cnt = 0
+    symbols = "abcdefghijklmnopqrstuvwxyz"
+    sub_str = ""
+    for char in mystr:
+        if char.isdigit():
+            sub_str += symbols[s_cnt]
+            sub_str += ':'
+            sub_str += str(char)
+            sub_str += ','
+            s_cnt += 1
+        if char.ispace:
+            pass
+        if char.isalpha():
+            ops_str += str(char) + symbols[o_cnt]
+    sub_str
 
 def demo_eval_expr(my_expr=[]):
 
@@ -56,4 +112,11 @@ def demo_eval_expr(my_expr=[]):
 	return int(sympy.sympify("(a + b) * (c + d)").evalf(subs={a:2, b:5, c:3, d:9})) 
 
 print(demo_eval_expr())
-
+EXPR=Tree('*')
+EXPR.insert(3)
+EXPR.insert('+')
+EXPR.insert(4)
+EXPR.insert(5)
+EXPR.insert('+')
+EXPR.insert(6)
+print(EXPR.tree_to_str())
