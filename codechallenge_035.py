@@ -21,7 +21,7 @@ Algorithm:
 Assume the tree is not ballanced.  Hence, expect expressions such as 3*4+5 or 3-2+4+5 or 3*4+5*6. 
 The root determines where to place the parenthesis.
 Topdown tasks: 
-	On whiteboard, make the assumption that the rooted exists (to save time)
+	On whiteboard, make the assumption that the rooted tree exists (to save time)
 	1. Retrieve
 	2. Parse
 	3. Evaluate
