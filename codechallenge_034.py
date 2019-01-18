@@ -33,20 +33,18 @@ Pseudo code:
 '''
 
 
-# 
-# The Kadane's way
-# O(n)
+
 #
-def kadane_largest_sum(arr=[]):
+# return cumulative sum of elements in the array
+#
+def culmulative_sum(arr=[]):
     if len(arr) == 0:
         return 0
     else:
-        largest_sum = cur_sum = arr[0]
+        cur_sum = arr[0]
         for i in arr[1:]:
             cur_sum += i
-            if largest_sum < cur_sum:
-                largest_sum = cur_sum
-        return largest_sum
+        return cur_sum
 
 #
 # Feed each sub array into the Kadane function 
@@ -63,7 +61,7 @@ def highest_sum(arr=[]):
         print("DBUG--(sub array): {}".format(subarr))
         j-=1
 
-        new_sum = kadane_largest_sum(subarr)
+        new_sum = culmulative_sum(subarr)
         if sum_so_far < int(new_sum):
             sum_so_far = int(new_sum)
 
@@ -73,12 +71,19 @@ def highest_sum(arr=[]):
 
     return sum_so_far
 
+#
+# unittest
+#
 def test_highest_sum():
     A = [34, -50, 42, 14, -5, 86]
     assert highest_sum(A) == 137
     A = [-5, -1, -8, -9, -19]
     assert highest_sum(A) == 0
 
+
+#
+# client programm
+#
 def main():
     A = [34, -50, 42, 14, -5, 86]
     print("\n\nTest1:\nGiven an array of [{}]".format(', '.join(str(i) for i in A)))
@@ -89,6 +94,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 '''
 Run-time output:
