@@ -73,12 +73,19 @@ def highest_sum(arr=[]):
 
     return sum_so_far
 
+def test_highest_sum():
+    A = [34, -50, 42, 14, -5, 86]
+    assert highest_sum(A) == 137
+    A = [-5, -1, -8, -9, -19]
+    assert highest_sum(A) == 0
 
 def main():
     A = [34, -50, 42, 14, -5, 86]
-    print("\n\nTest1:\nGiven an array of [{}]\nThe largest sum of its contiguous subarrays is {}".format(', '.join(str(i) for i in A), highest_sum(A)))
+    print("\n\nTest1:\nGiven an array of [{}]".format(', '.join(str(i) for i in A)))
+    print("The largest sum of its contiguous subarrays is {}".format(highest_sum(A)))
     A = [-5, -1, -8, -9]
-    print("\nTest2:\nGiven an array of [{}]\nThe largest sum of its contiguous subarrays is {}".format(', '.join(str(i) for i in A), highest_sum(A)))
+    print("\n\nTest2:\nGiven an array of [{}]".format(', '.join(str(i) for i in A)))
+    print("The largest sum of its contiguous subarrays is {}".format(highest_sum(A)))
 
 if __name__ == '__main__':
     main()
@@ -86,8 +93,11 @@ if __name__ == '__main__':
 '''
 Run-time output:
 ===============
-
 (DailyCodingChallenge-w82MASqp) markn@u17101vaio:~/devel/python-prj/DailyCodingChallenge$ python codechallenge_034.py 
+
+
+Test1:
+Given an array of [34, -50, 42, 14, -5, 86]
 DBUG--(sub array): [34, -50, 42, 14, -5, 86]
 DBUG--(sub array): [34, -50, 42, 14, -5]
 DBUG--(sub array): [34, -50, 42, 14]
@@ -103,20 +113,26 @@ DBUG--(sub array): [42, 14]
 DBUG--(sub array): [14, -5, 86]
 DBUG--(sub array): [14, -5]
 DBUG--(sub array): [-5, 86]
-
-
-Test1:
-Given an array of [34, -50, 42, 14, -5, 86]
 The largest sum of its contiguous subarrays is 137
+
+
+Test2:
+Given an array of [-5, -1, -8, -9]
 DBUG--(sub array): [-5, -1, -8, -9]
 DBUG--(sub array): [-5, -1, -8]
 DBUG--(sub array): [-5, -1]
 DBUG--(sub array): [-1, -8, -9]
 DBUG--(sub array): [-1, -8]
 DBUG--(sub array): [-8, -9]
-
-Test2:
-Given an array of [-5, -1, -8, -9]
 The largest sum of its contiguous subarrays is 0
+(DailyCodingChallenge-w82MASqp) markn@u17101vaio:~/devel/python-prj/DailyCodingChallenge$ pytest codechallenge_034.py 
+===================================== test session starts =====================================
+platform linux -- Python 3.6.4, pytest-4.0.2, py-1.7.0, pluggy-0.8.0
+rootdir: /home/markn/devel/python-prj/DailyCodingChallenge, inifile:
+collected 1 item                                                                              
+
+codechallenge_034.py .                                                                  [100%]
+
+================================== 1 passed in 0.02 seconds ===================================
 
 '''
