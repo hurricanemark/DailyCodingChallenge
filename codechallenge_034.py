@@ -22,36 +22,101 @@ Output: An integer
 
 Pseudo code:
 1.  Check for valid input
-2.  Write a generator to yield all sub arrays from the given array
-3.  Write a function that take a sub array of numbers and iterate though
-    determine if the direction of flow from items[1]..items[len(items)-2] is uni-directional.
-	if yes, sum them up.  Keep the sum value in an array.
-4.  return max(sum_array)
+2.  Write a function to return the sum of elements in a contiguous sub array.
+    if the sum is less than 0, return 0.  (I had to look up the Kadane's algorithm for this task)!
+3.  Write a main function that take a given array of numbers and iterate though
+    to producw sub arrays.  Feed each sub array to the function in step2 and keep
+    track of the returned sum.
+    if the returned sum if larger, sum is now the new sum.
+4.  return sum
  
 '''
 
 
-def isContiguous(arr=[]):
-	pass
+# 
+# The Kadane's way
+# O(n)
 #
-# return all sub arrays 
+def kadane_largest_sum(arr=[]):
+    if len(arr) == 0:
+        return 0
+    else:
+        largest_sum = cur_sum = arr[0]
+        for i in arr[1:]:
+            cur_sum += i
+            if largest_sum < cur_sum:
+                largest_sum = cur_sum
+        return largest_sum
+
 #
-def all_subarrays(arr=[]):
+# Feed each sub array into the Kadane function 
+# return highest sum among the sub arrays 
+# O(n**2)
+#
+def highest_sum(arr=[]):
     start,end=0,len(arr)
     j=end
-    results=[]
+    sum_so_far = 0
 
     while start < end-1:
-        temp = arr[start:j] #Time complexity O(k)
-        #print("DBUG-- {}".format(temp))
+        subarr = arr[start:j] 
+        print("DBUG--(sub array): {}".format(subarr))
         j-=1
 
-        if isContiguous(temp):
-            results.append(temp)
+        new_sum = kadane_largest_sum(subarr)
+        if sum_so_far < int(new_sum):
+            sum_so_far = int(new_sum)
 
         if j<start+2:
             start+=1
             j=end
 
-    return list(set(results))
+    return sum_so_far
 
+
+def main():
+    A = [34, -50, 42, 14, -5, 86]
+    print("\n\nTest1:\nGiven an array of [{}]\nThe largest sum of its contiguous subarrays is {}".format(', '.join(str(i) for i in A), highest_sum(A)))
+    A = [-5, -1, -8, -9]
+    print("\nTest2:\nGiven an array of [{}]\nThe largest sum of its contiguous subarrays is {}".format(', '.join(str(i) for i in A), highest_sum(A)))
+
+if __name__ == '__main__':
+    main()
+
+'''
+Run-time output:
+===============
+
+(DailyCodingChallenge-w82MASqp) markn@u17101vaio:~/devel/python-prj/DailyCodingChallenge$ python codechallenge_034.py 
+DBUG--(sub array): [34, -50, 42, 14, -5, 86]
+DBUG--(sub array): [34, -50, 42, 14, -5]
+DBUG--(sub array): [34, -50, 42, 14]
+DBUG--(sub array): [34, -50, 42]
+DBUG--(sub array): [34, -50]
+DBUG--(sub array): [-50, 42, 14, -5, 86]
+DBUG--(sub array): [-50, 42, 14, -5]
+DBUG--(sub array): [-50, 42, 14]
+DBUG--(sub array): [-50, 42]
+DBUG--(sub array): [42, 14, -5, 86]
+DBUG--(sub array): [42, 14, -5]
+DBUG--(sub array): [42, 14]
+DBUG--(sub array): [14, -5, 86]
+DBUG--(sub array): [14, -5]
+DBUG--(sub array): [-5, 86]
+
+
+Test1:
+Given an array of [34, -50, 42, 14, -5, 86]
+The largest sum of its contiguous subarrays is 137
+DBUG--(sub array): [-5, -1, -8, -9]
+DBUG--(sub array): [-5, -1, -8]
+DBUG--(sub array): [-5, -1]
+DBUG--(sub array): [-1, -8, -9]
+DBUG--(sub array): [-1, -8]
+DBUG--(sub array): [-8, -9]
+
+Test2:
+Given an array of [-5, -1, -8, -9]
+The largest sum of its contiguous subarrays is 0
+
+'''
