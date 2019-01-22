@@ -16,10 +16,12 @@ Input: A single variable (could be number or string)
 Output: Same variable from the dequeue() function
 
 Psuedo Code:
-
-1. Construct two stacks named instack, outstack
-2. Write the enqueue() function to push the item onto the instack 
-3. Write the dequeue() function the copy the reversed of instack and pop() element
+1. Write the constructor for Stack with methods pop_at_start() and pop_at_end() 
+1. Write a constructor for Queue consists of dual stacks.
+2. Write the enqueue() function to push the item onto the inStack 
+3. Write the dequeue() function using the pop_at_end from inStack and push 
+element onto outStack
+4. Return each element from the outStack using pop_at_start()
 
 
 A practical applicaton would be something like the email inbox/outbox.
