@@ -101,7 +101,7 @@ def main():
 	for item in items:
 		myQ.enqueue(item)
 
-	print("\nTest1:\nGiven items: [{}]\nEnqueued all items into a dual stack queue then dequeue will output (order FIFO):".format(', '.join(str(i) for i in items)))
+	print("\nTest1:\nGiven items: [{}]\nEnqueued all items into a dual-stack queue then dequeue all will output (order FIFO):".format(', '.join(str(i) for i in items)))
 	for i in range(myQ.queue_size()):
 		print(myQ.dequeue())
 
@@ -110,7 +110,7 @@ def main():
 	for item in items:
 		myQ.enqueue(item)
 
-	print("\nTest2:\nGiven items: [{}]\nEnqueued all items into a dual stack queue then dequeue will output (order FIFO):".format(', '.join(str(i) for i in items)))
+	print("\nTest2:\nGiven items: [{}]\nEnqueued all items into a dual-stack queue then dequeue all will output (order FIFO):".format(', '.join(str(i) for i in items)))
 	for i in range(myQ.queue_size()):
 		print(myQ.dequeue())
 
@@ -125,14 +125,14 @@ Run-time output:
 
 Test1:
 Given items: [I, am, groot]
-Enqueued all items into a dual stack queue then dequeue will output (order FIFO):
+Enqueued all items into a dual-stack queue then dequeue all will output (order FIFO):
 groot
 am
 I
 
 Test2:
 Given items: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-Enqueued all items into a dual stack queue then dequeue will output (order FIFO):
+Enqueued all items into a dual-stack queue then dequeue all will output (order FIFO):
 34
 21
 13
