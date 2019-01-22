@@ -23,8 +23,11 @@ Psuedo Code:
 element onto outStack
 4. Return each element from the outStack using pop_at_start()
 
-
-A practical applicaton would be something like the email inbox/outbox.
+Note: 
+(*) If it wasn't for the premise in which we demonstrate the use of dual-stack in Queue,
+we could have easily accomplish the task by reversing the list.
+	
+(**) A practical application for dual-stack queue would be something like the email inbox/outbox.
 '''
 
 #
