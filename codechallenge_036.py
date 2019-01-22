@@ -17,7 +17,7 @@ Output: Same variable from the dequeue() function
 
 Psuedo Code:
 1. Write the constructor for Stack with methods pop_at_start() and pop_at_end() 
-1. Write a constructor for Queue consists of dual stacks.
+1. Write a constructor for Queue consists of dual stacks.  New data will be enqueued onto the inStack, and dequeued from the outStack.
 2. Write the enqueue() function to push the item onto the inStack 
 3. Write the dequeue() function using the pop_at_end from inStack and push 
 element onto outStack
@@ -41,10 +41,10 @@ class Stack:
 	def push(self, item):
 		self.items.append(item)
 
-	def popstart(self):
+	def pop_at_start(self):
 		return self.items.pop(0)
 
-	def popend(self):
+	def pop_at_end(self):
 		return self.items.pop(len(self.items)-1)
 
 	def size(self):
@@ -70,10 +70,10 @@ class Queue:
 		if self.outStack.isEmpty():
 			# pop item from bottom of inStack and push onto the top of outStack
 			for i in range(self.inStack.size()):
-				self.outStack.push(self.inStack.popend())
+				self.outStack.push(self.inStack.pop_at_end())
 
 		# get the top item of the outStack
-		return self.outStack.popstart()
+		return self.outStack.pop_at_start()
 
 
 #
