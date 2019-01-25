@@ -91,7 +91,7 @@ def profit(price_list=[]):
 def test_profit():
 	A = [19, 157, 163, 99, 200, 215, 189, 201, 205, 199]
 	assert profit(A) > 0
-	assert profit(A) == 196
+	assert profit(A) == 144
 
 #
 # client program 
@@ -114,18 +114,18 @@ Run-time output:
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_033.py
 Test1:
 Given progressing stock prices 9->11->8->5->7->10
-For maximum profit we buy at 5 and sell at 10 for the profit of 5.
+For maximum profit we buy at 7 and sell at 10 for the profit of 5.
 Test2:
 Given progressing stock prices 157->160->99->88->77->66->66->66
-We bought at 66, We haven't sold it yet.  Price is still equaled or lower than the invested capital.
+For maximum profit we buy at 157 and sell at 160 for the profit of 3.
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_033.py
-=============================== test session starts ===============================
+=================================== test session starts ====================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
 rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
 collected 1 item
 
-codechallenge_033.py .                                                      [100%]
+codechallenge_033.py .                                                               [100%]
 
-============================ 1 passed in 0.06 seconds =============================
+================================= 1 passed in 0.07 seconds =================================
 
 '''
