@@ -32,7 +32,7 @@ we could have easily accomplished the task by reversing the list.
 
 #
 # Stack implementation using list
-# LIFO
+# LIFO or variation of it.
 #
 class Stack:
 	def __init__(self):
