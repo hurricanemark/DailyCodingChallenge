@@ -85,8 +85,7 @@ class Queue:
 def test_dualstack_queue():
 	testQ = Queue()
 	items = ['Make', 'code', 'not', 'war']
-	for i in items:
-		testQ.enqueue(i)
+	[testQ.enqueue(item) for item in items]  # push all items onto the inStack
 
 	for item in reversed(items):
 		assert testQ.dequeue() == item
@@ -98,8 +97,7 @@ def test_dualstack_queue():
 def main():
 	myQ = Queue()
 	items = ['I', 'am', 'groot']
-	for item in items:
-		myQ.enqueue(item)
+	[myQ.enqueue(item) for item in items]  # push all items onto the inStack
 
 	print("\nTest1:\nGiven items: [{}]\nEnqueue all items into a dual-stack queue then dequeue all will output (order FIFO):".format(', '.join(str(i) for i in items)))
 	for i in range(myQ.queue_size()):
@@ -107,8 +105,7 @@ def main():
 
 
 	items = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-	for item in items:
-		myQ.enqueue(item)
+	[myQ.enqueue(item) for item in items]  # push all items onto the inStack
 
 	print("\nTest2:\nGiven items: [{}]\nEnqueue all items into a dual-stack queue then dequeue all will output (order FIFO):".format(', '.join(str(i) for i in items)))
 	for i in range(myQ.queue_size()):
