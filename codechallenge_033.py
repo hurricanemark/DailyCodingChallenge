@@ -22,45 +22,68 @@ Output: An integer
 Pseudo code:
 
 1.  Check for valid input
-2.  Find the min value and its index from the array.  This will be the buy item 
-	Since we can't go back, the new array will start from this new index
-3.  From the new array, find the max value and its index.  This will be the sell item.  
-4.  Return the difference between the values from the above indices  
+2.  Create a generator that yield sublists containing no trailing accending numbers
+3.  For each yielded sublist, find the min value and its index from the array.  This 
+    will be the buy item.  Find the min value in this sublist.  It will be the sell item.
+    Calulate the difference and append it to the list of profits
+4.  Return the max value n the profit list as the maximum gain in investing base on the price list.  
 
-No looping through the list.
-This is why I love Python!
 
 '''
 
 
 #
-# O(2) comparision
+# generator that yields sublist with possible investment gain
+#
+def subpricelist(price_list=[]):
+	start, end = 0, len(price_list)
+	j = end
+	sublist = []
+	while start < end - 1:
+		temp = price_list[start:j]
+
+		j-=1
+		# eliminate lists with decending numbers, they indicate market down turn
+		if all(temp[i] < temp[i+1] for i in range(len(temp)-1)):
+			yield temp
+
+		if j < start + 2:
+			start+=1
+			j = end
+
+#
+# Calculate the difference between the max and min values in the sublist
+# Return the max value in the list of differences
 #
 def profit(price_list=[]):
 	if len(price_list) == 0:
 		return 0
 
-	# buy low
-	buyAtIdx = price_list.index(min(price_list))
-	buyPrice = price_list[buyAtIdx]
+	sublist = subpricelist(price_list)
+	all_profits = []
+	for PList in sublist:
+		# buy low
+		buyAtIdx = price_list.index(min(PList))
+		buyPrice = price_list[buyAtIdx]
 
-	new_price_list = price_list[buyAtIdx:]
+		#new_price_list = PList[buyAtIdx:]
 
-	# sell high
-	sellPrice = max(new_price_list)
-	sellAtIdx = price_list.index(sellPrice)
+		# sell high
+		sellPrice = max(PList)
+		sellAtIdx = price_list.index(sellPrice)
 
-	#profit
-	profit = sellPrice - buyPrice
+		#profit
+		gain = sellPrice - buyPrice
+		all_profits.append(gain)
 
 	# verbish
-	if profit > 0:
-		print("For maximum profit we buy at {} and sell at {} for the profit of {}.".format(buyPrice, sellPrice, profit))
+	if len(all_profits) > 0:
+		print("For maximum profit we buy at {} and sell at {} for the profit of {}.".format(buyPrice, sellPrice, max(all_profits)))
 	else:
 		print("We bought at {}, We haven't sold it yet.  Price is still equaled or lower than the invested capital.".format(buyPrice, profit=0))
 	
 	# return profit
-	return int(profit)
+	return int(max(all_profits))
 
 #
 # unittest
