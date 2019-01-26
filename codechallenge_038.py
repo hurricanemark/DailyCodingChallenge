@@ -22,10 +22,10 @@ Algorithm:
 
 1.  Validate input
 2.  Split the string into a list using white space as the delimiter
-3.	While the list is not empty, pop item from its front and append to a substring until the substring is equal or grater than k
+3.  While the list is not empty, pop item from its front and append to a substring until the substring is equal or grater than k
 4.  If the length of the substring is less than k, yield it
 	Else, remove the last item from the substring, insert it back to the top of the list, yield the substring.
-5.  Assign an iterator to the generator and return an array of substrings
+5.  Return an array of substrings from the generator above.
 '''
 
 #
