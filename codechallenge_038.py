@@ -21,12 +21,11 @@ Algorithm:
 ==========
 
 1.  Validate input
-2.  Split the string using white space as the delimiter
-3.  join items at i and i+1 index such that the length of item and white spaces is less that or equal k
-4.  Repeat step 3 until the end of string list
-    e.g.  Given a string "the fox jumped over the fence into the pond"
-    paired_text is ['the fox', 'fox jumped', 'jumped', 'over the', 'the fence', 'fence into', 'into the', 'the pond']
-5.  Filter by removing overlap pairs
+2.  Split the string into a list using white space as the delimiter
+3.	While the list is not empty, pop item from its front and append to a substring until the substring is equal or grater than k
+4.  If the length of the substring is less than k, yield it
+	Else, remove the last item from the substring, insert it back to the top of the list, yield the substring.
+5.  Assign an iterator to the generator and return an array of substrings
 '''
 
 #
