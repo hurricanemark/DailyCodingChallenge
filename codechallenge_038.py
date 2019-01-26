@@ -72,9 +72,9 @@ def scrape_string(instr, k):
 # unittest
 #
 def test_clipped_strs():
-	str = "Penny Lane is in my ears and in my eye"
+	str = "Penny Lane is in my ears and in my eyes"
 	k = 11
-	expected_str = ['Penny Lane', 'is in my', 'ears and', 'in my eye']
+	expected_str = ['Penny Lane', 'is in my', 'ears and', 'in my eyes']
 	assert scrape_string(str, k) == expected_str
 	k = len(str)+1000
 	assert scrape_string(str, k) == None
@@ -91,7 +91,7 @@ def main():
 	print("Test1:\nGiven a string '{}' and k={}\nThe spliced string array with each element having length less than or equal to k is".format(str, k))
 	print(scrape_string(str, k))
 
-	str = "Penny Lane is in my ears and in my eye"
+	str = "Penny Lane is in my ears and in my eyes"
 	k = 11
 	print("\nTest2:\nGiven a string '{}' and k={}\nThe spliced string array with each element having length less than or equal to k is".format(str, k))
 	print(scrape_string(str, k))
@@ -115,9 +115,9 @@ The spliced string array with each element having length less than or equal to k
 ['The not', 'so smart', 'fox', 'jumped', 'over the', 'fence', 'into the', 'pond']
 
 Test2:
-Given a string 'Penny Lane is in my ears and in my eye' and k=11
+Given a string 'Penny Lane is in my ears and in my eyes' and k=11
 The spliced string array with each element having length less than or equal to k is
-['Penny Lane', 'is in my', 'ears and', 'in my eye']
+['Penny Lane', 'is in my', 'ears and', 'in my eyes']
 
 Test3:
 Given a string 'Mary has a little lamb' and k=22
