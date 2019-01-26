@@ -19,6 +19,10 @@ No string in the list has a length of more than 10.
 
 Algorithm:
 ==========
+Input: A string
+Output: An array containing substrings
+
+Psuedo code:
 
 1.  Validate input
 2.  Split the string into a list using white space as the delimiter
