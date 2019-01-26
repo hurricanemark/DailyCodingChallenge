@@ -29,29 +29,43 @@ Algorithm:
 5.  Filter by removing overlap pairs
 '''
 
+#
+# generator that yields substring with length less than or equal to k
+#
+def gen_subString(instr, k):
+	substrlst = instr.split(' ')
+	tempstr = ""
+	last_str = ""
+	while len(substrlst) > 0:
+		#tempstr += str(substrlst[0])
+		while len(tempstr) < k:
+			try:
+				last_str = substrlst.pop(0)
+				tempstr += ' '
+				tempstr += str(last_str)
+			except IndexError:
+				break
+		if len(tempstr) > k:
+			yield tempstr.rstrip(last_str).strip()
+			substrlst.insert(0, last_str)
+			tempstr = ""
+		else:
+			yield tempstr.strip()
+			tempstr = ""		
 
-
-def clipped_strs(instr, k):
-	# validate input
+#
+# return array of subsrings having length <= k
+#			
+def scrape_string(instr, k):
 	if len(instr) == 0 or type(k) is not int:
 		return None
-	elif k >= len(instr):
+	if k > len(instr):
 		return None
 
-	# concatinate items having adjacent indices with length <= k 
-	substr = instr.split(' ')
-	paired_strs = [substr[i] + ' ' + substr[i+1] if (len(substr[i]) + len(substr[i+1]) + 1) <= k else substr[i] for i in range(len(substr)-1)]
+	iter_str = gen_subString(instr, k)
+	return [item for item in iter_str]
 
-	try:
-		# remove wrapped over text
-		for i in range(len(paired_strs)-1):
-			if len(paired_strs[i].split(' ')) == 2:
-				if paired_strs[i].split(' ')[1] in paired_strs[i+1]:
-					paired_strs.pop(i+1)
-	except IndexError:
-		pass
 
-	return paired_strs
 
 
 #
@@ -60,10 +74,12 @@ def clipped_strs(instr, k):
 def test_clipped_strs():
 	str = "Penny Lane is in my ears and in my eye"
 	k = 11
-	expected_str = ['Penny Lane', 'is in', 'my ears', 'and in', 'my eye']
-	assert clipped_strs(str, k) == expected_str
-	k = len(str)
-	assert clipped_strs(str, k) == None
+	expected_str = ['Penny Lane', 'is in my', 'ears and', 'in my eye']
+	assert scrape_string(str, k) == expected_str
+	k = len(str)+1000
+	assert scrape_string(str, k) == None
+	str = ""
+	assert scrape_string(str, k) == None
 
 
 #
@@ -73,12 +89,17 @@ def main():
 	str = "The not so smart fox jumped over the fence into the pond"
 	k = 10
 	print("Test1:\nGiven a string '{}' and k={}\nThe spliced string array with each element having length less than or equal to k is".format(str, k))
-	print(clipped_strs(str, k))
+	print(scrape_string(str, k))
 
 	str = "Penny Lane is in my ears and in my eye"
 	k = 11
 	print("\nTest2:\nGiven a string '{}' and k={}\nThe spliced string array with each element having length less than or equal to k is".format(str, k))
-	print(clipped_strs(str, k))
+	print(scrape_string(str, k))
+
+	str = "Mary has a little lamb"
+	k = len(str)
+	print("\nTest3:\nGiven a string '{}' and k={}\nThe spliced string array with each element having length less than or equal to k is".format(str, k))
+	print(scrape_string(str, k))
 
 if __name__ == '__main__':
 	main()
@@ -91,12 +112,18 @@ Run-time output:
 Test1:
 Given a string 'The not so smart fox jumped over the fence into the pond' and k=10
 The spliced string array with each element having length less than or equal to k is
-['The not', 'so smart', 'fox jumped', 'over the', 'fence into', 'the pond']
+['The not', 'so smart', 'fox', 'jumped', 'over the', 'fence', 'into the', 'pond']
 
 Test2:
 Given a string 'Penny Lane is in my ears and in my eye' and k=11
 The spliced string array with each element having length less than or equal to k is
-['Penny Lane', 'is in', 'my ears', 'and in', 'my eye']
+['Penny Lane', 'is in my', 'ears and', 'in my eye']
+
+Test3:
+Given a string 'Mary has a little lamb' and k=22
+The spliced string array with each element having length less than or equal to k is
+['Mary has a little', 'lamb']
+
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_038.py
 ======================================= test session starts ========================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
@@ -105,7 +132,6 @@ collected 1 item
 
 codechallenge_038.py .                                                                       [100%]
 
-===================================== 1 passed in 0.06 seconds =====================================
-
+===================================== 1 passed in 0.07 seconds =====================================
 
 '''
