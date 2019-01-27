@@ -19,7 +19,7 @@ No string in the list has a length of more than 10.
 
 Algorithm:
 ==========
-Input: A string
+Input: A string, and an integer
 Output: An array containing substrings
 
 Psuedo code:
