@@ -96,3 +96,31 @@ def main():
 
 if __name__ == '__main__':
 	main()
+
+
+'''
+Run-time output:
+===============
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_039.py
+
+Test 1:
+Given an array [21, 23, 25, 5, 6, 10, 13, 17, 20]
+The index of element 13 is 6
+
+Test 2:
+Given an array [21, 23, 25, 88, 103, 1000, -900, 0, 3, 4, 5, 6, 10, 13, 17, 20]
+The index of element 1000 is 5
+
+Test 3:
+Given an array []
+The index of element 1000 is None
+(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_039.py
+================================= test session starts ==================================
+platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
+rootdir: /home/markn/devel/py-src/DailyCodingChallenge, inifile:
+collected 1 item
+
+codechallenge_039.py .                                                           [100%]
+
+=============================== 1 passed in 0.06 seconds ===============================
+'''
