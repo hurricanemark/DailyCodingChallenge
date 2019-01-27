@@ -10,9 +10,12 @@ What if we know the files in the two computers are mostly the same?
 
 Forethought:
 ============
-(*) Let's assume that there is a master and a slave.  File tree is synchronized from master to slave.  Otherwise, we will spend much longer time trying to implement a file merginng algorithm that could ventually open up to a lengthy revision control program.  
+(*) Let's assume that there is a master and a slave.  File tree is synchronized from 
+master to slave.  Otherwise, we will spend much longer time trying to implement a file 
+merginng algorithm that could ventually open up to a lengthy revision control program.  
 
-(**)  Let's assume also that this is not a monitorin program.  Hence, we are not doing the metadata collection on file changes.
+(**)  Let's assume also that this is not a monitorin program.  Hence, we are not doing 
+the metadata collection on file changes.
 
 Algorithm:
 ==========
