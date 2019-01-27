@@ -14,7 +14,9 @@ Forethought:
 
 (**)  Let's assume also that this is not a monitorin program.  Hence, we are not doing the metadata collection on file changes.
 
-Input: Twu file tree structures
+Algorithm:
+==========
+Input: Two file tree structures
 Output: Message....
 
 Psuedo code:
