@@ -40,7 +40,6 @@ def gen_subString(instr, k):
 	tempstr = ""
 	last_str = ""
 	while len(substrlst) > 0:
-		#tempstr += str(substrlst[0])
 		while len(tempstr) < k:
 			try:
 				last_str = substrlst.pop(0)
@@ -48,7 +47,9 @@ def gen_subString(instr, k):
 				tempstr += str(last_str)
 			except IndexError:
 				break
-		if len(tempstr) > k:
+
+		#print("DBUG-- tempstr:{}".format(tempstr.strip()))
+		if len(tempstr.strip()) > k:
 			yield tempstr.rstrip(last_str).strip()
 			substrlst.insert(0, last_str)
 			tempstr = ""
@@ -77,7 +78,7 @@ def scrape_string(instr, k):
 def test_clipped_strs():
 	str = "Penny Lane is in my ears and in my eyes"
 	k = 11
-	expected_str = ['Penny Lane', 'is in my', 'ears and', 'in my eyes']
+	expected_str = ['Penny Lane', 'is in my', 'ears and in', 'my eyes']
 	assert scrape_string(str, k) == expected_str
 	k = len(str)+1000
 	assert scrape_string(str, k) == None
@@ -115,17 +116,17 @@ Run-time output:
 Test1:
 Given a string 'The not so smart fox jumped over the fence into the pond' and k=10
 The spliced string array with each element having length less than or equal to k is
-['The not', 'so smart', 'fox', 'jumped', 'over the', 'fence', 'into the', 'pond']
+['The not so', 'smart fox', 'jumped', 'over the', 'fence into', 'the pond']
 
 Test2:
 Given a string 'Penny Lane is in my ears and in my eyes' and k=11
 The spliced string array with each element having length less than or equal to k is
-['Penny Lane', 'is in my', 'ears and', 'in my eyes']
+['Penny Lane', 'is in my', 'ears and in', 'my eyes']
 
 Test3:
 Given a string 'Mary has a little lamb' and k=22
 The spliced string array with each element having length less than or equal to k is
-['Mary has a little', 'lamb']
+['Mary has a little lamb']
 
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_038.py
 ======================================= test session starts ========================================
