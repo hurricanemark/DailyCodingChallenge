@@ -77,11 +77,20 @@ def get_index(Arr, k):
 		return None
 		 
 
+#
+# unittest
+#
 def test_searchindex():
 	Arr = [21,23,25,5,6,10,13,17,20]
-	elem = 13
-	assert get_index(Arr, 25) == 2
-	
+	elem = 25
+	assert get_index(Arr, elem) == 2
+	Arr = []
+	elem = 100000
+	assert get_index(Arr, elem) == None
+
+#
+# client program
+#	
 def main():
 	Arr = [21,23,25,5,6,10,13,17,20]
 	elem = 13
