@@ -1,0 +1,11 @@
+.pytest_cache
+__pycache__
+bash_scripts
+codility
+.git
+*.pyc
+_config.yml
+Pipfile
+Pipfile.lock
+README.md
+.gitignore
