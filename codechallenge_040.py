@@ -194,18 +194,18 @@ def main():
 	findWordinMatrix(Matrix, target)
 	e_time = time.time()
 	ElapsedT1 = e_time - s_time
-	print("With findWordinMatrix(), Elapsed time:{}".format(ElapsedT1))
+	print("With (Solution2) findWordinMatrix(), Elapsed time:{} secs.".format(ElapsedT1*1000))
 	s_time = time.time()
 	target = "romb"
 	matchWordInMatrix(Matrix, target)
 	e_time = time.time()
 	ElapsedT2 = e_time - s_time
-	print("With matchWordInMatrix(), Elapsed time:{}\n\nConclusion:".format(ElapsedT2))
+	print("With (Solution1) matchWordInMatrix(), Elapsed time:{} secs.\n\nConclusion:".format(ElapsedT2*1000))
 
 	if ElapsedT1 < ElapsedT2:
-		print("Solution1 \'matchWordInMatrix()\' has better performance!")
-	else:
 		print("Solution2 \'findWordinMatrix()\' has better performance!")
+	else:
+		print("Solution1 \'matchWordInMatrix()\' has better performance!")
 
 	
 if __name__ == '__main__':
