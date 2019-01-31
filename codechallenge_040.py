@@ -33,12 +33,14 @@ Psuedo code:
     Use the `in list` syntax to match with target string 
 4.  For better performance, perhaps wrap step#3 in a insertion list search.
 
-
 '''
 
 
+import time
+
 # 
-# return True if joined characters by row or column matches the target string
+# Solution1: return True if joined characters by row or column matches the target string
+# O(n^2)
 #
 def matchWordInMatrix(Matrix, target):
 	rows = len(Matrix)
@@ -68,21 +70,79 @@ def matchWordInMatrix(Matrix, target):
 
 
 #
+# (binary search) split at middle and compare
+# --not used--
+#
+def bin_search(L, target):
+	start, end = 0, len(L)-1
+	L.sort()
+	while start <= end:
+		mid_idx = (start + end) // 2
+		if L[mid_idx] > target:
+			end = mid_idx - 1
+		elif L[mid_idx] < target:
+			start = mid_idx + 1
+		else:
+			return L[mid_idx]
+	return ''
+
+#
+# Solution2: Use pythonic method 'in' list, return boolean value on match in matrix
+# O(n^2)
+#
+def findWordinMatrix(Matrix, target):
+	rows = len(Matrix)
+	cols = len(Matrix[0])
+
+	if rows < cols:
+		# go up-to-down
+		words_in_cols = []
+		for c in range(cols):
+			word = ""
+			for r in Matrix:
+				word += r[c]
+
+			words_in_cols.append(word)
+
+		print("DBUG--words_in_cols: {}".format(words_in_cols))
+		if target in words_in_cols:
+			print("Result: \'{}\' is found in column {}".format(target, words_in_cols.index(target))) 
+			return True
+
+	# go left-to-right
+	words_in_rows = []	
+	for i in range(rows):
+		word = ''.join(Matrix[i])
+		words_in_rows.append(word)	
+	#anything = bin_search(words_in_rows, target)
+	if target in words_in_rows:
+		print("Result: \'{}\' is found in row {}".format(target, words_in_rows.index(target))) 
+		return True
+	
+	return False
+		
+
+#
 # unittest
 #
 def test_matchWordInMatrix():
 	Matrix = [['j','a','k','e'],['m','a','n','y'],['r','u','t','h']]
 	target = "ruth"
 	assert matchWordInMatrix(Matrix, target) == True
+	assert findWordinMatrix(Matrix, target) == True
 	target = "omma"
 	assert matchWordInMatrix(Matrix, target) == False
+	assert findWordinMatrix(Matrix, target) == False
 	target = "aau"
 	assert matchWordInMatrix(Matrix, target) == True
+	assert findWordinMatrix(Matrix, target) == True
 
 #
 # client program
 #
 def main():
+
+	print("=== validation tests ===")
 	Matrix = [['m','a','r','k'],['s','h','a','e'],['j','a','n','e']]
 	target = "mark"
 	print("\nTest1:\nGiven 2D matrix: {}\nTarget word: \'{}\'".format(Matrix, target))
@@ -98,6 +158,29 @@ def main():
 	target = "kee"
 	print("\nTest4:\nGiven 2D matrix: {}\nTarget word: \'{}\'".format(Matrix, target))
 	matchWordInMatrix(Matrix, target)
+
+	print("\n\n=== Timing tests ===")
+	
+	s_time = time.time()
+	Matrix = [['m','a','r','k'],['s','h','a','e'],['j','a','n','e'],['b','e','a','n'],['j','i','l','l'],['r','o','m','b']]
+	target = "romb"
+	findWordinMatrix(Matrix, target)
+	e_time = time.time()
+	ElapsedT1 = e_time - s_time
+	print("With findWordinMatrix(), Elapsed time:{}".format(ElapsedT1))
+	s_time = time.time()
+	target = "romb"
+	matchWordInMatrix(Matrix, target)
+	e_time = time.time()
+	ElapsedT2 = e_time - s_time
+	print("With matchWordInMatrix(), Elapsed time:{}\n\nConclusion:".format(ElapsedT2))
+
+	if ElapsedT1 < ElapsedT2:
+		print("Solution1 \'matchWordInMatrix()\' has better performance!")
+	else:
+		print("Solution2 \'findWordinMatrix()\' has better performance!")
+
+	
 if __name__ == '__main__':
 	main()
 
@@ -107,6 +190,7 @@ Run-time output:
 ================
 
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_040.py
+=== validation tests ===
 
 Test1:
 Given 2D matrix: [['m', 'a', 'r', 'k'], ['s', 'h', 'a', 'e'], ['j', 'a', 'n', 'e']]
@@ -127,7 +211,18 @@ Test4:
 Given 2D matrix: [['m', 'a', 'r', 'k'], ['s', 'h', 'a', 'e'], ['j', 'a', 'n', 'e']]
 Target word: 'kee'
 Result: 'kee' is found in colum 3
-(DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $
+
+
+=== Timing tests ===
+Result: 'romb' is found in row 5
+With findWordinMatrix(), Elapsed time:9.870529174804688e-05
+Result: 'romb' is found in row 5
+With matchWordInMatrix(), Elapsed time:9.250640869140625e-05
+
+Conclusion:
+Solution2 'findWordinMatrix()' has better performance!
+
+
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_040.py
 =================================== test session starts ===================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
