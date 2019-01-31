@@ -38,6 +38,38 @@ Psuedo code:
 
 import time
 
+#
+# sub function returns boolean on column search
+# 
+def search_up_to_down(Matrix, target):
+	rows = len(Matrix)
+	cols = len(Matrix[0])
+	for c in range(cols):
+		word = ""
+		for r in Matrix:
+			word += r[c]
+		#print("DBUG-- word:{} target:{}".format(word, target))
+		if word.upper() == target.upper():
+			print("Result: \'{}\' is found in colum {}".format(word, c))
+			return True
+	return False
+
+
+#
+# sub function returns boolean on row search
+#
+def search_right_to_left(Matrix, target):
+	rows = len(Matrix)
+	words = ""	
+	for i in range(rows):
+		word = ''.join(Matrix[i])
+		#print("DBUG-- word:{} target:{}".format(word, target))
+		if word.upper() == target.upper():
+			print("Result: \'{}\' is found in row {}".format(word, i))
+			return True
+	return False
+
+
 # 
 # Solution1: return True if joined characters by row or column matches the target string
 # O(n^2)
@@ -47,23 +79,19 @@ def matchWordInMatrix(Matrix, target):
 	cols = len(Matrix[0])
 
 	if rows < cols:
-		# go up-to-down
-		for c in range(cols):
-			word = ""
-			for r in Matrix:
-				word += r[c]
-			#print("DBUG-- word:{} target:{}".format(word, target))
-			if word.upper() == target.upper():
-				print("Result: \'{}\' is found in colum {}".format(word, c))
-				return True
-	# go left-to-right
-	words = ""	
-	for i in range(rows):
-		word = ''.join(Matrix[i])
-		#print("DBUG-- word:{} target:{}".format(word, target))
-		if word.upper() == target.upper():
-			print("Result: \'{}\' is found in row {}".format(word, i))
+		# go up-to-down first
+		if search_up_to_down(Matrix, target):
 			return True
+		# go right-to-left
+		elif search_right_to_left(Matrix, target):
+			return True
+	else:
+		# go right-to-left first
+		if search_right_to_left(Matrix, target):
+			return True
+		elif search_up_to_down(Matrix, target):
+			return True
+
 	
 	print("Result: \'{}\' is not found.".format(target))
 	return False
@@ -94,20 +122,19 @@ def findWordinMatrix(Matrix, target):
 	rows = len(Matrix)
 	cols = len(Matrix[0])
 
-	if rows < cols:
-		# go up-to-down
-		words_in_cols = []
-		for c in range(cols):
-			word = ""
-			for r in Matrix:
-				word += r[c]
+	# go up-to-down
+	words_in_cols = []
+	for c in range(cols):
+		word = ""
+		for r in Matrix:
+			word += r[c]
 
-			words_in_cols.append(word)
+		words_in_cols.append(word)
 
-		print("DBUG--words_in_cols: {}".format(words_in_cols))
-		if target in words_in_cols:
-			print("Result: \'{}\' is found in column {}".format(target, words_in_cols.index(target))) 
-			return True
+	print("DBUG--words_in_cols: {}".format(words_in_cols))
+	if target in words_in_cols:
+		print("Result: \'{}\' is found in column {}".format(target, words_in_cols.index(target))) 
+		return True
 
 	# go left-to-right
 	words_in_rows = []	
