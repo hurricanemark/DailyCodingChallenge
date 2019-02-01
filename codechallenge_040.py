@@ -217,6 +217,7 @@ Run-time output:
 ================
 
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_040.py
+
 === validation tests ===
 
 Test1:
@@ -241,13 +242,14 @@ Result: 'kee' is found in colum 3
 
 
 === Timing tests ===
+DBUG--words_in_cols: ['msjbjr', 'ahaeio', 'ranalm', 'keenlb']
 Result: 'romb' is found in row 5
-With findWordinMatrix(), Elapsed time:9.870529174804688e-05
+With (Solution2) findWordinMatrix(), Elapsed time:0.14066696166992188 secs.
 Result: 'romb' is found in row 5
-With matchWordInMatrix(), Elapsed time:9.250640869140625e-05
+With (Solution1) matchWordInMatrix(), Elapsed time:0.056743621826171875 secs.
 
 Conclusion:
-Solution2 'findWordinMatrix()' has better performance!
+Solution1 'matchWordInMatrix()' has better performance!
 
 
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_040.py
