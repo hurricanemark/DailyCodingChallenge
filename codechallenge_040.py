@@ -141,7 +141,7 @@ def findWordinMatrix(Matrix, target):
 	for i in range(rows):
 		word = ''.join(Matrix[i])
 		words_in_rows.append(word)	
-	#anything = bin_search(words_in_rows, target)
+	print("DBUG--words_in_rows: {}".format(words_in_rows))
 	if target in words_in_rows:
 		print("Result: \'{}\' is found in row {}".format(target, words_in_rows.index(target))) 
 		return True
@@ -169,10 +169,10 @@ def test_matchWordInMatrix():
 #
 def main():
 
-	print("=== validation tests ===")
+	print("=== Validation tests ===")
 	Matrix = [['m','a','r','k'],['s','h','a','e'],['j','a','n','e']]
 	target = "mark"
-	print("\nTest1:\nGiven 2D matrix: {}\nTarget word: \'{}\'".format(Matrix, target))
+	print("Test1:\nGiven 2D matrix: {}\nTarget word: \'{}\'".format(Matrix, target))
 	matchWordInMatrix(Matrix, target)
 
 	target = "jane"
@@ -219,7 +219,6 @@ Run-time output:
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_040.py
 
 === validation tests ===
-
 Test1:
 Given 2D matrix: [['m', 'a', 'r', 'k'], ['s', 'h', 'a', 'e'], ['j', 'a', 'n', 'e']]
 Target word: 'mark'
@@ -243,13 +242,14 @@ Result: 'kee' is found in colum 3
 
 === Timing tests ===
 DBUG--words_in_cols: ['msjbjr', 'ahaeio', 'ranalm', 'keenlb']
+DBUG--words_in_rows: ['mark', 'shae', 'jane', 'bean', 'jill', 'romb']
 Result: 'romb' is found in row 5
-With (Solution2) findWordinMatrix(), Elapsed time:0.14066696166992188 secs.
+With (Solution2) findWordinMatrix(), Elapsed time:0.5400180816650391 secs.
 Result: 'romb' is found in row 5
-With (Solution1) matchWordInMatrix(), Elapsed time:0.056743621826171875 secs.
+With (Solution1) matchWordInMatrix(), Elapsed time:0.7932186126708984 secs.
 
 Conclusion:
-Solution1 'matchWordInMatrix()' has better performance!
+Solution2 'findWordinMatrix()' has better performance!
 
 
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_040.py
