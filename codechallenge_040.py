@@ -50,7 +50,7 @@ def search_up_to_down(Matrix, target):
 			word += r[c]
 		#print("DBUG-- word:{} target:{}".format(word, target))
 		if word.upper() == target.upper():
-			print("Result: \'{}\' is found in colum {}".format(word, c))
+			print("Result: \'{}\' is found in column {}".format(word, c))
 			return True
 	return False
 
@@ -237,7 +237,7 @@ Result: 'polk' is not found.
 Test4:
 Given 2D matrix: [['m', 'a', 'r', 'k'], ['s', 'h', 'a', 'e'], ['j', 'a', 'n', 'e']]
 Target word: 'kee'
-Result: 'kee' is found in colum 3
+Result: 'kee' is found in column 3
 
 
 === Timing tests ===
