@@ -38,9 +38,9 @@ def maxprod(F=[]):
 		return 0
 
 	if min(F) > 0:
-		# all positive numbers, let's sort descending and reverse
+		# all positive numbers, let's sort and reverse
 		F.sort()
-		F=F[::-1]
+		F=F[::-1]  # this is now in descending order
 		return F[0] * F[1] * F[2]
 	else:
 		maxp,idx=0,0
