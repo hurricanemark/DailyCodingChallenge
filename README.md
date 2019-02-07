@@ -34,7 +34,11 @@ Often, I would recommit updates on individual file with further thoughts, improv
 **     or, python3 module_unittests.py
 
 
+<<<<<<< HEAD
 ## Run Using Docker Image
+=======
+## Develop && Run Tests Using Docker Image
+>>>>>>> ed22c0fa4fb9ece473f401610818e9cc2202596e
 Install docker-ce on your local machine.  Follow this link [**docker-ce**](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1) for installation instruction.  
 Make sure you have .dockerignore file in your folder.
 
