@@ -29,28 +29,16 @@ Psuedo code:
 import numpy as np
 
 
-def maxprod_wip(Arr=[]):
-	if len(Arr) <= 2:
-		return 0
-	# sort descending order
-	Arr.sort()
-	Arr = Arr[::-1]
-	return (Arr[0] * Arr[1] * Arr[2])
 
 #
-# bruteforce algorithm )-:
+# return largest product of any three elements in the list
 #
 def maxprod(F=[]):
 	if len(F) == 0:
 		return 0
 
-	# rearange to include 2 additional wrapped around elements
-	'''
-	Arr = list(F)
-	Arr.extend(Arr[0:2])	
-	F = np.array(Arr)
-	'''
 	if min(F) > 0:
+		# all positive numbers, let's sort descending and reverse
 		F.sort()
 		F=F[::-1]
 		return F[0] * F[1] * F[2]
@@ -77,6 +65,8 @@ def test_maxprod():
 	Arr=[0,0,0,100]
 	assert maxprod(Arr) == 0
 
+	Arr=[]
+	assert maxprod(Arr) == 0
 #
 # client programm
 #
