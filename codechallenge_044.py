@@ -28,6 +28,15 @@ Psuedo code:
 '''
 import numpy as np
 
+
+def maxprod_wip(Arr=[]):
+	if len(Arr) <= 2:
+		return 0
+	# sort descending order
+	Arr.sort()
+	Arr = Arr[::-1]
+	return (Arr[0] * Arr[1] * Arr[2])
+
 #
 # bruteforce algorithm )-:
 #
@@ -35,20 +44,27 @@ def maxprod(F=[]):
 	if len(F) == 0:
 		return 0
 
-	# sort in descending order
-	F.sort()
-	F=F[::-1]
-
-	maxp,idx=0,0
-	while idx < len(F)-1:
-		try:
-			prd = np.cumprod(F[idx:idx+3])[-1]
-		except IndexError:
-			prd = np.cumprod(F[len(F)-1:] + F[0:2])[-1]
-		if prd > maxp:
-			maxp = prd
-		idx+=1
-	return maxp
+	# rearange to include 2 additional wrapped around elements
+	'''
+	Arr = list(F)
+	Arr.extend(Arr[0:2])	
+	F = np.array(Arr)
+	'''
+	if min(F) > 0:
+		F.sort()
+		F=F[::-1]
+		return F[0] * F[1] * F[2]
+	else:
+		maxp,idx=0,0
+		while idx < len(F)-1:
+			try:
+				prd = np.cumprod(F[idx:idx+3])[-1]
+			except IndexError:
+				prd = np.cumprod(F[len(F)-1:] + F[0:2])[-1]
+			if prd > maxp:
+				maxp = prd
+			idx+=1
+		return maxp
 
 
 #
