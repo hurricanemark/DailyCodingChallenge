@@ -92,7 +92,7 @@ markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_04
 
 Test1:
 Given a list of numbers: [-10 -10   5   2]
-The maximum cumulative product of any three numbers is 200.
+The maximum cumulative product of any three numbers is 500.
 
 Test2:
 Given a list of numbers: [12  4 22  9  5  7  6]
