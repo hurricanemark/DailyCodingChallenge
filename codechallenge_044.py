@@ -32,6 +32,13 @@ import numpy as np
 # bruteforce algorithm )-:
 #
 def maxprod(F=[]):
+	if len(F) == 0:
+		return 0
+
+	# sort in descending order
+	F.sort()
+	F=F[::-1]
+
 	maxp,idx=0,0
 	while idx < len(F)-1:
 		try:
@@ -49,7 +56,7 @@ def maxprod(F=[]):
 #
 def test_maxprod():
 	Arr = [12,4,22,9,5,7,6]
-	assert maxprod(Arr) == 1056
+	assert maxprod(Arr) == 2376
 
 	Arr=[0,0,0,100]
 	assert maxprod(Arr) == 0
@@ -79,17 +86,16 @@ markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_04
 
 Test1:
 Given a list of numbers: [-10 -10   5   2]
-The maximum cumulative product of any three numbers is 500.
+The maximum cumulative product of any three numbers is 200.
 
 Test2:
 Given a list of numbers: [12  4 22  9  5  7  6]
-The maximum cumulative product of any three numbers is 1056.
+The maximum cumulative product of any three numbers is 2376.
 
 Test3:
-Given a list of numbers: [  5.49387422e-01   7.23453199e-01   3.95098547e-01   9.39367975e-01
-   4.54742002e-01   5.45850355e-01   6.64899067e-01   5.05261339e-01
-   1.87289331e-01   7.38491202e-04]
-The maximum cumulative product of any three numbers is 0.268504534378.
+Given a list of numbers: [ 0.04291723  0.06962555  0.89750419  0.89626548  0.78072078  0.63605299
+  0.76757435  0.74719118  0.96412441  0.41235676]
+The maximum cumulative product of any three numbers is 0.775543630866.
 markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ pytest codechallenge_044.py
 ==================================== test session starts ====================================
 platform linux2 -- Python 2.7.13, pytest-3.6.3, py-1.5.4, pluggy-0.6.0
@@ -98,6 +104,6 @@ collected 1 item
 
 codechallenge_044.py .                                                                [100%]
 
-================================= 1 passed in 0.40 seconds ==================================
+================================= 1 passed in 0.46 seconds ==================================
 
 '''
