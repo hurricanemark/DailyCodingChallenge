@@ -56,10 +56,15 @@ def findNthFactor(N):
     return -1;
 
 
+def test_ginfNthFator():
+	pass
+
+
 def main():
-	print(findNthFactor(1))
-	print(findNthFactor(2))
-	print(findNthFactor(45))
+	A = [i+1 for i in range(10)]
+	B = [findNthFactor(A[i]) for i in range(len(A))]
+	for i,n in enumerate(B):
+		print("n:{}, perfect n-th:{}".format(i+1,n))	
 
 if __name__ == '__main__':
 	main()
