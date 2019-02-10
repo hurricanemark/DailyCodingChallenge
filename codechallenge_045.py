@@ -61,7 +61,13 @@ def test_ginfNthFator():
 
 
 def main():
+	print("\nTest1:"
 	A = [i+1 for i in range(10)]
+	B = [findNthFactor(A[i]) for i in range(len(A))]
+	for i,n in enumerate(B):
+		print("n:{}, perfect n-th:{}".format(i+1,n))	
+	print("\nTest2:"
+	A = [i+1 for i in range(10,20,1)]
 	B = [findNthFactor(A[i]) for i in range(len(A))]
 	for i,n in enumerate(B):
 		print("n:{}, perfect n-th:{}".format(i+1,n))	
