@@ -44,23 +44,23 @@ Need to write lexicoItinerary().
 
 import itertools
 
-
 def lexicoItinerary(FLIGHTS, START):
-    DEP=[(i,d[0]) for i,d in enumerate(iter(FLIGHTS))]
-    iterFts = itertools.combinations_with_replacement(DEP, 2)
-    templist = []
-    for flight in iterFts:
-        templist.append(i)
-    DEST = [list(i)[0] for i in DEP if list(i)[1] == START]
+	DEP=[(i,d[0]) for i,d in enumerate(iter(FLIGHTS))]
+	iterFts = itertools.combinations_with_replacement(DEP, 2)
+	templist = []
+	for flight in iterFts:
+		templist.append(i)
+	DEST = [list(i)[0] for i in DEP if list(i)[1] == START]
 
-    # figure out the shortest path of connecting flights
-    shortest_itin = []
-    max_len = int(2**32)
-    for itin in templist:
-	if len(itin) < max_len:
-		shortest_itin = itin
-		max_len = len(shortest_itin)
-    return shortest_itin
+	# figure out the shortest path of connecting flights
+	shortest_itin = []
+	max_len = int(2**32)
+	for itin in templist:
+		if len(itin) < max_len:
+			shortest_itin = itin
+			max_len = len(shortest_itin)
+
+	return shortest_itin
 
 #
 # (Real world application)
