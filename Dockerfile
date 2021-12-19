@@ -7,9 +7,10 @@ RUN pip install pytest
 RUN pip install sympy 
 RUN pip install numpy
 RUN pip install anytree
+RUN apt-get install -y vim
 RUN mkdir /DailyCodingChallenge
 COPY . /DailyCodingChallenge
 
 WORKDIR /DailyCodingChallenge
 
-CMD [ "pytest", "*.py" && "/bin/bash" ]
+CMD [ "pytest", "./code*.py" && "/bin/bash" ]
