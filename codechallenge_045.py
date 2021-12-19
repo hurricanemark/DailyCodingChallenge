@@ -59,7 +59,7 @@ def findNthFactor(N):
 	return -1
 
 
-def test_ginfNthFator():
+def test_findNthFactor():
 	assert findNthFactor(0) == -1
 	assert findNthFactor(1) == 19
 	assert findNthFactor(2) == 28
