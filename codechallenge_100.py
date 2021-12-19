@@ -41,6 +41,9 @@ def findNumberBinarySearch(arr, k):
     # arr: a list of numbers
     # k: the number to find in the list
     start, end = 0, len(arr)-1
+    if k.__str__().isnumeric() == False:
+        return 'NO'
+
     arr.sort()
 
     # conditional in while loop includes the case of empty list
@@ -68,5 +71,5 @@ if __name__ == '__main__':
     k = 10
     test(arr, k)
     arr = [21, 12, 73, 34, 85, 16, 97, 58, 29, 10]
-    k = 12
+    k = '0x10'
     test(arr, k)
