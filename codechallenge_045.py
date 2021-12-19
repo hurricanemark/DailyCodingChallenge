@@ -26,6 +26,7 @@ Psuedo code:
 And, all multiples of 9 are present in arithmetic progression 19, 28, 37, 46, 55, 64, 73, 82, 91, 100, 109,...
 
 '''
+
 import itertools
 
 def findNthFactor(N):  
