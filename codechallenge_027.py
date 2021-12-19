@@ -41,7 +41,6 @@ After thoughts:
 The solution above is not exacly what the task asks for.
 Need to write lexicoItinerary().
 '''
-
 import itertools
 
 def lexicoItinerary(FLIGHTS, START):
