@@ -123,6 +123,7 @@ def main():
            [33,34,35,36,37,38,39,40]]
     print(Arr)
     quadrants = list()
+    
     #quadrants = forward_elems(Arr) + downward_elems(Arr) + backward_elems(Arr)
     #quadrants = forward_elems(Arr)
     quadrants = downward_elems(Arr) 
