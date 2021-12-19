@@ -70,13 +70,13 @@ def forward_elems(Arr=[]):
     idx = 0
     forwardquadrant = []
     for i in range(cols):
-	try:
-		f_list = Arr[i][slice(i, cols-i,1)]
-		forwardquadrant.append((idx, f_list))
-		idx +=4
-		print(f_list)
-	except IndexError:
-		pass
+        try:
+            f_list = Arr[i][slice(i, cols-i,1)]
+            forwardquadrant.append((idx, f_list))
+            idx +=4
+            print(f_list)
+        except IndexError:
+            pass
     return forwardquadrant
 
 def downward_elems(Arr=[]):

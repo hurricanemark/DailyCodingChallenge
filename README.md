@@ -1,4 +1,4 @@
-## Solutions for Daily Coding Challenge
+# Solutions for Daily Coding Challenge
 
 Sign up for an account at <a href>"https://dailycodingproblem.com"</a> to automatically receive  a daily coding problem in your mail box.
 
