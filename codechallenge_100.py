@@ -55,6 +55,7 @@ def findNumberBinarySearch(arr, k):
     return 'NO'
 
 def test(arr, k):
+    print("\nTest: arr={}, k={}".format(arr, k))   
     print('Sequential Search result: ', findNumberSequentialSearch(arr, k))
     print('Binary Search result: ', findNumberBinarySearch(arr, k))
 
@@ -65,4 +66,7 @@ if __name__ == '__main__':
     test(arr, k)
     arr = []
     k = 10
+    test(arr, k)
+    arr = [21, 12, 73, 34, 85, 16, 97, 58, 29, 10]
+    k = 12
     test(arr, k)
