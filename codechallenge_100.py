@@ -35,6 +35,7 @@ def findNumberSequentialSearch(arr, k):
             return 'YES'
     return 'NO'
 
+# Binary Algorithm
 def findNumberBinarySearch(arr, k):
     # This function returns a STRING of 'YES' or 'NO'
     # arr: a list of numbers
