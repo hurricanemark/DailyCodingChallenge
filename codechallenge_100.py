@@ -17,10 +17,11 @@ Implentation:
 =============
 + Sequential Algorithm
 + Binary Algorithm
++ Shorthand Algorithm
 
 '''
 
-# Sequential Algorithm
+# Sequential Algorithm O(n)
 def findNumberSequentialSearch(arr, k):
     # This function returns a STRING of 'YES' or 'NO'
     # arr: a list of numbers
@@ -35,7 +36,7 @@ def findNumberSequentialSearch(arr, k):
             return 'YES'
     return 'NO'
 
-# Binary Algorithm
+# Binary Algorithm O(log n)
 def findNumberBinarySearch(arr, k):
     # This function returns a STRING of 'YES' or 'NO'
     # arr: a list of numbers
@@ -57,21 +58,32 @@ def findNumberBinarySearch(arr, k):
             end = mid - 1
     return 'NO'
 
+# Shorthand Algorithm: O(n)
+def shorthandFindNumber(arr, k):
+    # This function returns a STRING of 'YES' or 'NO'
+    # arr: a list of numbers
+    # k: the number to find in the list
+    return 'YES' if k in arr else 'NO'
+
+
 def test(arr, k):
-    print("\nTest: arr={}, k={}".format(arr, k))   
     print('Sequential Search result: ', findNumberSequentialSearch(arr, k))
     print('Binary Search result: ', findNumberBinarySearch(arr, k))
-
+    print('Shorthand Search result: ', shorthandFindNumber(arr, k))
 
 if __name__ == '__main__':
     arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     k = 6
+    print("\nTest#1: arr={}, k={}".format(arr, k))
     test(arr, k)
     arr = []
     k = 10
+    print("\nTest#2: arr={}, k={}".format(arr, k))
     test(arr, k)
     arr = [21, 12, 73, 34, 85, 16, 97, 58, 29, 10]
     k = '0x10'
+    print("\nTest#3: arr={}, k={}".format(arr, k))
     test(arr, k)
-    k = 44
+    k = 29
+    print("\nTest#4: arr={}, k={}".format(arr, k))
     test(arr, k)
