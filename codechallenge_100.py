@@ -65,8 +65,10 @@ def shorthandFindNumber(arr, k):
     # k: the number to find in the list
     return 'YES' if k in arr else 'NO'
 
-
-def test(arr, k):
+#
+# unittest
+#
+def test_FindNumber(arr, k):
     print('Sequential Search result: ', findNumberSequentialSearch(arr, k))
     print('Binary Search result: ', findNumberBinarySearch(arr, k))
     print('Shorthand Search result: ', shorthandFindNumber(arr, k))
@@ -75,15 +77,15 @@ if __name__ == '__main__':
     arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     k = 6
     print("\nTest#1: arr={}, k={}".format(arr, k))
-    test(arr, k)
+    test_FindNumber(arr, k)
     arr = []
     k = 10
     print("\nTest#2: arr={}, k={}".format(arr, k))
-    test(arr, k)
+    test_FindNumber(arr, k)
     arr = [21, 12, 73, 34, 85, 16, 97, 58, 29, 10]
     k = '0x10'
     print("\nTest#3: arr={}, k={}".format(arr, k))
-    test(arr, k)
+    test_FindNumber(arr, k)
     k = 29
     print("\nTest#4: arr={}, k={}".format(arr, k))
-    test(arr, k)
+    test_FindNumber(arr, k)

@@ -46,7 +46,7 @@ hotel reservation, directing uber drivers, etc.
 '''
 
 import random, time
-def reserveRooms(schedList):
+def reservedRooms(schedList):
 	# edge cases
 	if len(schedList) == 0:
 		return 0 
@@ -69,9 +69,8 @@ def reserveRooms(schedList):
 	return rooms
 
 def genRandomSchedule(slots):
-	sched = [(int(100*random.random()), int(100*random.random())) \
-		for i in range(slots)]
-	sched.sort(reverse=True)
+	sched = [(int(100*random.random()), int(100*random.random())) for i in range(slots)]
+	sched.sort(reverse=False)
 	dsched = dict(sched)
 	dsched = {key:val+key for (key, val) in dsched.items()}
 
@@ -81,14 +80,13 @@ def genRandomSchedule(slots):
 	for start, end in dsched.items():
 		if start >= end:
 			del dsched[start]
-			#print("Throw away time slot: {}".format(start,end))
 	sched = list(dsched.items())
 	return sched
 
 def test_code():
 	schedtime = [(30, 75), (0, 50), (60, 150)]
 	begin = time.time()
-	assert reserveRooms(schedtime) == 2
+	assert reservedRooms(schedtime) == 2
 	end = time.time()
 	print("Elapsed time: {}".format(end-begin))
 
@@ -97,15 +95,15 @@ if __name__ == "__main__":
 	schedtime = [(30, 75), (0, 50), (60, 150)]
 	print("Given a schedule: {}".format(schedtime))
 	begin = time.time()
-	print ("Number of required room(s): {}".format(reserveRooms(schedtime)))
+	print ("Number of required room(s): {}".format(reservedRooms(schedtime)))
 	end = time.time()
 	print("Elapsed time: {}\n".format(end-begin))
 
 	# test using random generator
-	schedtime = genRandomSchedule(100)
+	schedtime = genRandomSchedule(5)
 	print("Random generated schedule: {}".format(schedtime))
 	begin = time.time()
-	print ("Number of required room(s): {}".format(reserveRooms(schedtime)))
+	print ("Number of required room(s): {}".format(reservedRooms(schedtime)))
 	end = time.time()
 	print("Elapsed time: {}\n".format(end-begin))
 
