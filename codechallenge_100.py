@@ -16,7 +16,6 @@ Algorithm:
 Implentation:
 =============
 + Sequential Algorithm
-+ Binary Algorithm
 + Shorthand Algorithm
 
 '''
@@ -36,27 +35,6 @@ def findNumberSequentialSearch(arr, k):
             return 'YES'
     return 'NO'
 
-# Binary Algorithm O(log n)
-def findNumberBinarySearch(arr, k):
-    # This function returns a STRING of 'YES' or 'NO'
-    # arr: a list of numbers
-    # k: the number to find in the list
-    start, end = 0, len(arr)-1
-    if k.__str__().isnumeric() == False:
-        return 'NO'
-
-    arr.sort()
-
-    # conditional in while loop includes the case of empty list
-    while start <= end:
-        mid = (start + end)//2
-        if arr[mid] == k:
-            return 'YES'
-        elif arr[mid] < k:
-            start = mid + 1
-        else:
-            end = mid - 1
-    return 'NO'
 
 # Shorthand Algorithm: O(n)
 def shorthandFindNumber(arr, k):
@@ -70,7 +48,6 @@ def shorthandFindNumber(arr, k):
 #
 def test_FindNumber(arr, k):
     print('Sequential Search result: ', findNumberSequentialSearch(arr, k))
-    print('Binary Search result: ', findNumberBinarySearch(arr, k))
     print('Shorthand Search result: ', shorthandFindNumber(arr, k))
 
 if __name__ == '__main__':
