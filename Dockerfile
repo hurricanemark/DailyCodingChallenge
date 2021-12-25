@@ -10,7 +10,8 @@ RUN pip install anytree
 RUN apt-get install -y vim
 RUN mkdir /DailyCodingChallenge
 COPY ./*.py /DailyCodingChallenge
-COPY ./bash_scripts /DailyCodingChallenge/bash_scripts
+COPY ./run.sh /DailyCodingChallenge
+
 
 WORKDIR /DailyCodingChallenge
 
