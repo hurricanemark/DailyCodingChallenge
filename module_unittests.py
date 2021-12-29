@@ -74,7 +74,7 @@ class TestCodeChallenges(unittest.TestCase):
 	def test_codeChallenge008(self):
 		schedtime = [(30, 75), (0, 50), (60, 150)]
 		try:
-			self.assertEqual(codechallenge_008.reserveRooms(schedtime), 2)
+			self.assertEqual(codechallenge_008.reservedRooms(schedtime), 2)
 		except RuntimeError:
 			#with self.assertRaises(RuntimeError): 
 			#dictionary changed size during iteration
@@ -84,7 +84,7 @@ class TestCodeChallenges(unittest.TestCase):
 		schedtimeX = codechallenge_008.genRandomSchedule(100)
 		print("Random generated schedule: {}".format(schedtimeX))
 		try:
-			print ("Number of required room(s): {}".format(codechallenge_008.reserveRooms(schedtimeX)))
+			print ("Number of required room(s): {}".format(codechallenge_008.reservedRooms(schedtimeX)))
 		except RuntimeError:
 			#with self.assertRaises(RuntimeError): 
 			#dictionary changed size during iteration
