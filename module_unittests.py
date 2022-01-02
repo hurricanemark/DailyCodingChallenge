@@ -122,8 +122,8 @@ class TestCodeChallenges(unittest.TestCase):
 		Board = [[F,F,F,F], [T,T,F,F], [F,F,F,F], [F,F,F,F]]
 		start = (3,0) #tuple start[3][0]
 		end = (0,0)   #tuple end[0][0]
-		rows = len(Board[:])
-		cols = len(Board[-1])
+		# rows = len(Board[:])
+		# cols = len(Board[-1])
 		self.assertEqual(codechallenge_011.gotoEndPoint(Board, start, end), 7)
 
 	def test_codeChallenge012(self):

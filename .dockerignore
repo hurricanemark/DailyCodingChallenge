@@ -9,3 +9,4 @@ Pipfile
 Pipfile.lock
 README.md
 .gitignore
+.vscode
