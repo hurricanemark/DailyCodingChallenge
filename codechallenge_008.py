@@ -77,10 +77,11 @@ def genRandomSchedule(slots):
 	# Since random generator is used for pass-in schedList, 
 	# check if endTime is less than startTime.
 	# if found we ignore the particular item by removing it from the dictionary
+	xsched = list(dsched.items())
 	for start, end in dsched.items():
 		if start >= end:
-			del dsched[start]
-	sched = list(dsched.items())
+			del xsched[start]
+	sched = list(xsched.items())
 	return sched
 
 def test_code():
