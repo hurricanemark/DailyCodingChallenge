@@ -80,11 +80,11 @@ def genRandomSchedule(slots):
  
 	xsched = dsched.copy()  # shallow copy of list to prevent changing the original list during iteration.
  
-	for start, end in xsched.items():
+	for start, end in dsched.items():
 		if start >= end:
-			del xsched[start]
-	sched = list(xsched.items())
-	return sched
+			del xsched[start] # remove the item from the dictionary, i.e. change the dictionary.
+	return list(xsched.items())
+
 
 def test_code():
 	schedtime = [(30, 75), (0, 50), (60, 150)]
