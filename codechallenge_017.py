@@ -82,6 +82,7 @@ Pseudo code:
 3.  Find the highest ratio in the hash table. i.e. lowest/highest
 4.  Output the InvestAmount * (ratio)
 '''
+import unittest
 
 def invert(func):
 	def inner(dict_of_currencies):
@@ -109,7 +110,7 @@ def gainArbitrage(USCurrencyEquivalent, AmountUSD):
     minrate = min([inversionHash[k] for k in inversionHash])
     YAmount = XAmount/minrate	
     YCurrencyName = [k for k,v in inversionHash.items() if v == minrate]
-    print("Step2: Trade {} {} for {}{}".format(XAmount, str(XCurrencyName[0]), YAmount, str(YCurrencyName[0])))
+    print("Step2: Trade {} {} for {} {}".format(XAmount, str(XCurrencyName[0]), YAmount, str(YCurrencyName[0])))
 
     # step3
     ZAmount = AmountUSD + AmountUSD *(minrate/maxrate)
@@ -117,23 +118,24 @@ def gainArbitrage(USCurrencyEquivalent, AmountUSD):
 
     return AmountUSD * (minrate/maxrate)
 
-
-def test_code():
-    InvestAmount = 1000000
-    USCurrencyEquivalent = {
-                "Euro": 0.870903,
-                "British Pound": 0.783992,
-                "Indian Rupee": 69.605725,
-                "Australian Dollar": 1.420549,
-                "Canadian Dollar": 1.363172,
-                "Singapore Dollar": 1.362844,
-                "Swiss Franc": 0.983397,
-                "Malaysian Ringgit": 4.132583,
-                "Japanese Yen": 109.558545,
-                "Chinese Renminbi": 6.874934 }
-    assert gainArbitrage(USCurrencyEquivalent, InvestAmount) == 7155.91832658968 
+class TestArbitrage(unittest.TestCase):
+    def test_code(self):
+        InvestAmount = 1000000
+        USCurrencyEquivalent = {
+                    "Euro": 0.870903,
+                    "British Pound": 0.783992,
+                    "Indian Rupee": 69.605725,
+                    "Australian Dollar": 1.420549,
+                    "Canadian Dollar": 1.363172,
+                    "Singapore Dollar": 1.362844,
+                    "Swiss Franc": 0.983397,
+                    "Malaysian Ringgit": 4.132583,
+                    "Japanese Yen": 109.558545,
+                    "Chinese Renminbi": 6.874934 }
+        self.assertEqual(gainArbitrage(USCurrencyEquivalent, InvestAmount) == 7155.91832658968, True)
 
 if __name__ == '__main__':
+    
     Amount = 1000000 # US dollars
     USCurrencyEquivalent = {
                 "Euro": 0.870903,
@@ -149,7 +151,7 @@ if __name__ == '__main__':
                 }
     print("Gain from arbitrage trades: {} USD".format(gainArbitrage(USCurrencyEquivalent, Amount)))
 
-
+    unittest.main()
 
 '''
 Run-time output:

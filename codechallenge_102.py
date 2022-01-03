@@ -20,7 +20,7 @@ Algorithm:
     - Iterate through the list of characters, for each element, permutate the list of characters.
     - For each permutation, check if the key is in the dictionary.if found in the dictionary, append the value to the list.
     Note: It is posible that the key is not in the dictionary. and the value is an empty string.  
-    A 3-digit key might also be in this dictionary range. 
+    
 5.  Convert list into set to remove duplicates.  Then, return the list count.
 
 Note: 
@@ -32,7 +32,7 @@ Note: (list splicing)
 [:2] corresponds to [start=default:stop=2]
 [1:] corresponds to [start=1:stop=default]
 '''
-
+import unittest
 
 dictEncodedMsg = {'1':'a', '2':'b', '3':'c', '4':'d', '5':'e', '6':'f', 
                    '7':'g', '8':'h', '9':'i', '10':'j', '11':'k', '12':'l', 
@@ -117,10 +117,32 @@ def countDecoding(message):
     print(final_result)
     return len(final_result)
 
-if __name__ == '__main__':
-    # this should be sliced into {[1, 1, 1], [1, 11], [11, 1]}
-    print(countDecoding('111'))  
+class TestDecoder(unittest.TestCase):
+    def test_decode(self):
+        self.assertEqual(countDecoding('111'), 3)
+        self.assertEqual(countDecoding('12'), 3)
+        self.assertEqual(countDecoding('1234'), 5)
+        
     
-    # this should be sliced into {[1, 2, 1, 1], [1, 21, 1], [1, 2, 11], [12, 1, 1], [12, 11]}
-    print(countDecoding('1211')) 
+if __name__ == '__main__':
+    print(countDecoding('111'))  
+    print(countDecoding('12')) 
+    print(countDecoding('1234')) 
+    print(countDecoding('12341234')) 
+    print(countDecoding('123412341234')) 
+    print(countDecoding('1234123412341234')) 
+    print(countDecoding('123412341234123412341234')) 
+    print(countDecoding('12341234123412341234123412341234')) 
+    print(countDecoding('1234123412341234123412341234123412341234')) 
+    print(countDecoding('123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('1234123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('12341234123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('123412341234123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('1234123412341234123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('12341234123412341234123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('123412341234123412341234123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('1234123412341234123412341234123412341234123412341234123412341234123412341234')) 
+    print(countDecoding('1234123412341234123412'))
+          
+    unittest.main()
     
