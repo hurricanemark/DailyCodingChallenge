@@ -77,7 +77,7 @@ def genRandomSchedule(slots):
 	# Since random generator is used for pass-in schedList, 
 	# check if endTime is less than startTime.
 	# if found we ignore the particular item by removing it from the dictionary
-	xsched = dsched.copy()
+	xsched = dsched.copy()  # shallow copy of original list to avoid changes during iteration
 	for start, end in dsched.items():
 		if start >= end:
 			del xsched[start]
