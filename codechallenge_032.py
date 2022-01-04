@@ -27,7 +27,6 @@ Pseudo code:
 # this covers the case of single character.
 #
 def isPalindrome(instr):
-    #instr = instr.casefold()  #casefold is not supported in python2.7
     rev_str = reversed(instr)  # the same as (slice/step) instr[::-1]
     if list(instr) == list(rev_str):
         return True
@@ -61,10 +60,10 @@ def all_palindromes(instr):
 # Choose the longest palindrome
 #
 def longest_palindrome(plist=[]):
-	if len(plist) == 0:
-		return None
-	else:
-		return max(plist, key = len)
+    if len(plist) == 0:
+        return None
+    else:
+        return max(plist, key = len)
 
 
 
@@ -72,12 +71,12 @@ def longest_palindrome(plist=[]):
 # unittest
 #
 def test_longest_palindrome():
-	STRINGS = ["aabcdcb", "bananas", "google", "maddashcat"]
-	EXPECTED = ["bcdcb", "anana", "goog", "adda"] 
-	PLINDS = []
-	for word in STRINGS:
-		PLINDS.append(longest_palindrome(all_palindromes(word)))
-	assert PLINDS == EXPECTED
+    STRINGS = ["aabcdcb", "bananas", "google", "maddashcat", "rolemimimi"]
+    EXPECTED = ["bcdcb", "anana", "goog", "adda", "mimimi"] 
+    PLINDS = []
+    for word in STRINGS:
+        PLINDS.append(longest_palindrome(all_palindromes(word)))
+    assert PLINDS == EXPECTED
 
 
 
@@ -85,13 +84,13 @@ def test_longest_palindrome():
 # client program
 #
 def main():
-	STRINGS = ["aabcdcb", "bananas", "google", "maddashcat"]
-	for str in STRINGS:
-		print("Given '{}', the longest palindrome is '{}'".format(str, longest_palindrome(all_palindromes(str))))
+    STRINGS = ["aabcdcb", "bananas", "google", "maddashcat"]
+    for str in STRINGS:
+        print("Given '{}', the longest palindrome is '{}'".format(str, longest_palindrome(all_palindromes(str))))
 
 
 if __name__ == '__main__':
-	main()
+    main()
 
 '''
 Run-time output:
