@@ -34,7 +34,7 @@ for i in range(len(word_list)):
 	word[i] + ' ' * separator_len
 '''
 
-
+import unittest
 def justifyWords(wordlist, k):
 	justified_blob = ""
 	wordslength = 0
@@ -100,18 +100,18 @@ def justifyWords(wordlist, k):
 
 	return justified_blob
 
-
 #
 # Note: unittest needs  pip3 install pytest
 #
-def test_code():
-	wordlist = ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
-	k = 16
-	assert justifyWords(wordlist, k) == '''
-the  quick brown
-fox   jumps over
-the    lazy  dog
-'''
+class TestJustifier(unittest.TestCase):
+	def test_code(self):
+		wordlist = ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
+		k = 16
+		self.assertEqual(justifyWords(wordlist, k) == '''
+	the  quick brown
+	fox   jumps over
+	the    lazy  dog
+	''')
 
 if __name__ == "__main__":
 
@@ -123,7 +123,8 @@ if __name__ == "__main__":
 	wordlist = ["we", "were", "fools", "to", "make", "war", "against", "our", "brothers", "in" , "arms"]
 	k = 16
 	justifyWords(wordlist, k) 
-
+ 
+	unittest.main()
 
 '''
 Run-time output:
