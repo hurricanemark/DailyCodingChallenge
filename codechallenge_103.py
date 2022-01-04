@@ -187,5 +187,35 @@ if __name__ == '__main__':
         #unittest.main()
     
     
-        
+'''
+Run-time output:
+===============
+
+D:\devel\git\DailyCodingChallenge> pipenv run python .\codechallenge_103.py
+Loading .env environment variables...
+Unit test (Singly linked list):
+        RecordID at Idx#3: O-7399974946
+        Last recordID:  O-8470230587
+Unit test (Stack):
+        Last recordID:  O-5274225229
+Unit test (Queue):
+        RecordID at Idx#500: O-7839237861
+        Last recordID:  O-5175991817
+__main__.TestOrderLog.test_MultiLog: 3.033
+Unit test (Queue):
+        RecordID at Idx#500: O-5528074873
+        Last recordID:  O-2240949213
+__main__.TestOrderLog.test_Queue: 1.020
+Unit test (Singly linked list):
+        RecordID at Idx#3: O-3018177297
+        Last recordID:  O-8373421452
+__main__.TestOrderLog.test_SinglyLinkedList: 1.033
+Unit test (Stack):
+        Last recordID:  O-7926872109
+__main__.TestOrderLog.test_Stack: 1.020
+----------------------------------------------------------------------
+Ran 4 tests in 6.112s
+
+OK
+'''    
     
