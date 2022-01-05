@@ -7,6 +7,7 @@ RUN pip install pytest
 RUN pip install sympy 
 RUN pip install numpy
 RUN pip install anytree
+RUN pip install html-testrunner
 RUN apt-get install -y vim
 RUN mkdir /DailyCodingChallenge
 COPY ./*.py /DailyCodingChallenge
