@@ -51,7 +51,7 @@ exit()
 Install docker-ce on your local machine.  Follow this link [**docker-ce**](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1) for installation instruction.  
 Make sure you have .dockerignore file in your folder.
 
-$ docker build -t pydockerrunner
+$ docker build . -t pydockerrunner
 
 $ docker rm runmycodechallenges; docker run -it --name runmycodechallenges pydockerrunner:latest "/bin/bash"
 
