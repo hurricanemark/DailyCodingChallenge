@@ -41,6 +41,8 @@ import random
 import collections
 import time
 import os
+import HtmlTestRunner
+
 # ----------------------------------
 # Brute force -- Singly linked list:
 #-----------------------------------
@@ -180,11 +182,21 @@ if __name__ == '__main__':
         print("\t", sLog[-1])
         print()
         
-    else:    
+    else:
         # test unit test (verbose on runtime):
         suite = unittest.TestLoader().loadTestsFromTestCase(TestOrderLog)
         unittest.TextTestRunner(verbosity=0).run(suite)
-        #unittest.main()
+        
+        html_report_path = os.environ['HTML_REPORT_PATH']
+        #print(html_report_path)
+        testRunner=HtmlTestRunner.HTMLTestRunner(output=html_report_path, report_title='Test Report')
+        
+        test_suite = unittest.TestSuite()
+        all_test = unittest.makeSuite(TestOrderLog)
+        test_suite.addTest(all_test)
+        test_suite.addTest(TestOrderLog("test_Stack")) 
+        test_suite.addTest(TestOrderLog("test_Queue"))
+        unittest.main(testRunner.run(test_suite))
     
     
 '''
@@ -194,28 +206,73 @@ Run-time output:
 D:\devel\git\DailyCodingChallenge> pipenv run python .\codechallenge_103.py
 Loading .env environment variables...
 Unit test (Singly linked list):
-        RecordID at Idx#3: O-7399974946
-        Last recordID:  O-8470230587
+        RecordID at Idx#3: O-9488088207
+        Last recordID:  O-9025266467   
 Unit test (Stack):
-        Last recordID:  O-5274225229
+        Last recordID:  O-6591925839
 Unit test (Queue):
-        RecordID at Idx#500: O-7839237861
-        Last recordID:  O-5175991817
-__main__.TestOrderLog.test_MultiLog: 3.033
+        RecordID at Idx#500: O-4837286473 
+        Last recordID:  O-5362379084      
+__main__.TestOrderLog.test_MultiLog: 3.057
 Unit test (Queue):
-        RecordID at Idx#500: O-5528074873
-        Last recordID:  O-2240949213
-__main__.TestOrderLog.test_Queue: 1.020
+        RecordID at Idx#500: O-9615193617
+        Last recordID:  O-6697089552     
+__main__.TestOrderLog.test_Queue: 1.001  
 Unit test (Singly linked list):
-        RecordID at Idx#3: O-3018177297
-        Last recordID:  O-8373421452
-__main__.TestOrderLog.test_SinglyLinkedList: 1.033
+        RecordID at Idx#3: O-1433269688
+        Last recordID:  O-3696427905
+__main__.TestOrderLog.test_SinglyLinkedList: 1.042
 Unit test (Stack):
-        Last recordID:  O-7926872109
-__main__.TestOrderLog.test_Stack: 1.020
+        Last recordID:  O-8051504149
+__main__.TestOrderLog.test_Stack: 1.011
 ----------------------------------------------------------------------
-Ran 4 tests in 6.112s
+Ran 4 tests in 6.106s
 
 OK
+
+Running tests...
+----------------------------------------------------------------------
+ test_MultiLog (__main__.TestOrderLog) ... OK (3.042136)s
+ test_Queue (__main__.TestOrderLog) ... OK (1.001401)s
+ test_SinglyLinkedList (__main__.TestOrderLog) ... OK (1.017831)s
+ test_Stack (__main__.TestOrderLog) ... OK (1.005817)s
+ test_Stack (__main__.TestOrderLog) ... OK (1.010090)s
+ test_Queue (__main__.TestOrderLog) ... OK (1.009727)s
+
+----------------------------------------------------------------------
+Ran 6 tests in 0:00:08
+
+OK
+
+
+
+Generating HTML reports...
+test_reports\TestResults___main__.TestOrderLog_2022-01-04_21-41-46.html
+Unit test (Singly linked list):
+        RecordID at Idx#3: O-7905126100
+        Last recordID:  O-6590755604
+Unit test (Stack):
+        Last recordID:  O-6961104592
+Unit test (Queue):
+        RecordID at Idx#500: O-7933390793
+        Last recordID:  O-8689457315
+__main__.TestOrderLog.test_MultiLog: 3.060
+.Unit test (Queue):
+        RecordID at Idx#500: O-1287470987
+        Last recordID:  O-6002949287
+__main__.TestOrderLog.test_Queue: 1.002
+.Unit test (Singly linked list):
+        RecordID at Idx#3: O-6167847554
+        Last recordID:  O-6331368071
+__main__.TestOrderLog.test_SinglyLinkedList: 1.042
+.Unit test (Stack):
+        Last recordID:  O-3799353418
+__main__.TestOrderLog.test_Stack: 1.001
+.
+----------------------------------------------------------------------
+Ran 4 tests in 6.136s
+
+OK
+
 '''    
     
