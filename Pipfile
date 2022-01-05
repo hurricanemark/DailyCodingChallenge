@@ -13,3 +13,4 @@ anytree = "2.4.3"
 [packages]
 pytest = "*"
 numpy = "*"
+html-testrunner = "*"
