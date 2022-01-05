@@ -157,7 +157,7 @@ class TestStack(unittest.TestCase):
         test_Stack()
     
 if __name__ == '__main__':
-    if os.environ['UNITTEST_ONLY'] == False:
+    if os.environ.get('UNITTEST_ONLY') == False:
         # non-unit tests
         slLog = SlRecord()
         for i in range(10):
