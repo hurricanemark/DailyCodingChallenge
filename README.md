@@ -33,6 +33,15 @@ Often, I would recommit updates on individual file with further thoughts, improv
 
 **     or, python3 module_unittests.py
 
+**     PIPENV: using provided Pipfile.lock
+
+```
+pipenv install
+pipenv shell
+pipenv run python ./tests.py
+exit()
+```
+
 
 
 ## Run Using Docker Image
