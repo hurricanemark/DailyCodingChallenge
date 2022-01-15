@@ -79,7 +79,6 @@ class Enigma:
         [tmp_lst.append(self.encodedValue(''.join(msgKey[idx]))) for idx in range(0, len(msgKey))]
         result_lst.append(''.join(tmp_lst))
         
-        
         #
         # Iterable case: 1st element is matched with the dictionary, 
         # 2nd concat 3rd element is matched with the dictionary, 
