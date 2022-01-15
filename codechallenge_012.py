@@ -108,7 +108,7 @@ def justifyWords(wordlist, k):
 #
 class TestJustifier(unittest.TestCase):
 	def test_code(self):
-		wordlist = ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
+		wordlist = []
 		k = 16
 		justified_blob = '''
 the  quick brown

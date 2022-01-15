@@ -159,7 +159,7 @@ class TestStack(unittest.TestCase):
         test_Stack()
     
 if __name__ == '__main__':
-    if os.environ.get('UNITTEST_ONLY') == False:
+    if os.environ.get('UNITTEST_ONLY') != 'True':
         # non-unit tests
         slLog = SlRecord()
         for i in range(10):
@@ -183,22 +183,21 @@ if __name__ == '__main__':
         print()
         
     else:
-        # test unit test (verbose on runtime):
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestOrderLog)
-        unittest.TextTestRunner(verbosity=0).run(suite)
+        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))
+
+        #  # read the htlm output path from environment variable. e.g. local .env file.
+        # html_report_path = os.environ['HTML_REPORT_PATH']
+        # testRunner=HtmlTestRunner.HTMLTestRunner(output=html_report_path, report_title='Test Report for codechallenge_103.py')
+        # test_suite = unittest.TestSuite()
+        # unittest.TextTestRunner(verbosity=0).run(test_suite)
         
-        html_report_path = os.environ['HTML_REPORT_PATH']
-        #print(html_report_path)
-        testRunner=HtmlTestRunner.HTMLTestRunner(output=html_report_path, report_title='Test Report')
-        
-        test_suite = unittest.TestSuite()
-        all_test = unittest.makeSuite(TestOrderLog)
-        test_suite.addTest(all_test)
-        test_suite.addTest(TestOrderLog("test_Stack")) 
-        test_suite.addTest(TestOrderLog("test_Queue"))
-        unittest.main(testRunner.run(test_suite))
-    
-    
+        # all_test = unittest.makeSuite(TestOrderLog)
+        # test_suite.addTest(all_test)
+        # test_suite.addTest(TestOrderLog("test_Stack")) 
+        # test_suite.addTest(TestOrderLog("test_Queue"))
+        # unittest.main(testRunner.run(test_suite)) 
+
+         
 '''
 Run-time output:
 ===============

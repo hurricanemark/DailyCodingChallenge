@@ -5,8 +5,6 @@ codility
 .git
 *.pyc
 _config.yml
-Pipfile
-Pipfile.lock
 README.md
 .gitignore
 .vscode

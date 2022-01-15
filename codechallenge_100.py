@@ -19,7 +19,10 @@ Implentation:
 + Shorthand Algorithm
 
 '''
-
+import os
+import unittest
+import time
+import HtmlTestRunner
 # Sequential Algorithm O(n)
 def findNumberSequentialSearch(arr, k):
     # This function returns a STRING of 'YES' or 'NO'
@@ -46,23 +49,51 @@ def shorthandFindNumber(arr, k):
 #
 # unittest
 #
-def test_FindNumber(arr, k):
-    print('Sequential Search result: ', findNumberSequentialSearch(arr, k))
-    print('Shorthand Search result: ', shorthandFindNumber(arr, k))
+class TestFindNumber(unittest.TestCase):
+    def setUp(self):
+        self.startTime = time.time()
+
+    def tearDown(self):
+        t = time.time() - self.startTime
+        print('%s: %.3f' % (self.id(), t))
+
+    def test_FindNumber(self):
+        arr = [1,2,3,4,5,6,7,8,9]
+        k = 1
+        test_FindNumberSequentially(arr, k) == 'YES'
+        test_FindNumberShorthand(arr, k) == 'YES'
+
+def test_FindNumberSequentially(arr, k):
+    return findNumberSequentialSearch(arr, k)
+def test_FindNumberShorthand(arr, k):
+    return shorthandFindNumber(arr, k)
+    
 
 if __name__ == '__main__':
-    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    k = 6
-    print("\nTest#1: arr={}, k={}".format(arr, k))
-    test_FindNumber(arr, k)
-    arr = []
-    k = 10
-    print("\nTest#2: arr={}, k={}".format(arr, k))
-    test_FindNumber(arr, k)
-    arr = [21, 12, 73, 34, 85, 16, 97, 58, 29, 10]
-    k = '0x10'
-    print("\nTest#3: arr={}, k={}".format(arr, k))
-    test_FindNumber(arr, k)
-    k = 29
-    print("\nTest#4: arr={}, k={}".format(arr, k))
-    test_FindNumber(arr, k)
+    if os.environ['UNITTEST_ONLY'] != 'True':
+        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        k = 6
+        print("\nTest#1: arr={}, k={}".format(arr, k))
+        shorthandFindNumber(arr, k)
+        arr = []
+        k = 10
+        print("\nTest#2: arr={}, k={}".format(arr, k))
+        shorthandFindNumber(arr, k)
+        arr = [21, 12, 73, 34, 85, 16, 97, 58, 29, 10]
+        k = '0x10'
+        print("\nTest#3: arr={}, k={}".format(arr, k))
+        findNumberSequentialSearch(arr, k)
+        k = 29
+        print("\nTest#4: arr={}, k={}".format(arr, k))
+        findNumberSequentialSearch(arr, k)
+    else:
+        # read the htlm output path from environment variable. e.g. local .env file.
+        html_report_path = os.environ['HTML_REPORT_PATH']
+        testRunner=HtmlTestRunner.HTMLTestRunner(output=html_report_path, report_title='Test Report for codechallenge_100.py')
+        
+        test_suite = unittest.TestSuite()
+        unittest.TextTestRunner(verbosity=0).run(test_suite)
+        all_test = unittest.makeSuite(TestFindNumber)
+        test_suite.addTest(all_test)
+        unittest.main(testRunner.run(test_suite))
+        unittest.main(TestFindNumber.test_FindNumber)
