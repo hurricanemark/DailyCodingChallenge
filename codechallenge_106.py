@@ -83,8 +83,7 @@ class TestAnagrams(unittest.TestCase):
         self.assertEqual(are_anagrams_dict('spark', 'kraps'), True)
         with self.assertRaises(ValueError):
             are_anagrams_dict('', '')
-    
-    
+        
 if __name__ == '__main__':
     if os.environ.get('UNITTEST_ONLY') != 'True':
         S1 = "danger"
