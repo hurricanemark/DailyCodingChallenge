@@ -60,13 +60,9 @@ class TestFindNumber(unittest.TestCase):
     def test_FindNumber(self):
         arr = [1,2,3,4,5,6,7,8,9]
         k = 1
-        test_FindNumberSequentially(arr, k) == 'YES'
-        test_FindNumberShorthand(arr, k) == 'YES'
+        self.assertEqual(findNumberSequentialSearch(arr, k), 'YES')
+        self.assertEqual(shorthandFindNumber(arr, k), 'YES')
 
-def test_FindNumberSequentially(arr, k):
-    return findNumberSequentialSearch(arr, k)
-def test_FindNumberShorthand(arr, k):
-    return shorthandFindNumber(arr, k)
     
 
 if __name__ == '__main__':

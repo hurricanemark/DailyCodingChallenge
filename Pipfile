@@ -5,6 +5,7 @@ name = "pypi"
 
 [dev-packages]
 pygame = "*"
+sympy = "*"
 
 [requires]
 python_version = "3.7"
@@ -16,3 +17,4 @@ pytest = "*"
 numpy = "*"
 html-testrunner = "*"
 pygame = "*"
+sympy = "*"
