@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 name = "pypi"
 
 [dev-packages]
+pygame = "*"
 
 [requires]
 python_version = "3.7"
