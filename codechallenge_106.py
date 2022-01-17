@@ -4,7 +4,7 @@ Problem statemtent:
 Given two strings s1 and s2, check if they are anagrams.
 Two strings are named anagrams if they contain the same 
 characters with the same frequencies, but not necessarily 
-in the same order.
+in the same order.  Case does matter.
 
 Exapmle:
 S1 = "danger"
@@ -81,6 +81,7 @@ class TestAnagrams(unittest.TestCase):
         self.assertEqual(are_anagrams('danger', 'garden'), True)
         self.assertEqual(are_anagrams_dict('danger', 'garden'), True)    
         self.assertEqual(are_anagrams_dict('spark', 'kraps'), True)
+        self.assertEqual(are_anagrams_dict('Roland', 'Dornal'), False)
         with self.assertRaises(ValueError):
             are_anagrams_dict('', '')
         
@@ -89,6 +90,10 @@ if __name__ == '__main__':
         S1 = "danger"
         S2 = "garden"
         print(are_anagrams(S1, S2))
+        print(are_anagrams_dict(S1, S2))
+        S1 = "ROLAND"
+        S2 = "DORNAL"
+        S2 = "Dnalor"
         print(are_anagrams_dict(S1, S2))
     else:
         unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))
