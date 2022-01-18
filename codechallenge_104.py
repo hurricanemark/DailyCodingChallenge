@@ -127,7 +127,7 @@ class TestLongestAbsolutePath(unittest.TestCase):
         
         
 if __name__ == '__main__':
-    if os.environ.get('UNITTEST_ONLY') != 'False':
+    if os.environ.get('UNITTEST_ONLY') != 'True':
         print(longest_absolute_path("dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"))
         print()
         print(longest_absolute_path("PythonDevSrc\n\tProjects\n\t\tCodingChallenges\n\t\t\tcodechallenge_104.py"))
