@@ -21,6 +21,10 @@ Pseudo code:
 4.  Write a function to extract all possible substrings that could be a palindrom and feed it to the validating function above.
 
 '''
+import unittest
+import HtmlTestRunner
+import os, time
+from unittest.runner import TextTestResult
 
 #
 # Check a string for palindrome
@@ -70,31 +74,63 @@ def longest_palindrome(plist=[]):
 #
 # unittest
 #
-def test_longest_palindrome():
-    STRINGS = ["aabcdcb", "bananas", "google", "maddashcat", "rolemimimi"]
-    EXPECTED = ["bcdcb", "anana", "goog", "adda", "mimimi"] 
-    PLINDS = []
-    for word in STRINGS:
-        PLINDS.append(longest_palindrome(all_palindromes(word)))
-    assert PLINDS == EXPECTED
-
-
-
+class Test_isPalindrome(unittest.TestCase):
+    def test_longest_palindrome(self):
+        self.assertEqual(longest_palindrome(all_palindromes("aabcdcb")), 'bcdcb')
+        self.assertEqual(longest_palindrome(all_palindromes("maddashcat")), 'adda')
+        self.assertEqual(longest_palindrome(all_palindromes("bananas")), 'anana')
+        self.assertEqual(longest_palindrome(all_palindromes("google")), 'goog')
+        self.assertEqual(longest_palindrome(all_palindromes("")), None)
 #
 # client program
 #
 def main():
-    STRINGS = ["aabcdcb", "bananas", "google", "maddashcat"]
+    STRINGS = ["aabcdcb", "bananas", "google", "maddashcat", "roleimimi"]
+    
     for str in STRINGS:
         print("Given '{}', the longest palindrome is '{}'".format(str, longest_palindrome(all_palindromes(str))))
 
 
+    STRINGS = ["aabcdcb", "bananas", "google", "maddashcat", "roleimimi"]
+    EXPECTED = ["bcdcb", "anana", "goog", "adda", "imimi"] 
+    PLINDS = []
+    for word in STRINGS:
+        PLINDS.append(longest_palindrome(all_palindromes(word)))
+    print(PLINDS)    
+
 if __name__ == '__main__':
-    main()
+    if os.environ.get('UNITTEST_ONLY') != 'True':
+        main()
+    else:
+        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))
 
 '''
 Run-time output:
 ===============
+$ pipenv run python ./codechallenge_032.py 
+Loading .env environment variables...
+Given 'aabcdcb', the longest palindrome is 'bcdcb'
+Given 'bananas', the longest palindrome is 'anana'
+Given 'google', the longest palindrome is 'goog'
+Given 'maddashcat', the longest palindrome is 'adda'
+Given 'roleimimi', the longest palindrome is 'imimi'
+['bcdcb', 'anana', 'goog', 'adda', 'imimi']
+...
+$ pipenv run python ./codechallenge_032.py 
+Loading .env environment variables...
+
+Running tests... 
+----------------------------------------------------------------------
+ test_longest_palindrome (__main__.Test_isPalindrome) ... OK (0.000000)s
+----------------------------------------------------------------------
+Ran 1 test in 0:00:00
+
+OK
+
+Generating HTML reports...
+test_reports\TestResults___main__.Test_isPalindrome_2022-01-19_17-45-24.html
+...
+
 (DailyCodingChallenge-wC3ocw3s) markn@raspberrypi3:~/devel/py-src/DailyCodingChallenge $ python codechallenge_032.py
 Given 'aabcdcb', the longest palindrome is 'bcdcb'
 Given 'bananas', the longest palindrome is 'anana'
