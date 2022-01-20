@@ -7,20 +7,19 @@ This problem was asked by Amazon.
 Given a string, find the longest palindromic contiguous substring. If there are more than one with the maximum length, return any one.
 For example, the longest palindromic substring of "aabcdcb" is "bcdcb". The longest palindromic substring of "bananas" is "anana".
 
-
 Algorithm:
 ---------
 Input: A string
 Output: A string representing the longest substring which is a palindrome
 
 Pseudo code:
-
+===========
 1.  Check for valid input
 2.  change to lower case string
 3.  Write a function to validate a palindrome
 4.  Write a function to extract all possible substrings that could be a palindrom and feed it to the validating function above.
-
 '''
+
 import unittest
 import HtmlTestRunner
 import os, time
@@ -69,8 +68,6 @@ def longest_palindrome(plist=[]):
     else:
         return max(plist, key = len)
 
-
-
 #
 # unittest
 #
@@ -81,6 +78,7 @@ class Test_isPalindrome(unittest.TestCase):
         self.assertEqual(longest_palindrome(all_palindromes("bananas")), 'anana')
         self.assertEqual(longest_palindrome(all_palindromes("google")), 'goog')
         self.assertEqual(longest_palindrome(all_palindromes("")), None)
+
 #
 # client program
 #
@@ -103,6 +101,8 @@ if __name__ == '__main__':
         main()
     else:
         unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))
+
+
 
 '''
 Run-time output:
