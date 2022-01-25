@@ -49,12 +49,21 @@ def main():
     print(mergeSlists(lists = [[],[1],[2,3,4,5,6]]))
 
 class TestMergeSortedLists(unittest.TestCase):
+    def setUp(self):
+        self.startTime = time.time()
+
+    def tearDown(self):
+        t = time.time() - self.startTime
+        print('%s: %.3f' % (self.id(), t))
+        
     def test_kSortedList(self):
+        time.sleep(1)
         self.assertEqual(mergeSlists([[5,1,3,2,4], [8,10,9,11,7], [-1, -2, -3, -4, -5]]), [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11])
+        time.sleep(1)
         self.assertEqual(mergeSlists(lists = [[],[1],[2,3,4,5,6]]), [1,2,3,4,5,6]) 
 
 if __name__ == '__main__':
-    if os.environ.get('UNITTEST_ONLY') != 'False':
+    if os.environ.get('UNITTEST_ONLY') != 'True':
         main()
     else:
         unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))    
