@@ -5,8 +5,8 @@ __pycache__
 .coverage
 output*.txt
 .env
-./test_reports
-./test_reports/*
+test_reports
+test_reports/*
 test_report_files.zip
-./test_reports/TestResults___main__.*
-./test_reports/test_results.xml
+test_reports/TestResults___main__.*.html
+test_reports/test_results.xml

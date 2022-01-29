@@ -72,5 +72,5 @@ if __name__ == '__main__':
         print()
         print(fib_next_k(218922995834555138048, 10))
     else:
-        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test-reports'))
+        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))
     
