@@ -39,6 +39,21 @@ def fib(n):
     f_n = u_k(n)[1,0]
     return int(round(f_n))
 
+class FiboForLarge:
+    def __init__(self, start_val, k):
+        self.start_val = start_val
+        self.k = k
+        self.k_vals = fib_next_k(start_val, k)
+        
+    def __str__(self):
+        return str(self.k_vals)
+    
+    def fib_this(self, start_val):
+        return int(round(start_val * 1.61803))
+    
+    def fib_for_k(self, k):
+        return [self.k_vals.append(fib_this(self.k_vals[i])) for i in range(k)]
+    
 #
 # using the golden ratio, to achieve relative accuracy on LARGE numbers in the fib sequence
 #
