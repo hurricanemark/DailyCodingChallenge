@@ -42,7 +42,7 @@ pipenv run python ./tests.py
 exit()
 ```
 
-Verbose unittest output is in tests_output.txt
+<span style="color:blue">Verbose unittest output is in tests_output.txt</span>
 
 
 ## Run Using Docker Image
