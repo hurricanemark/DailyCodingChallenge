@@ -114,6 +114,11 @@ if __name__ == '__main__':
     LL.insert(3)
     LL.insert(4)
     LL.insert(5)
+    LL.insert(6)
+    LL.insert(7)
+    LL.insert(8)
+    LL.insert(9)
+    LL.insert(10)
     LL.printLL()
     LL.swapLowHigh(LL.head)
     LL.printLL()
@@ -126,8 +131,8 @@ if __name__ == '__main__':
 Runtime output:
 ===============
 PS D:\devel\GIT\DailyCodingChallenge> python .\codechallenge_111.py
-1 --> 2 --> 3 --> 4 --> 5 --> None
-1 --> 3 --> 2 --> 5 --> 4 --> None
+1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8 --> 9 --> 10 --> None
+1 --> 3 --> 2 --> 5 --> 4 --> 7 --> 6 --> 9 --> 8 --> 10 --> None
 1 --> 3 --> 2 --> 5 --> 4 --> 7 --> 6 --> 9 --> 8 --> 11 --> 10 --> 13 --> 12 --> 15 --> 14 --> None
 .
 ----------------------------------------------------------------------
