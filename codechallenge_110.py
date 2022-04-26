@@ -141,7 +141,7 @@ def preorderInsert(root):
         preorderInsert(root.left)
         preorderInsert(root.right)
     
-
+# Build tree
 def buildTree(preorder, start, end):
     # base case
     if start > end:
