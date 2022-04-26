@@ -33,7 +33,7 @@ Often, I would recommit updates on individual file with further thoughts, improv
 
 **     or, python3 module_unittests.py
 
-**     PIPENV: using provided Pipfile.lock
+**     PIPENV: using provided Pipfile.lock  ==recommended==
 
 ```
 pipenv install
@@ -42,7 +42,7 @@ pipenv run python ./tests.py
 exit()
 ```
 
-*Verbose unittest output is in tests_output.txt* :joy:
+==Verbose unittest output is in== *tests_output.txt* :joy:
 
 
 ## Run Using Docker Image
@@ -62,7 +62,7 @@ $ docker rm runmycodechallenges; docker run -it --name runmycodechallenges pydoc
 One problem/solution per python file.
 Each python file contains the given problem in the commented section and my attempted code below it.  The files are not linked or referenced to one another.  However, you could import each one as module (see module_unittests.py) or run pytest on the entire directory (see tests.py).  Be sure to open it up and read it.  
 
-Feel free to suggest better performance for any of my solution here.
+Feel free to suggest better performance for any of my solutions here.
 
 
 Published URL: https://hurricanemark.github.io/DailyCodingChallenge/
