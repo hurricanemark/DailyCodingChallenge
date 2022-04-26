@@ -81,6 +81,8 @@ class LinkedList:
             print(current.data, end=' --> ')
             current = current.next
         print('None')
+        
+# Test cases
 class Test111(unittest.TestCase):
     def test_swapLowHigh(self):
         ll = LinkedList()
@@ -114,7 +116,6 @@ if __name__ == '__main__':
     LL.insert(5)
     LL.printLL()
     LL.swapLowHigh(LL.head)
-
     LL.printLL()
 
     unittest.main()
