@@ -16,6 +16,9 @@ Algorithm:
 3. Swap the last two nodes for low-->high.
 
 '''
+
+import unittest
+
 # A single node of a singly linked list
 class Node:
     # constructor
@@ -78,7 +81,29 @@ class LinkedList:
             print(current.data, end=' --> ')
             current = current.next
         print('None')
-    
+class Test111(unittest.TestCase):
+    def test_swapLowHigh(self):
+        ll = LinkedList()
+        ll.insert(1)
+        ll.insert(2)
+        ll.insert(3)
+        ll.insert(4)
+        ll.insert(5)
+        ll.insert(6)
+        ll.insert(7)
+        ll.insert(8)
+        ll.insert(9)
+        ll.insert(10)
+        ll.insert(11)
+        ll.insert(12)
+        ll.insert(13)
+        ll.insert(14)
+        ll.insert(15)
+        
+        self.assertTrue(ll.swapLowHigh(ll.head),  [1,3,2,5,4,7,6,9,8,11,10,13,12,15,14])       
+        
+        ll.printLL()
+        
 if __name__ == '__main__':
     # Singly Linked List with insertion and print methods
     LL = LinkedList()
@@ -92,3 +117,4 @@ if __name__ == '__main__':
 
     LL.printLL()
 
+    unittest.main()
