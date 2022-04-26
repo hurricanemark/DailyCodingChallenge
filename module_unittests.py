@@ -170,8 +170,9 @@ class TestCodeChallenges(unittest.TestCase):
 		ll.insert(9)
 		ll.insert(10)
 		expected = [1,3,2,5,4,7,6,9,8,10]
-		
-		self.assertEqual(ll.swapLowHigh(ll.head), expected)
+		result = ll.swapLowHigh(ll.head)
+
+		self.assertTrue(result, expected)
   
 if __name__ == '__main__':
 	unittest.main()
