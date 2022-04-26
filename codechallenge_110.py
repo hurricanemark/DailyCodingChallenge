@@ -189,3 +189,13 @@ if __name__ == '__main__':
     root = buildTree(preorderData, 0, len(preorderData) - 1)
     print ('Test#3 Preorder traversal: ', end = '')
     preorderInsert(root)
+
+
+'''
+Run-time output:
+===============
+Test#1 Inorder traversal: 8 10 12 15 16 20 25 
+Test#2 Inorder traversal: a b d c e f g 
+Test#3 Preorder traversal: a b d e c f g 
+'''
+
