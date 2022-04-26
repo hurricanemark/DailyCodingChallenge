@@ -118,4 +118,20 @@ if __name__ == '__main__':
     LL.swapLowHigh(LL.head)
     LL.printLL()
 
+    # unit test
     unittest.main()
+
+
+'''
+Runtime output:
+===============
+PS D:\devel\GIT\DailyCodingChallenge> python .\codechallenge_111.py
+1 --> 2 --> 3 --> 4 --> 5 --> None
+1 --> 3 --> 2 --> 5 --> 4 --> None
+1 --> 3 --> 2 --> 5 --> 4 --> 7 --> 6 --> 9 --> 8 --> 11 --> 10 --> 13 --> 12 --> 15 --> 14 --> None
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+'''
