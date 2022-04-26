@@ -11,6 +11,7 @@ import codechallenge_011
 import codechallenge_012
 import codechallenge_013
 import codechallenge_016
+import codechallenge_111
 
 class TestCodeChallenges(unittest.TestCase):
 
@@ -156,5 +157,21 @@ class TestCodeChallenges(unittest.TestCase):
 		strB = 'sitting'
 		self.assertEqual(codechallenge_016.strDistSubstitution(strA, strB), 3)	
 
+	def test_codeChallenge111(self):
+		ll = codechallenge_111.LinkedList()
+		ll.insert(1)
+		ll.insert(2)
+		ll.insert(3)
+		ll.insert(4)
+		ll.insert(5)
+		ll.insert(6)
+		ll.insert(7)
+		ll.insert(8)
+		ll.insert(9)
+		ll.insert(10)
+		expected = [1,3,2,5,4,7,6,9,8,10]
+		
+		self.assertEqual(ll.swapLowHigh(ll.head), expected)
+  
 if __name__ == '__main__':
 	unittest.main()
