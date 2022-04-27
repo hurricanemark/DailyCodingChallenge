@@ -76,7 +76,7 @@ X[3][10] = ' '
 X[3][11] = ' '
 X[3][12] = ' '
 
-for r in result:
+for r in X:
    print(r)
 
 # Output:
@@ -99,9 +99,12 @@ Algorithm:
 2. Fill the array with the sentence in accordance with the offsets calculated as:
     R_offset += 1 
     L_offset = len(sentence) - 1 
-    
+3. Use numpy.fill_diagonol()
 '''
 
+import string
+from textwrap import wrap
+import numpy as np
 
 def bruteforce(sentence, k):
     rows = k
@@ -170,11 +173,27 @@ def bruteforce(sentence, k):
     for r in X:
         print(r)
         
+def smarterAlgo(sentense, k):
+    rows = k
+    cols = len(sentence)
+    chars = list(sentence)
+    X = np.zeros((rows, cols), dtype='U1')
+    np.fill_diagonal(X, chars[0:k], wrap=True)
+    
+    # col = np.arange(4)
+    # X[col, col+1] = chars[k*2:cols-k]
+    
+    np.fill_diagonal(np.fliplr(X), chars[cols-k:cols], wrap=True)
+    
+    print(X)
+        
 if __name__ == "__main__":
     k=4
     sentence='thisisazigzag'
 
     bruteforce(sentence, k)
+    
+    smarterAlgo(sentence, k)
 
     
 '''
@@ -186,4 +205,9 @@ PS D:\devel\GIT\DailyCodingChallenge> python .\codechallenge_112.py
 [' ', 'h', ' ', ' ', ' ', 's', ' ', 'z', ' ', ' ', ' ', 'a', ' ']
 [' ', ' ', 'i', ' ', 'i', ' ', ' ', ' ', 'i', ' ', 'z', ' ', ' ']
 [' ', ' ', ' ', 's', '', ' ', ' ', ' ', ' ', 'g', ' ', ' ', ' ']
+
+[['t' '' '' '' '' '' '' '' '' '' '' '' 'g']
+ ['' 'h' '' '' '' '' '' '' '' '' '' 'z' '']
+ ['' '' 'i' '' '' '' '' '' '' '' 'a' '' '']
+ ['' '' '' 's' '' '' '' '' '' 'g' '' '' '']]
 '''
