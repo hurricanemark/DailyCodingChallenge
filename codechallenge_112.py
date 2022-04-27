@@ -180,8 +180,8 @@ def smarterAlgo(sentense, k):
     X = np.zeros((rows, cols), dtype='U1')
     np.fill_diagonal(X, chars[0:k], wrap=True)
     
-    # col = np.arange(4)
-    # X[col, col+1] = chars[k*2:cols-k]
+    col = np.arange(k)
+    X[col, col+k+2] = ['a','z','i','g']  #chars[-(2*k):k]
     
     np.fill_diagonal(np.fliplr(X), chars[cols-k:cols], wrap=True)
     
@@ -191,8 +191,10 @@ if __name__ == "__main__":
     k=4
     sentence='thisisazigzag'
 
+    print('run-time bruteforce output:')
     bruteforce(sentence, k)
-    
+
+    print('\nrun-time smarterAlgo output:')
     smarterAlgo(sentence, k)
 
     
@@ -201,13 +203,15 @@ run-time output (bruteforce):
 ============================
 
 PS D:\devel\GIT\DailyCodingChallenge> python .\codechallenge_112.py
+run-time bruteforce output:
 ['t', ' ', ' ', ' ', ' ', ' ', 'a', ' ', ' ', ' ', ' ', ' ', 'g']
 [' ', 'h', ' ', ' ', ' ', 's', ' ', 'z', ' ', ' ', ' ', 'a', ' ']
 [' ', ' ', 'i', ' ', 'i', ' ', ' ', ' ', 'i', ' ', 'z', ' ', ' ']
 [' ', ' ', ' ', 's', '', ' ', ' ', ' ', ' ', 'g', ' ', ' ', ' ']
 
-[['t' '' '' '' '' '' '' '' '' '' '' '' 'g']
- ['' 'h' '' '' '' '' '' '' '' '' '' 'z' '']
- ['' '' 'i' '' '' '' '' '' '' '' 'a' '' '']
+run-time smarterAlgo output:
+[['t' '' '' '' '' '' 'a' '' '' '' '' '' 'g']
+ ['' 'h' '' '' '' '' '' 'z' '' '' '' 'z' '']
+ ['' '' 'i' '' '' '' '' '' 'i' '' 'a' '' '']
  ['' '' '' 's' '' '' '' '' '' 'g' '' '' '']]
 '''
