@@ -69,7 +69,8 @@ def longest_absolute_path(input_string):
     prev_is_a_file = False
     tcount = 0
     longest_path = []
-    print("TabCnt\tLevel\tisFile\tToken")
+    
+    print("\nTabCnt\tLevel\tisFile\tToken")
     print("=======\t=====\t=====\t=====")
     for token in tokens:
         if token.count('\t') == 0:  # root directory
