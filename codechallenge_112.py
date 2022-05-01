@@ -42,7 +42,7 @@ Algorithm:
     L_offset = len(sentence) - 1 
 3. Use numpy.fill_diagonol()
 '''
-
+import unittest
 import string
 from textwrap import wrap
 import numpy as np
@@ -116,7 +116,7 @@ def bruteforce(sentence, k):
       
       
 # Use numpy.fill_diagonal         
-def smarterAlgo(sentense, k):
+def smarterAlgo(sentence, k):
     rows = k
     cols = len(sentence)
     chars = list(sentence)
@@ -129,8 +129,21 @@ def smarterAlgo(sentense, k):
     np.fill_diagonal(np.fliplr(X), chars[cols-k:cols], wrap=True)
     
     print(X)
+    
+def zigZagNp(sentence, k):
+    X=np.diagflat(['t','h','i', 's'],0)
+    Y=np.diagflat(['s', 'i', 's', 'a'],0)
+    Z=np.diagflat(['a', 'z', 'i', 'g'],0)
+    A=np.diagflat(['g', 'z', 'a', 'g'],0)
+    B=np.concatenate((X,Y,Z,A),axis=1)
+    print(B)
         
-if __name__ == "__main__":
+        
+def test_zigzag():
+    assert zigZagNp('colorominland', 5)
+            
+        
+def main():
     k=4
     sentence='thisisazigzag'
 
@@ -140,7 +153,12 @@ if __name__ == "__main__":
     print('\nrun-time smarterAlgo output:')
     smarterAlgo(sentence, k)
 
+    print()
+    zigZagNp(sentence, k) != None
     
+if __name__ == '__main__':
+    	main()
+
 '''
 run-time output (bruteforce):
 ============================
