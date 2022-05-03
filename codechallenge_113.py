@@ -20,6 +20,10 @@ Assumption -- The input list contains multiple windows of unsorted elements.
 2.  Base case: is sorted?  Hmmm, might not be part of the solution but does cover the basic.
 3.  Base case: is assending order or descending order?
 4.  Base case: are the duplicates?
+
+Note: Due to increase complexity, we will skip steps 2,3,4 and make further assumption that the 
+      given list should be checked for assending order only.
+
 5.  Traverse the list from right to left until we hit the first unsorted element, make this the 
     starting index of the window by backtracking to one previous index.
 6.  Continue traversal until we hit another starting index of sorted element, i.e. the next element 
@@ -40,12 +44,34 @@ Example: [50,1,2,3,4,6,5,7,8,9,51]
 Note: Algorithm #1 answers the main question.  Algorithm #2 is an alternate that roughly answers the main question, but not quite.
 =====
 
+
+Executing command:
+=================
+- For unittest:  `pipenv run python .\codechallenge_113.py`
+- Normal execution: `python .\codechallenge_113.py`
+
 '''
 
 import unittest
 import HtmlTestRunner
 import os, time
 from unittest.runner import TextTestResult
+
+
+#
+# Return True is list is in descending order
+# O(n) complexity
+#
+def isDescendingSorted(lst):
+    # Check for Descending Sorted List
+    flag = False
+    test_list1 = lst[:]
+    test_list1.sort(reverse = True)
+    if (test_list1 == lst):
+        flag = True
+        
+    return flag   
+
 
 
 def findSmallestUnsortedWindow(lst):
@@ -56,10 +82,22 @@ def findSmallestUnsortedWindow(lst):
         return None
     
     # Check if the input list is sorted.  This incurs O(n) and will be striked out of the algorithm
-    if all(lst[i] <= lst[i+1] for i in range(len(lst) - 1)) == True:
-        return None
+    # if all(lst[i] <= lst[i+1] for i in range(len(lst) - 1)) == True:
+    #     bAssencding = True
+    #     return None
     
-
+    # Check for Descending Sorted List
+    # bDescending = isDescendingSorted(lst)
+    
+    # Define resulting indices
+    startingIdx = endingIdx = 0
+        
+        
+    return (startingIdx, endingIdx)
+        
+#
+# Unittest
+#
 class TestSmallestUnorderedWindow(unittest.TestCase):
     def setUp(self):
         self.startTime = time.time()
@@ -72,7 +110,7 @@ class TestSmallestUnorderedWindow(unittest.TestCase):
     def test_SortedList(self):
         time.sleep(1)
         Slst = [1,2,3,4,5,6,7,8,9]
-        assert findSmallestUnsortedWindow(Slst) == None
+        assert findSmallestUnsortedWindow(Slst) == (0,0)
         Slst = []
         assert findSmallestUnsortedWindow(Slst) == None
         Slst = [12]
@@ -92,3 +130,23 @@ if __name__ == '__main__':
         main()
     else:
         unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))    
+        
+'''
+Run-time output:
+===============
+PS D:\devel\GIT\DailyCodingChallenge> pipenv run python .\codechallenge_113.py
+Loading .env environment variables...
+
+Running tests... 
+----------------------------------------------------------------------
+ test_SmallWindow (__main__.TestSmallestUnorderedWindow) ... OK (0.000000)s
+ test_SortedList (__main__.TestSmallestUnorderedWindow) ... OK (2.001912)s
+
+----------------------------------------------------------------------
+Ran 2 tests in 0:00:02
+
+OK
+
+Generating HTML reports...
+test_reports\TestResults___main__.TestSmallestUnorderedWindow_2022-05-03_13-31-36.html
+'''
