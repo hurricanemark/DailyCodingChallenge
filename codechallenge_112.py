@@ -180,7 +180,8 @@ def main():
     smarterAlgo(sentence, k)
 
     print('\nrun-time zigZagNp output:')
-    sentence='THISISAZIGZAG'
+    sentence='THISISAZIGZAGTHATSLITHERS'
+    k = 5
     zigZagNp(sentence, k) != None
     
 if __name__ == '__main__':
@@ -205,4 +206,11 @@ run-time zigZagNp output:
  [' ' 'H' ' ' ' ' ' ' 'S' ' ' 'Z' ' ' ' ' ' ' 'A' ' ']
  [' ' ' ' 'I' ' ' 'I' ' ' ' ' ' ' 'I' ' ' 'Z' ' ' ' ']
  [' ' ' ' ' ' 'S' ' ' ' ' ' ' ' ' ' ' 'G' ' ' ' ' ' ']]
+ 
+run-time zigZagNp output: 
+[['T' ' ' ' ' ' ' ' ' ' ' ' ' ' ' 'I' ' ' ' ' ' ' ' ' ' ' ' ' ' ' 'T' ' ' ' ' ' ' ' ' ' ' ' ' ' ' 'S']
+ [' ' 'H' ' ' ' ' ' ' ' ' ' ' 'Z' ' ' 'G' ' ' ' ' ' ' ' ' ' ' 'A' ' ' 'S' ' ' ' ' ' ' ' ' ' ' 'R' ' ']
+ [' ' ' ' 'I' ' ' ' ' ' ' 'A' ' ' ' ' ' ' 'Z' ' ' ' ' ' ' 'H' ' ' ' ' ' ' 'L' ' ' ' ' ' ' 'E' ' ' ' ']
+ [' ' ' ' ' ' 'S' ' ' 'S' ' ' ' ' ' ' ' ' ' ' 'A' ' ' 'T' ' ' ' ' ' ' ' ' ' ' 'I' ' ' 'H' ' ' ' ' ' ']
+ [' ' ' ' ' ' ' ' 'I' ' ' ' ' ' ' ' ' ' ' ' ' ' ' 'G' ' ' ' ' ' ' ' ' ' ' ' ' ' ' 'T' ' ' ' ' ' ' ' ']] 
 '''
