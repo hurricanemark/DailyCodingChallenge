@@ -21,6 +21,7 @@ Here is an example tree (note that only the leaf nodes have letters):
   *   a   t   *
  /             \
 c               s
+
 With this encoding, cats would be represented as 0000110111.
 
 Given a dictionary of character frequencies, build a Huffman tree, and use it to 
