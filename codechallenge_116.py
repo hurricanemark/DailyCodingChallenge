@@ -68,3 +68,14 @@ def main():
 if __name__ == '__main__':
     main()
         
+'''
+Run-time output:
+===============
+
+$ pipenv run python ./codechallenge_116.py
+Loading .env environment variables...
+The quick brown fox jumps over the lazy dog.
+True
+False
+
+'''
