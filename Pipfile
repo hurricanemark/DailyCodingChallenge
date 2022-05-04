@@ -3,7 +3,6 @@ verify_ssl = true
 url = "https://pypi.org/simple"
 name = "pypi"
 
-
 [dev-packages]
 pygame = "*"
 sympy = "*"
@@ -20,3 +19,4 @@ html-testrunner = "*"
 htmltestrunner-python3 = "*"
 pygame = "*"
 sympy = "*"
+requests = "*"
