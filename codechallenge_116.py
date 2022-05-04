@@ -23,6 +23,9 @@ Algorithm:
 4.  Split the stream into array of characters.  Traverse the array checking for capitalized 1st letter, alphanumeric, separators.
 5.  Return False if conditions not met, else print the sentence.
 '''
+import unittest
+from msilib.schema import Error
+import os, time, sys
 
 def check_sentence(stream):
     # check for single space between each word
@@ -31,42 +34,50 @@ def check_sentence(stream):
     # check if the sentence ends with a terminal mark
     if list(stream)[-1] not in ['.','!','?','‽']:
         return False
-    
+    if list(stream)[0].isupper() == False:
+        return False
     # Traverse the stream and check for the followings:
     for i,c in enumerate(list(stream)):
         # is first c a capital letter?
         if i == 0:
-            if c.isalnum() and c.isupper():
-                continue
-            else:
-                print('debug: i=',i, 'c=',c)
-                return False
+            continue
         else: # i > 0
             if c.isspace():
                 if (list(stream)[i+1].isspace()):
-                    print('debug: i=',i, 'c=',c)
                     return False
             
             elif (c.isalnum() and c.islower()) or (c in [',',';',':','.']):
                 continue
             else:
-                print('debug: i=',i, 'c=',c)
                 return False
     print(stream)
     return True
 
-
+class TestSentenceChecker(unittest.TestCase):
+    def test_sentence(self):
+        s = 'Hello world.'
+        self.assertTrue(check_sentence(s), 'Valid sentence')
+        s = 'Hello World.  This is two sentences.'
+        self.assertFalse(check_sentence(s), 'Invalid sentence')
+        s = 'this is not a sentence...ay caramba!'
+        self.assertFalse(check_sentence(s), 'Invalid sentence')
+        
 #
 # main driver
 #
 def main():
     sentence = 'The quick brown fox jumps over the lazy dog.'
     print(check_sentence(sentence))
-    not_sentence = 'ohhh,  it  is not a sentence'
+    not_sentence = 'ohhh,  it  is not a sentence!'
     print(check_sentence(not_sentence))
+    s = 'this is not a sentence...ay caramba!'
+    print(check_sentence(s))
     
 if __name__ == '__main__':
-    main()
+    if os.environ.get('UNITTEST_ONLY') != 'True':
+        main()
+    else:
+        unittest.main()
         
 '''
 Run-time output:
