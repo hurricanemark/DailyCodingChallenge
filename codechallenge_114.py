@@ -20,9 +20,12 @@ Algorithm:
 
 from msilib.schema import Error
 import unittest
-import HtmlTestRunner
-import os, time
+#import HtmlTestRunner
+from HtmlTestRunner import HTMLTestRunner 
+import os, time, sys
 from unittest.runner import TextTestResult
+  
+
 
 
 
@@ -61,16 +64,16 @@ def reconstructList(guide, lst):
             newlst.append(worklst.pop(0))
         elif x == '+':
             # insert element with value greater than newlst[-1] into newlst
-            print(len(worklst))
+            #print(len(worklst))
             largerElem = getLargerElement(newlst[-1], worklst)
-            print(len(worklst))
-            print('newlst[-1]: ', newlst[-1], ' largerElem: ', largerElem)
+            #print(len(worklst))
+            #print('newlst[-1]: ', newlst[-1], ' largerElem: ', largerElem)
             newlst.append(largerElem)
             
         elif x == '-':
             # insert element with value lesser than newlst[-1] into newlst
             smallerElem  = getSmallerElement(newlst[-1], worklst)
-            print('newlst[-1]: ', newlst[-1], ' smallerElem: ', smallerElem)
+            #print('newlst[-1]: ', newlst[-1], ' smallerElem: ', smallerElem)
             newlst.append(smallerElem)
 
             
@@ -96,9 +99,12 @@ class TestReconstructMessedupList(unittest.TestCase):
         guide = ['None', '+', '+', '+', '-']
         jlst = [1,2,4,3,0,9,5]
         self.assertEqual(reconstructList(guide, jlst),  [1, 2, 4, 9, 3])
+        
         jlst = [1,2,4]
         self.assertRaises(ValueError, lambda: reconstructList(guide, jlst))
-
+        
+        
+        
 def main():
     guide = ['None', '+', '+', '+', '-']
     jlst = [1,2,4,3,0,9,5]
@@ -110,7 +116,15 @@ if __name__ == '__main__':
     if os.environ.get('UNITTEST_ONLY') != 'True':
         main()
     else:
-        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))    
+        try:
+            unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))
+        except Exception as e:
+            print(e)
+            unittest.main()
+            
+        # unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))
+        # unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner())    
+        # unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(streams=sys.stdout, verbosity=1, title='unittest_codechallenge_114', description='test_reports'))    
     
 
 '''
