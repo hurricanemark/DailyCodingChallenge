@@ -92,7 +92,25 @@ def findSmallestUnsortedWindow(lst):
     # Define resulting indices
     startingIdx = endingIdx = 0
         
+    # iterate from right to left:
+    idx = 0
+    while idx < len(lst):
+        if lst[idx] < lst[idx-1]:
+            idx += 1
+        else:
+            startingIdx=idx
+            break
+    
+    # iterate from left to right:
+    idx = len(lst) - 1
+    while idx > 0:
+        if lst[idx] > lst[idx-1]:
+            idx -= 1
+        else:
+            endingIdx = idx + 1
+            break
         
+    #print(startingIdx, endingIdx)
     return (startingIdx, endingIdx)
         
 #
@@ -118,22 +136,59 @@ class TestSmallestUnorderedWindow(unittest.TestCase):
         time.sleep(1)
                     
     def test_SmallWindow(self):
-        pass
+        Slst = [51,3,4,5,2,6,7,8,9,10,17,12,50]
+        assert findSmallestUnsortedWindow(Slst) == (1, 11)
 
-
+#
+# main driver
+#
 def main():
-    pass
+    Slst = [3,7,5,6,8,9,10,17,12,15,14,11]
+    print('Given ', Slst, end=' ')
+    print(' the bounds of the smallest window is ', findSmallestUnsortedWindow(Slst))
+    Slst = [51,3,4,5,2,6,7,8,9,10,17,12,50]
+    print('Given ', Slst, end=' ')
+    print(' the bounds of the smallest window is ', findSmallestUnsortedWindow(Slst))    
+    Slst = [1,2,3,4,5,6,7,8,9]
+    print('Given ', Slst, end=' ')
+    print(' the bounds of the smallest window is ', findSmallestUnsortedWindow(Slst))
+    Slst = []
+    print('Given ', Slst, end=' ')
+    print(' the bounds of the smallest window is ', findSmallestUnsortedWindow(Slst))
+    Slst = [12]
+    print('Given ', Slst, end=' ')
+    print(' the bounds of the smallest window is ', findSmallestUnsortedWindow(Slst))
+    Slst = [3, 7, 5, 6, 9]
+    print('Given ', Slst, end=' ')
+    print(' the bounds of the smallest window is ', findSmallestUnsortedWindow(Slst))
 
 
 if __name__ == '__main__':
-    if os.environ.get('UNITTEST_ONLY') != 'True':
+    if os.environ.get('UNITTEST_ONLY') == 'True':
         main()
     else:
-        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))    
+        try:
+            # unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test_reports'))    
+            unittest.main()
+        except Exception as e:
+            print(e)
+
         
 '''
 Run-time output:
 ===============
+$ pipenv run python ./codechallenge_113.py 
+Loading .env environment variables...
+Given  [3, 7, 5, 6, 8, 9, 10, 17, 12, 15, 14, 11]  the bounds of the smallest window is  (1, 12)
+Given  [51, 3, 4, 5, 2, 6, 7, 8, 9, 10, 17, 12, 50]  the bounds of the smallest window is  (0, 12)
+Given  [1, 2, 3, 4, 5, 6, 7, 8, 9]  the bounds of the smallest window is  (1, 0)
+Given  []  the bounds of the smallest window is  None
+Given  [12]  the bounds of the smallest window is  None
+Given  [3, 7, 5, 6, 9]  the bounds of the smallest window is  (1, 3)
+
+
+unittest output:
+================
 PS D:\devel\GIT\DailyCodingChallenge> pipenv run python .\codechallenge_113.py
 Loading .env environment variables...
 
