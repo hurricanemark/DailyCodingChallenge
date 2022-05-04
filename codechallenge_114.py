@@ -96,7 +96,8 @@ class TestReconstructMessedupList(unittest.TestCase):
         guide = ['None', '+', '+', '+', '-']
         jlst = [1,2,4,3,0,9,5]
         self.assertEqual(reconstructList(guide, jlst),  [1, 2, 4, 9, 3])
-
+        jlst = [1,2,4]
+        self.assertRaises(ValueError, lambda: reconstructList(guide, jlst))
 
 def main():
     guide = ['None', '+', '+', '+', '-']
