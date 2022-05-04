@@ -82,7 +82,7 @@ def reconstructList(guide, lst):
 #
 # Unittest
 #
-class TestSmallestUnorderedWindow(unittest.TestCase):
+class TestReconstructMessedupList(unittest.TestCase):
     def setUp(self):
         self.startTime = time.time()
 
