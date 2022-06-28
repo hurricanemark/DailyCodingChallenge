@@ -62,9 +62,22 @@ def sum2numbers(numbers, target):
 def main():
     numbers = [2,7,11,15]
     target = 9
-    print("\n")
-    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers \n{}".format(numbers))
+    print("Test case #1:")
+    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {}".format(numbers))
     print("The indices of two numbers that add up to a target number: {}".format(sum2numbers(numbers, target)))
+    
+    print("\nTest case #2:")
+    numbers = [2,3,4] 
+    target = 6
+    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {}".format(numbers))
+    print("The indices of two numbers that add up to a target number: {}".format(sum2numbers(numbers, target)))
+    
+    print("\nTest case #3:")
+    numbers = [-1,0] 
+    target = -1
+    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {}".format(numbers))
+    print("The indices of two numbers that add up to a target number: {}".format(sum2numbers(numbers, target)))
+    
     print("\n\n")
 
 
@@ -72,7 +85,7 @@ class TestSum2Numbers(unittest.TestCase):
     assert sum2numbers([2,7,11,15], 9) == [1, 2]
     
 if __name__ == '__main__':
-    if os.environ.get('UNITTEST_ONLY') != 'True':
+    if os.environ.get('UNITTEST_ONLY') == 'True':
         main()
     else:
         try:
@@ -94,8 +107,17 @@ OK
 Runtime main():
 ==============
 
-Given a 1-indexed sorted in non-decreasing order array of integers numbers
-[2, 7, 11, 15]
+Loading .env environment variables...
+Test case #1:
+Given a 1-indexed sorted in non-decreasing order array of integers numbers [2, 7, 11, 15]
+The indices of two numbers that add up to a target number: [1, 2]
+
+Test case #2:
+Given a 1-indexed sorted in non-decreasing order array of integers numbers [2, 3, 4]
+The indices of two numbers that add up to a target number: [1, 3]
+
+Test case #3:
+Given a 1-indexed sorted in non-decreasing order array of integers numbers [-1, 0]
 The indices of two numbers that add up to a target number: [1, 2]
 
 '''            
