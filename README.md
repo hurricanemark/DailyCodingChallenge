@@ -51,7 +51,7 @@ pipenv run python ./tests.py
 exit()
 ```
 
-<mark>Verbose unittest output is in</mark> **tests_output.txt** :joy:
+<mark>Verbose unittest output is in</mark> **@@include(./tests_output.txt)** :joy:
 
 
 ## Run Using Docker Image
