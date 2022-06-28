@@ -43,6 +43,10 @@ import unittest
 import os, time
 from unittest.runner import TextTestResult
 
+def sum(num1, num2):
+    return num1 + num2
+
+
 # worst case time complexity of O(n)
 def sum2numbers(numbers, target):
     
@@ -59,23 +63,36 @@ def sum2numbers(numbers, target):
             j -= 1
     return []
 
+def sum_two_numbers(numbers, target):
+    
+    n = len(numbers)
+    i = 0
+    # list comprehension
+    [sum(numbers[i], numbers[n - i - 1]) == target for i in range(n // 2)]
+    
+    return [i + 1, n - i - 2]
+    
+
 def main():
-    numbers = [2,7,11,15]
+    numbers = [2,3,5,7,11,15]
     target = 9
-    print("Test case #1:")
-    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {}".format(numbers))
+    print("Test case #0:")
+    print("numbers = [2,3,5,7,11,15], target = 9 and expected result = {}".format(sum_two_numbers(numbers, target)))
+    numbers = [2,7,11,15]
+    print("\nTest case #1:")
+    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {} and target = {}".format(numbers, target))
     print("The indices of two numbers that add up to a target number: {}".format(sum2numbers(numbers, target)))
     
     print("\nTest case #2:")
     numbers = [2,3,4] 
     target = 6
-    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {}".format(numbers))
+    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {} and target = {}".format(numbers, target))
     print("The indices of two numbers that add up to a target number: {}".format(sum2numbers(numbers, target)))
     
     print("\nTest case #3:")
     numbers = [-1,0] 
     target = -1
-    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {}".format(numbers))
+    print("Given a 1-indexed sorted in non-decreasing order array of integers numbers {} and target = {}".format(numbers, target))
     print("The indices of two numbers that add up to a target number: {}".format(sum2numbers(numbers, target)))
     
     print("\n\n")
@@ -90,7 +107,7 @@ class TestSum2Numbers(unittest.TestCase):
         assert sum2numbers([-1,0], -1) == [1, 2]
     
 if __name__ == '__main__':
-    if os.environ.get('UNITTEST_ONLY') != 'True':
+    if os.environ.get('UNITTEST_ONLY') == 'True':
         main()
     else:
         try:
@@ -113,16 +130,19 @@ Runtime main():
 ==============
 
 Loading .env environment variables...
+Test case #0:
+numbers = [2,3,5,7,11,15], target = 9 and expected result = [1, 4]
+
 Test case #1:
-Given a 1-indexed sorted in non-decreasing order array of integers numbers [2, 7, 11, 15]
+Given a 1-indexed sorted in non-decreasing order array of integers numbers [2, 7, 11, 15] and target = 9
 The indices of two numbers that add up to a target number: [1, 2]
 
 Test case #2:
-Given a 1-indexed sorted in non-decreasing order array of integers numbers [2, 3, 4]
+Given a 1-indexed sorted in non-decreasing order array of integers numbers [2, 3, 4] and target = 6
 The indices of two numbers that add up to a target number: [1, 3]
 
 Test case #3:
-Given a 1-indexed sorted in non-decreasing order array of integers numbers [-1, 0]
+Given a 1-indexed sorted in non-decreasing order array of integers numbers [-1, 0] and target = -1
 The indices of two numbers that add up to a target number: [1, 2]
 
 '''            
