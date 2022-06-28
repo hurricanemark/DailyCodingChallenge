@@ -82,10 +82,15 @@ def main():
 
 
 class TestSum2Numbers(unittest.TestCase):
-    assert sum2numbers([2,7,11,15], 9) == [1, 2]
+    def testCase1(self):
+        assert sum2numbers([2,7,11,15], 9) == [1, 2]
+    def testCase2(self):
+        assert sum2numbers([2,3,4], 6) == [1, 3]
+    def testCase3(self):
+        assert sum2numbers([-1,0], -1) == [1, 2]
     
 if __name__ == '__main__':
-    if os.environ.get('UNITTEST_ONLY') == 'True':
+    if os.environ.get('UNITTEST_ONLY') != 'True':
         main()
     else:
         try:
@@ -98,9 +103,9 @@ Unit test output:
 =================
 PS D:\DEVEL\GIT\DailyCodingChallenge> pipenv run python .\codechallenge_120.py
 Loading .env environment variables...
-
+...
 ----------------------------------------------------------------------
-Ran 0 tests in 0.000s
+Ran 3 tests in 0.000s
 
 OK
 
