@@ -57,7 +57,7 @@ $ docker build . -t pydockerrunner
 $ docker rm runmycodechallenges; docker run -it --name runmycodechallenges pydockerrunner:latest "/bin/bash"
 
 
-## Organization
+## Code Layout
 
 One problem/solution per python file.
 Each python file contains the given problem in the commented section and my attempted code below it.  The files are not linked or referenced to one another.  However, you could import each one as module (see module_unittests.py) or run pytest on the entire directory (see tests.py).  Be sure to open it up and read it.  
