@@ -10,3 +10,5 @@ test_reports/*
 test_report_files.zip
 test_reports/TestResults___main__.*.html
 test_reports/test_results.xml
+xkcd
+xkcd/*.png
