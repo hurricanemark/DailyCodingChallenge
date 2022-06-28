@@ -18,6 +18,15 @@ ways to implement a solution.
 
 Often, I would recommit updates on individual file with further thoughts, improvement or total rewrite of the solution.
 
+## Code Layout
+
+One problem/solution per python file.
+Each python file contains the given problem in the commented section and my attempted code below it.  The files are not linked or referenced to one another.  However, you could import each one as module (see module_unittests.py) or run pytest on the entire directory (see tests.py).  Be sure to open it up and read it.  
+
+Feel free to suggest better performance for any of my solutions here.
+
+
+Published URL: https://hurricanemark.github.io/DailyCodingChallenge/
 
 ## How to Run
 
@@ -57,12 +66,4 @@ $ docker build . -t pydockerrunner
 $ docker rm runmycodechallenges; docker run -it --name runmycodechallenges pydockerrunner:latest "/bin/bash"
 
 
-## Code Layout
 
-One problem/solution per python file.
-Each python file contains the given problem in the commented section and my attempted code below it.  The files are not linked or referenced to one another.  However, you could import each one as module (see module_unittests.py) or run pytest on the entire directory (see tests.py).  Be sure to open it up and read it.  
-
-Feel free to suggest better performance for any of my solutions here.
-
-
-Published URL: https://hurricanemark.github.io/DailyCodingChallenge/
