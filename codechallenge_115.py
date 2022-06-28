@@ -66,6 +66,8 @@ Applications of Huffman Coding:
 -  They are used for transmitting fax and text.
 -  They are used by conventional compression formats like PKZIP, GZIP, etc.
 -  Multimedia codecs like JPEG, PNG, and MP3 use Huffman encoding(to be more precise the prefix codes).
+
+Note to self: Works-in-progress to find an optimal solution.
 '''
     
 from binarytree import Node
@@ -257,5 +259,6 @@ if __name__ == '__main__':
     print('Huffman Tree by (geeksforgeeks.org):\n')
     # main()
     test_cats()
+    
     # frequencies = {'c':'000','a':'01','t':'10','s':'111'}
     # build_huffman_tree(frequencies)
