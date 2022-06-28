@@ -51,11 +51,9 @@ pipenv run python ./tests.py
 exit()
 ```
 
-<mark>Verbose unittest output is in</mark> **@@include(./tests_output.txt)** :joy:
+<mark>Verbose unittest output is in</mark> @@include[tests_output.txt](./tests_output.txt) :joy:
 
 
-## Run Using Docker Image
-=======
 ## Develop && Run Tests Using Docker Image
 
 Install docker-ce on your local machine.  Follow this link [**docker-ce**](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1) for installation instruction.  
