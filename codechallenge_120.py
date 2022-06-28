@@ -48,6 +48,7 @@ def sum(num1, num2):
 
 
 # worst case time complexity of O(n)
+# traverse the list from both ends using loop[i, j]
 def sum2numbers(numbers, target):
     
     i = 0 # start from the beginning of the list
@@ -63,8 +64,8 @@ def sum2numbers(numbers, target):
             j -= 1
     return []
 
+# traverse the list from both ends using list comprehension
 def sum_two_numbers(numbers, target):
-    
     n = len(numbers)
     i = 0
     # list comprehension
@@ -76,7 +77,7 @@ def sum_two_numbers(numbers, target):
 def main():
     numbers = [2,3,5,7,11,15]
     target = 9
-    print("Test case #0:")
+    print("Test case #0:(calling list comprehension method)")
     print("numbers = [2,3,5,7,11,15], target = 9 and expected result = {}".format(sum_two_numbers(numbers, target)))
     numbers = [2,7,11,15]
     print("\nTest case #1:")
