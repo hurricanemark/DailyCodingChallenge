@@ -40,10 +40,11 @@ def browse_map_address():
     if address:
         webbrowser.open('https://www.google.com/maps/place/' + address)    
         
-
-
-        
-        
+# ----------
+# Function: Download every single XKCD comic images
+# Utility: requests (https://requests.readthedocs.io/en/latest/)
+#           bs4 (https://www.crummy.com/software/BeautifulSoup/)
+#       
 def web_download_img(url):
     # Downloads every single XKCD comic.
     while not url.endswith('#'):
@@ -58,7 +59,7 @@ def web_download_img(url):
         comicElem = soup.select('#comic img')
         if comicElem == []:
             print('Could not find comic image.')
-            break
+            break # drop out of the while loop
         else:
             comicUrl = 'https:' + comicElem[0].get('src')
             # download the image
@@ -68,6 +69,7 @@ def web_download_img(url):
                 res.raise_for_status()
             except Exception as exc:
                 print('There was a problem: %s' % (exc))
+                break
             
 
             # Save the image to ./xkcd.
@@ -90,3 +92,26 @@ if __name__ == '__main__':
     url = 'https://xkcd.com'               # starting url
     os.makedirs('xkcd', exist_ok=True)     # store comics in ./xkcd
     web_download_img(url)                  # download all the comic images 
+    
+'''
+Runtime output:
+===============
+PS D:\DEVEL\GIT\DailyCodingChallenge> python .\codechallenge_121.py 
+Downloading page https://xkcd.com...
+Downloading image https://imgs.xkcd.com/comics/extended_nfpa_hazard_
+Downloading page https://xkcd.com/2637/...
+Downloading image https://imgs.xkcd.com/comics/roman_numerals.png...
+Downloading page https://xkcd.com/2636/...
+Downloading image https://imgs.xkcd.com/comics/what_if_2_countdown.p
+Downloading page https://xkcd.com/2635/...
+Downloading image https://imgs.xkcd.com/comics/superintelligent_ais.
+Downloading page https://xkcd.com/2634/...
+Downloading image https://imgs.xkcd.com/comics/red_line_through_http
+Downloading page https://xkcd.com/2200/...
+Downloading image https://imgs.xkcd.com/comics/unreachable_state.png...
+Downloading page https://xkcd.com/2199/...
+Downloading image https://imgs.xkcd.com/comics/cryptic_wifi_networks.png...
+Downloading page https://xkcd.com/2198/...
+Could not find comic image.
+Done.
+'''
