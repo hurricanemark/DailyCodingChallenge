@@ -12,3 +12,4 @@ test_reports/TestResults___main__.*.html
 test_reports/test_results.xml
 xkcd
 xkcd/*.png
+geckodriver.log
