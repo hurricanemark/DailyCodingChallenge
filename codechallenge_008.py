@@ -39,6 +39,9 @@ Psuedo code:
 Note, it is easier to hash the array by converting it into a dictionary.
 Also, no time gap in between back-to-back schedules is considered in this implementation.
 
+
+Note: function starts with test_*() will be automatically executed using command pytest .\codechallenge_008.py
+
 After thought:
 ==============
 Resource allocation is applicable to many practical problems such as
@@ -83,7 +86,7 @@ def genRandomSchedule(slots):
 			del xsched[start]
 	return list(xsched.items())
 
-
+# test cases.  Written for pytest .\codechallenge_008.py
 def test_code():
 	schedtime = [(30, 75), (0, 50), (60, 150)]
 	begin = time.time()
