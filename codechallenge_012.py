@@ -104,7 +104,7 @@ def justifyWords(wordlist, k):
 	return justified_blob
 
 #
-# Note: unittest needs  pip3 install pytest
+# Note: unittest needs pip3 install pytest
 #
 class TestJustifier(unittest.TestCase):
 	def test_code(self):
