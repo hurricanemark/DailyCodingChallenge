@@ -118,7 +118,6 @@ the    lazy  dog
 		with self.assertRaises(Exception):
 			justifyWords(wordlist, k)
    
-		#self.assertEqual(justifyWords(wordlist, k), justified_blob)
 
 if __name__ == "__main__":
 
