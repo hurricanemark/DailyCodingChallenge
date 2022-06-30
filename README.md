@@ -36,7 +36,7 @@ Several unit test modules are used here.  *pytest*, *module_unittesst.py*, and *
 
 ** 2.  git clone https://github.com/hurricanemark/DailyCodingChallenge.git
 
-** 3.  Run pytest (pytest ./*.py)
+** 3.  Run pytest (`pytest ./*.py`)
     
 Any function written in the form of test_xyz() will be automatically executed with pytest.
 
