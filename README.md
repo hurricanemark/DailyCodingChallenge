@@ -30,11 +30,15 @@ Published URL: https://hurricanemark.github.io/DailyCodingChallenge/
 
 ## How to Run
 
+Several unit test modules are used here.  *pytest*, *module_unittesst.py*, and *unittest.runner* that can generate xml summary.
+
 ** 1.  Install pytest (pip install  pytest)
 
 ** 2.  git clone https://github.com/hurricanemark/DailyCodingChallenge.git
 
 ** 3.  Run pytest (pytest ./*.py)
+    
+    Any function written in the form of *test_abc()* will be automatically executed with pytest.
 
 **     or, execute individual python solution (python codechalleng-##.py)
 
