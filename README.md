@@ -38,11 +38,11 @@ Several unit test modules are used here.  *pytest*, *module_unittesst.py*, and *
 
 ** 3.  Run pytest (pytest ./*.py)
     
-    Any function written in the form of *test_abc()* will be automatically executed with pytest.
+Any function written in the form of test_xyz() will be automatically executed with pytest.
 
-**     or, execute individual python solution (python codechalleng-##.py)
+**     or, execute individual python solution (`python codechalleng-##.py`)
 
-**     or, execute python tests.py for comprehensive testing of the whole directory
+**     or, execute `python tests.py` for comprehensive testing of the whole directory
 
 **     or, python3 module_unittests.py
 
