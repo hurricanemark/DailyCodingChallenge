@@ -20,6 +20,7 @@ Output: [[1,1,1,1,1,1], [1,1,1,1,2], [1,1,2,2], [1,2,3],
 
 Complexity: O(n^2)
 '''
+from pickle import TRUE
 import unittest
 import os, time
 from unittest.runner import TextTestResult
@@ -73,7 +74,7 @@ def main():
     print("Unique combination of numbers whose sum equals '{}' is \n{}".format(target, Solution().combinationSum(nums, target)))
 
 if __name__ == "__main__":
-    if os.environ.get('UNITTEST_ONLY') == 'True':
+    if os.environ.get('UNITTEST_ONLY') != TRUE:
         main()
     else:
         try:
