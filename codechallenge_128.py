@@ -66,4 +66,19 @@ def main():
         print('\tGear ratio with respect to the first gear is 1 to {}'.format(round(ratios[1][key],2)))
 
 if __name__ == "__main__":
-    main()        
+    main()   
+    
+'''
+Runtime Analysis:
+------------------
+PS D:\DEVEL\GIT\DailyCodingChallenge> pipenv run python .\codechallenge_128.py     
+Loading .env environment variables...
+Given three gears with respective radius: [2.53, 5.78, 10.44]
+Chaining ratio is 0.10610713038573116
+        Gear ratio with respect to the first gear is 1 to 2.28
+        Gear ratio with respect to the first gear is 1 to 4.13
+Again, straight ratios:
+The chaining ratio is 0.10607491813493483
+        Gear ratio with respect to the first gear is 1 to 2.28
+        Gear ratio with respect to the first gear is 1 to 4.13
+'''     
