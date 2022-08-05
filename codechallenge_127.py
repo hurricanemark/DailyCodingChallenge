@@ -1,6 +1,7 @@
 '''
 Date: 08/05/2022
 Task description:
+================
 
 Asked by Airbnb.
 
@@ -14,7 +15,7 @@ For example, suppose your input is [1.3, 2.3, 4.4]. In this case you cannot do b
 
 Pseudo Code:
 ============
-The absolute pairwise difference should equal 1.
+The absolute pairwise difference should ideally equal 1.
 1. Create a generator that yields the rounded values for array Y.
 2. Create a generator that yields the absolute difference between elements in array X and array Y.
 3. Create a generator that yields the sum of elements in array X and array Y. i.e. sum(X) == sum(Y)
