@@ -3,7 +3,7 @@ Date: 08/05/2022
 
 Task description:
 =================
-Calculate gear ratio given two or more gears.
+Calculate gear ratio given the radius of two or more gears.
 A lesson of not to over complicate the problem.
 
 1. Return the ratio relative to the first gear.
