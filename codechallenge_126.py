@@ -134,9 +134,9 @@ class Solution():
                 prev_width += 1 
                 prev_height += 1
             else:
-                prev_width = 0
+                prev_width = 1
                 
-        return (prev_height * prev_width +1) // 2
+        return (prev_height * prev_width) // 2
     
 
 class Test(unittest.TestCase):
