@@ -27,6 +27,10 @@ Restrospective:
 ----------------
 -  Is it neccessary to calculate the circumference of each gear?
 Answer: No.  Since the calculation does not involve non-constant factors, it is not neccessary to calculate the circumference of each gear.
+
+-  Application of gear ratio: Bicycle gearing.
+A gear having a large diameter chained to a smaller diameter gear translates to higher number of revolutions on the later per revolution on the prior.  In layman terms, each revolution on a larger gear generates more than one revolutions (a ratio equivalent) on the smaller gear.
+
 '''
 from math import pi
 class Solution():
