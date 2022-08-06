@@ -31,6 +31,8 @@ Answer: No.  Since the calculation does not involve non-constant factors, it is 
 -  Application of gear ratio: Bicycle gearing.
 A gear having a large diameter chained to a smaller diameter gear translates to higher number of revolutions on the later per revolution on the prior.  In layman terms, each revolution on a larger gear generates more than one revolutions (a ratio equivalent) on the smaller gear.
 
+(*) Well, I made the wrong math assumption.  It turns out the deferential gearbox yields r+1
+
 '''
 from math import pi
 class Solution():
@@ -43,7 +45,7 @@ class Solution():
         for i in range(1, len(radius)):
             circumference = round(2 * pi * radius[i], 2)
             gear_ratio[i] = circumference / firstgear_circumference 
-            chaining_ratio = chaining_ratio / gear_ratio[i]
+            chaining_ratio = (chaining_ratio + 1)/ gear_ratio[i]
         return [chaining_ratio, gear_ratio]
 
     # no need to calculate the circumference of each gear    
@@ -51,8 +53,8 @@ class Solution():
         straight_ratio = {}
         chaining_ratio = 1
         for i in range(1, len(radius)):
-            straight_ratio[i] = radius[i] / radius[0] 
-            chaining_ratio = chaining_ratio / straight_ratio[i]
+            straight_ratio[i] = radius[i] / (radius[0] + 1) 
+            chaining_ratio = (chaining_ratio + 1) / straight_ratio[i]
         return [chaining_ratio, straight_ratio]
     
 def main():
