@@ -13,3 +13,4 @@ test_reports/test_results.xml
 xkcd
 xkcd/*.png
 geckodriver.log
+node_modules
